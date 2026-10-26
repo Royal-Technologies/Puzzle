@@ -83,28 +83,44 @@ function validatePuzzle(puzzle) {
   return { valid: true };
 }
 
+// ── Preferred Hard / Challenging Subtypes for Daily Auto-Publishing ──
+const HARD_SUBTYPES = {
+  'sudoku':          ['classic-9x9'], // Strictly 9x9 Classic Sudoku only
+  'geometry':        ['missing-angle', 'shaded-region', 'area-perimeter'],
+  'number-sequence': ['mixed-rule', 'fibonacci', 'next-in-series'],
+  'matchstick':      ['fix-equation', 'move-matches'],
+  'logic':           ['grid-logic', 'truth-lies', 'syllogism'],
+  'clock-calendar':  ['time-elapsed', 'day-calculation', 'time-zones'],
+  'word-puzzle':     ['anagram', 'word-chain', 'rebus'],
+  'visual-iq':       ['count-shapes', 'matrix-2x2', 'shape-analogy', 'spatial-rotation'],
+  'missing-number':  ['magic-square', 'number-triangle', 'math-riddle'],
+  'visual-pattern':  ['matrix-pattern', 'complete-series', 'shape-transform']
+};
+
 // ── Caption Generator for Facebook Pages ──
-function generateSocialCaption(category, puzzleTitle) {
+function generateSocialCaption(category, puzzleTitle, difficulty) {
   const hooks = [
-    `Can you solve today’s Bright Path puzzle? Share your answer in the comments below! 🧩`,
-    `Sharpen your mind with today’s Brain Challenge! What’s your solution? 💡`,
-    `Here is your daily Mathematics & Logic puzzle from Bright Path. Drop your answer below! 👇`,
-    `Test your IQ and logic skills! Can you crack this puzzle? 🧠⚡`
+    `🔥 Hard Level Challenge! Can you crack today’s Bright Path puzzle? Share your answer in the comments below! 🧠⚡`,
+    `🧠 Expert Brain Workout: Here is today’s challenging puzzle. What is your solution? 👇`,
+    `⚡ Master Level IQ & Math Challenge from Bright Path! Drop your solution below. 🏆`,
+    `💡 Can you solve today’s expert puzzle? Only 10% get this right on the first try! 🧩`
   ];
 
   const hook = hooks[Math.floor(Math.random() * hooks.length)];
   const hashtags = [
     '#BrightPath',
     '#MathematicsMarvels',
+    '#HardPuzzle',
+    '#ExpertChallenge',
     '#RoyalTechnologies',
     '#PuzzleOfTheDay',
     '#DailyBrainTeaser',
     '#MathPuzzles',
     '#LogicRiddle',
-    '#BrainWorkout'
+    '#SudokuChallenge'
   ];
 
-  return `${hook}\n\nCategory: ${puzzleTitle || category.toUpperCase()}\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n${hashtags.join(' ')}`;
+  return `${hook}\n\nCategory: ${puzzleTitle || category.toUpperCase()} (Difficulty: HARD)\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n${hashtags.join(' ')}`;
 }
 
 // ── Main Daily Puzzle Generation Function ──
@@ -150,19 +166,18 @@ function generateDailyPuzzle(options = {}) {
   if (!gen) throw new Error(`Generator not found for category: ${selectedCategory}`);
 
   // 3. Select Subtype & Difficulty with Bounded Retry (Max 10 Attempts)
-  const subtypes = gen.subtypes || [{ value: 'default', label: selectedCategory }];
-  const difficulties = ['easy', 'medium', 'hard'];
+  // Always HARD difficulty and challenging subtypes (Classic 9x9 for Sudoku)
+  const availableSubtypes = HARD_SUBTYPES[selectedCategory] || (gen.subtypes || []).map(s => s.value);
+  const chosenDiff = options.difficulty || 'hard'; // Always HARD difficulty!
 
   let attempts = 0;
   let raw = null;
   let validationResult = { valid: false };
-  let chosenSubtype = subtypes[0].value;
-  let chosenDiff = 'medium';
+  let chosenSubtype = availableSubtypes[0];
 
   while (attempts < 10) {
     attempts++;
-    chosenSubtype = subtypes[Math.floor(Math.random() * subtypes.length)].value;
-    chosenDiff = difficulties[Math.floor(Math.random() * difficulties.length)];
+    chosenSubtype = availableSubtypes[Math.floor(Math.random() * availableSubtypes.length)];
 
     raw = gen.generate(chosenSubtype, chosenDiff);
     validationResult = validatePuzzle(raw);
@@ -202,7 +217,7 @@ function generateDailyPuzzle(options = {}) {
   const todayImageUrl = `${baseUrl}/puzzles/today.png`;
   const archivedImageUrl = `${baseUrl}/puzzles/${puzzleId}.png`;
 
-  const caption = generateSocialCaption(selectedCategory, puzzleData.title);
+  const caption = generateSocialCaption(selectedCategory, puzzleData.title, chosenDiff);
 
   // 7. Update History & Write Files
   const puzzlesDir = path.join(rootDir, 'puzzles');

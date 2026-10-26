@@ -1,13 +1,13 @@
 {
-  "puzzleId": "BP-20261026-HJDD",
+  "puzzleId": "BP-20261026-89OG",
   "category": "sudoku",
-  "subtype": "mini-4x4",
+  "subtype": "classic-9x9",
   "difficulty": "hard",
   "answerVerified": true,
   "answer": "See the completed solution grid.",
-  "hint": "Start with the 2×2 boxes that have the most given numbers.",
-  "caption": "Here is your daily Mathematics & Logic puzzle from Bright Path. Drop your answer below! 👇\n\nCategory: Mini 4×4 Sudoku\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #BrainWorkout",
+  "hint": "Start with rows, columns, or boxes that have the most given numbers.",
+  "caption": "🧠 Expert Brain Workout: Here is today’s challenging puzzle. What is your solution? 👇\n\nCategory: Classic 9×9 Sudoku (Difficulty: HARD)\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
   "imageUrl": "https://royal-technologies.github.io/Puzzle/puzzles/today.png",
-  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261026-HJDD.png",
-  "generatedAt": "2026-10-26T14:01:50.768+06:00"
+  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261026-89OG.png",
+  "generatedAt": "2026-10-26T14:32:33.863+06:00"
 }

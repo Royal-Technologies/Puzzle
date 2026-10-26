@@ -2,10 +2,34 @@
   "lastCategory": "sudoku",
   "publishedIds": [
     "BP-20261026-M8X6",
-    "BP-20261026-HJDD"
+    "BP-20261026-HJDD",
+    "BP-20261026-2Q2P",
+    "BP-20261026-CA9J",
+    "BP-20261026-UWLP",
+    "BP-20261026-MF6F",
+    "BP-20261026-HDIH",
+    "BP-20261026-OCLA",
+    "BP-20261026-AKN5",
+    "BP-20261026-WFP6",
+    "BP-20261026-3QJF",
+    "BP-20261026-AVL7",
+    "BP-20261026-96M8",
+    "BP-20261026-5E6L",
+    "BP-20261026-PKWT",
+    "BP-20261026-D77V",
+    "BP-20261026-FQMT",
+    "BP-20261026-89OG"
   ],
   "categoryCounts": {
     "geometry": 1,
-    "sudoku": 1
+    "sudoku": 7,
+    "matchstick": 1,
+    "logic": 2,
+    "clock-calendar": 1,
+    "visual-iq": 1,
+    "missing-number": 1,
+    "number-sequence": 2,
+    "visual-pattern": 1,
+    "word-puzzle": 1
   }
 }
