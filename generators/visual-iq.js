@@ -1,19 +1,39 @@
 /**
  * Visual IQ Puzzles Generator
- * Clean, Simple, Deterministic Visual IQ Puzzles
+ * Fully Randomized, Clean, Simple, Deterministic Visual IQ Puzzles
  * Subtypes:
- *   1. odd-one-out: Find the figure that does not belong
- *   2. matrix-2x2: Complete the 2×2 Raven-style visual matrix
- *   3. count-shapes: Count total triangles in geometric figures
- *   4. shape-analogy: A is to B as C is to ?
- *   5. spatial-rotation: Find the exact rotated figure (not mirrored)
+ *   1. odd-one-out: Find the figure that violates the pattern (dynamically shuffled)
+ *   2. matrix-2x2: Complete the 2×2 visual matrix (randomized shapes & rules)
+ *   3. count-shapes: Count total triangles in geometric figures (varied diagrams)
+ *   4. shape-analogy: A is to B as C is to ? (randomized analogies & shapes)
+ *   5. spatial-rotation: Find the exact rotated figure without mirroring (varied glyphs)
  * Branding: Bright Path | Royal Technologies
  */
 'use strict';
 
 window.VisualIQGenerator = (function () {
 
-  // ── Helper: Safe Round Rect (portable, zero canvas state bugs) ──
+  // ── Random Helpers ──
+  function rnd(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+  function pickOne(arr) {
+    return arr[Math.floor(Math.random() * arr.length)];
+  }
+
+  function shuffle(arr) {
+    const a = arr.slice();
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      const tmp = a[i];
+      a[i] = a[j];
+      a[j] = tmp;
+    }
+    return a;
+  }
+
+  // ── Safe Round Rect Helper ──
   function drawRoundedBox(ctx, x, y, w, h, r, fillColor, strokeColor, lineWidth) {
     r = Math.min(r || 8, Math.abs(w) / 2, Math.abs(h) / 2);
     ctx.beginPath();
@@ -39,9 +59,9 @@ window.VisualIQGenerator = (function () {
     }
   }
 
-  // ── Helper: Regular Polygon ──
+  // ── Regular Polygon ──
   function drawPolygon(ctx, cx, cy, radius, sides, fillColor, strokeColor, lineWidth, rotRad) {
-    rotRad = rotRad || -Math.PI / 2; // Point up by default
+    rotRad = rotRad !== undefined ? rotRad : -Math.PI / 2;
     ctx.beginPath();
     for (let i = 0; i < sides; i++) {
       const angle = rotRad + (i * 2 * Math.PI) / sides;
@@ -51,7 +71,6 @@ window.VisualIQGenerator = (function () {
       else ctx.lineTo(px, py);
     }
     ctx.closePath();
-
     if (fillColor) {
       ctx.fillStyle = fillColor;
       ctx.fill();
@@ -63,7 +82,7 @@ window.VisualIQGenerator = (function () {
     }
   }
 
-  // ── Helper: Circle ──
+  // ── Circle ──
   function drawCircle(ctx, cx, cy, radius, fillColor, strokeColor, lineWidth) {
     ctx.beginPath();
     ctx.arc(cx, cy, radius, 0, Math.PI * 2);
@@ -79,30 +98,7 @@ window.VisualIQGenerator = (function () {
     }
   }
 
-  // ── Helper: Star ──
-  function drawStar(ctx, cx, cy, points, outerR, innerR, fillColor, strokeColor, lineWidth) {
-    ctx.beginPath();
-    for (let i = 0; i < points * 2; i++) {
-      const r = i % 2 === 0 ? outerR : innerR;
-      const a = -Math.PI / 2 + (i * Math.PI) / points;
-      const px = cx + r * Math.cos(a);
-      const py = cy + r * Math.sin(a);
-      if (i === 0) ctx.moveTo(px, py);
-      else ctx.lineTo(px, py);
-    }
-    ctx.closePath();
-    if (fillColor) {
-      ctx.fillStyle = fillColor;
-      ctx.fill();
-    }
-    if (strokeColor) {
-      ctx.strokeStyle = strokeColor;
-      ctx.lineWidth = lineWidth || 2;
-      ctx.stroke();
-    }
-  }
-
-  // ── Helper: Multiple Choice Badge (A, B, C, D) ──
+  // ── Multiple Choice Badge (A, B, C, D, E) ──
   function drawOptionBadge(ctx, x, y, letter, highlight) {
     ctx.save();
     const bg = highlight ? '#DC2626' : '#1E293B';
@@ -114,6 +110,15 @@ window.VisualIQGenerator = (function () {
     ctx.fillText(letter, x, y);
     ctx.restore();
   }
+
+  // Color palettes
+  const THEME_COLORS = [
+    { fill: '#EFF6FF', stroke: '#1E3A8A' },
+    { fill: '#F5F3FF', stroke: '#5B21B6' },
+    { fill: '#ECFDF5', stroke: '#065F46' },
+    { fill: '#FFFBEB', stroke: '#92400E' },
+    { fill: '#FEF2F2', stroke: '#991B1B' }
+  ];
 
   return {
     name: 'Visual IQ Puzzles',
@@ -137,121 +142,139 @@ window.VisualIQGenerator = (function () {
     },
 
     // =========================================================================
-    // 1. ODD ONE OUT
+    // 1. ODD ONE OUT (Randomized Pools, Shuffled Positions A-E)
     // =========================================================================
     _genOddOneOut: function (diff) {
-      if (diff === 'easy') {
-        return {
-          type: 'visual-iq',
-          subtype: 'odd-one-out',
-          difficulty: diff,
-          title: 'Odd One Out — Visual IQ',
-          instruction: 'Which figure does NOT belong with the others?',
-          answer: 'Option C (Circle — it is the only curved shape with no straight sides or vertices, while all others are polygons)',
-          hint: 'Count the sides and straight edges of each figure.',
-          renderFn: function (ctx, x, y, w, h) {
-            ctx.save();
-            const cardW = 155, cardH = 220, gap = 24;
-            const totalW = 5 * cardW + 4 * gap;
-            const startX = x + (w - totalW) / 2;
-            const startY = y + (h - cardH) / 2 - 20;
+      const mode = pickOne(['curved', 'parity', 'dots', 'rotation']);
 
-            const items = [
-              { id: 'A', type: 'poly', sides: 4, name: 'Square' },
-              { id: 'B', type: 'poly', sides: 3, name: 'Triangle' },
-              { id: 'C', type: 'circle', name: 'Circle' }, // Odd one out!
-              { id: 'D', type: 'poly', sides: 5, name: 'Pentagon' },
-              { id: 'E', type: 'poly', sides: 6, name: 'Hexagon' }
-            ];
+      let items = [];
+      let oddIndex = 0;
+      let reason = '';
 
-            items.forEach((item, i) => {
-              const bx = startX + i * (cardW + gap);
-              const by = startY;
-              const cx = bx + cardW / 2;
-              const cy = by + cardH / 2 - 10;
+      if (mode === 'curved') {
+        // 4 Polygons and 1 Curved Circle
+        const polys = shuffle([
+          { type: 'poly', sides: 3, name: 'Triangle' },
+          { type: 'poly', sides: 4, name: 'Square' },
+          { type: 'poly', sides: 5, name: 'Pentagon' },
+          { type: 'poly', sides: 6, name: 'Hexagon' },
+          { type: 'poly', sides: 8, name: 'Octagon' }
+        ]).slice(0, 4);
 
-              // Card Background
-              drawRoundedBox(ctx, bx, by, cardW, cardH, 14, '#FFFFFF', '#0F172A', 2.5);
+        const circleItem = { type: 'circle', name: 'Circle', isOdd: true };
+        const rawItems = shuffle([...polys, circleItem]);
 
-              // Badge
-              drawOptionBadge(ctx, bx + 26, by + 26, item.id);
+        oddIndex = rawItems.findIndex(it => it.isOdd);
+        const oddLetter = ['A', 'B', 'C', 'D', 'E'][oddIndex];
+        reason = `Option ${oddLetter} (Circle — it is the only curved figure with no straight edges or vertices; all other 4 figures are polygons)`;
 
-              // Shape
-              if (item.type === 'circle') {
-                drawCircle(ctx, cx, cy, 48, '#FEE2E2', '#DC2626', 3.5);
-              } else {
-                drawPolygon(ctx, cx, cy, 48, item.sides, '#E0E7FF', '#3730A3', 3.5);
-              }
+        items = rawItems.map((it, idx) => ({
+          ...it,
+          id: ['A', 'B', 'C', 'D', 'E'][idx],
+          color: it.isOdd ? '#DC2626' : '#1E3A8A',
+          fill: it.isOdd ? '#FEE2E2' : '#EFF6FF'
+        }));
 
-              // Name label
-              ctx.fillStyle = '#475569';
-              ctx.font = '600 16px "Segoe UI", Arial, sans-serif';
-              ctx.textAlign = 'center';
-              ctx.textBaseline = 'alphabetic';
-              ctx.fillText(item.name, cx, by + cardH - 22);
-            });
-            ctx.restore();
+      } else if (mode === 'parity') {
+        // 4 Even-sided polygons and 1 Odd-sided polygon
+        const evenPool = shuffle([
+          { sides: 4, label: '4 Sides' },
+          { sides: 6, label: '6 Sides' },
+          { sides: 8, label: '8 Sides' },
+          { sides: 10, label: '10 Sides' }
+        ]);
+        const oddPool = shuffle([
+          { sides: 3, label: '3 Sides' },
+          { sides: 5, label: '5 Sides' },
+          { sides: 7, label: '7 Sides' }
+        ]);
+
+        const chosenEven = evenPool.slice(0, 4);
+        const chosenOdd = { ...oddPool[0], isOdd: true };
+
+        const rawItems = shuffle([...chosenEven, chosenOdd]);
+        oddIndex = rawItems.findIndex(it => it.isOdd);
+        const oddLetter = ['A', 'B', 'C', 'D', 'E'][oddIndex];
+        reason = `Option ${oddLetter} (${chosenOdd.label} — it has an odd number of sides (${chosenOdd.sides}), whereas all other four figures have an even number of sides)`;
+
+        items = rawItems.map((it, idx) => ({
+          type: 'poly',
+          sides: it.sides,
+          name: it.label,
+          id: ['A', 'B', 'C', 'D', 'E'][idx],
+          color: it.isOdd ? '#DC2626' : '#1E3A8A',
+          fill: it.isOdd ? '#FEE2E2' : '#EFF6FF'
+        }));
+
+      } else if (mode === 'dots') {
+        // 4 Shapes where dots == sides, 1 shape with mismatched dots
+        const shapesPool = shuffle([
+          { sides: 3, name: 'Triangle' },
+          { sides: 4, name: 'Square' },
+          { sides: 5, name: 'Pentagon' },
+          { sides: 6, name: 'Hexagon' },
+          { sides: 8, name: 'Octagon' }
+        ]);
+
+        const rawItems = shapesPool.map((s, idx) => {
+          if (idx === 0) {
+            // Mismatch
+            const diffDots = s.sides === 3 ? 5 : s.sides - 2;
+            return { type: 'poly', sides: s.sides, dots: diffDots, name: s.name, isOdd: true };
           }
-        };
+          return { type: 'poly', sides: s.sides, dots: s.sides, name: s.name, isOdd: false };
+        });
+
+        const shuffled = shuffle(rawItems);
+        oddIndex = shuffled.findIndex(it => it.isOdd);
+        const oddLetter = ['A', 'B', 'C', 'D', 'E'][oddIndex];
+        const oddShape = shuffled[oddIndex];
+        reason = `Option ${oddLetter} (${oddShape.name} — it contains ${oddShape.dots} dots instead of matching its ${oddShape.sides} sides, whereas all other figures contain dots equal to their number of sides)`;
+
+        items = shuffled.map((it, idx) => ({
+          ...it,
+          id: ['A', 'B', 'C', 'D', 'E'][idx],
+          color: '#0F172A',
+          fill: '#F8FAFC'
+        }));
+
+      } else {
+        // Rotation / Arrows direction: 4 pointing clockwise (up, right, down, left), 1 inverted!
+        const angles = [0, Math.PI / 2, Math.PI, (3 * Math.PI) / 2];
+        const normalAngles = shuffle(angles);
+        const invertedAngle = pickOne([Math.PI / 4, (3 * Math.PI) / 4, (5 * Math.PI) / 4]);
+
+        const rawItems = [
+          { angle: normalAngles[0], isOdd: false, label: 'Oriented' },
+          { angle: normalAngles[1], isOdd: false, label: 'Oriented' },
+          { angle: normalAngles[2], isOdd: false, label: 'Oriented' },
+          { angle: normalAngles[3], isOdd: false, label: 'Oriented' },
+          { angle: invertedAngle, isOdd: true, label: 'Diagonal' }
+        ];
+
+        const shuffled = shuffle(rawItems);
+        oddIndex = shuffled.findIndex(it => it.isOdd);
+        const oddLetter = ['A', 'B', 'C', 'D', 'E'][oddIndex];
+        reason = `Option ${oddLetter} (The arrow points along a 45° diagonal axis, while all other four arrows are aligned with the cardinal axes: Up, Down, Left, or Right)`;
+
+        items = shuffled.map((it, idx) => ({
+          type: 'arrow',
+          angle: it.angle,
+          isOdd: it.isOdd,
+          id: ['A', 'B', 'C', 'D', 'E'][idx],
+          color: it.isOdd ? '#DC2626' : '#1E3A8A',
+          fill: it.isOdd ? '#FEE2E2' : '#EFF6FF'
+        }));
       }
 
-      if (diff === 'medium') {
-        return {
-          type: 'visual-iq',
-          subtype: 'odd-one-out',
-          difficulty: diff,
-          title: 'Odd One Out — Sides Parity',
-          instruction: 'Which figure does NOT belong with the other four?',
-          answer: 'Option D (Pentagon — it has 5 sides (an odd number), whereas all other figures have an even number of sides: 4, 6, 8, 10)',
-          hint: 'Count the number of vertices and sides in each polygon.',
-          renderFn: function (ctx, x, y, w, h) {
-            ctx.save();
-            const cardW = 155, cardH = 220, gap = 24;
-            const totalW = 5 * cardW + 4 * gap;
-            const startX = x + (w - totalW) / 2;
-            const startY = y + (h - cardH) / 2 - 20;
-
-            const items = [
-              { id: 'A', sides: 4, label: '4 Sides' },
-              { id: 'B', sides: 6, label: '6 Sides' },
-              { id: 'C', sides: 8, label: '8 Sides' },
-              { id: 'D', sides: 5, label: '5 Sides' }, // Odd!
-              { id: 'E', sides: 10, label: '10 Sides' }
-            ];
-
-            items.forEach((item, i) => {
-              const bx = startX + i * (cardW + gap);
-              const by = startY;
-              const cx = bx + cardW / 2;
-              const cy = by + cardH / 2 - 10;
-
-              drawRoundedBox(ctx, bx, by, cardW, cardH, 14, '#FFFFFF', '#0F172A', 2.5);
-              drawOptionBadge(ctx, bx + 26, by + 26, item.id);
-
-              const color = item.sides === 5 ? '#DC2626' : '#1E3A8A';
-              const fill = item.sides === 5 ? '#FEE2E2' : '#EFF6FF';
-              drawPolygon(ctx, cx, cy, 48, item.sides, fill, color, 3);
-
-              ctx.fillStyle = '#475569';
-              ctx.font = '600 16px "Segoe UI", Arial, sans-serif';
-              ctx.textAlign = 'center';
-              ctx.textBaseline = 'alphabetic';
-              ctx.fillText(item.label, cx, by + cardH - 22);
-            });
-            ctx.restore();
-          }
-        };
-      }
-
-      // Hard: Internal Dots Rule
       return {
         type: 'visual-iq',
         subtype: 'odd-one-out',
         difficulty: diff,
-        title: 'Odd One Out — Logical Pattern',
-        instruction: 'Find the figure that violates the internal rule followed by the rest.',
-        answer: 'Option C (Pentagon — each figure has internal dots matching its number of sides: 3 for triangle, 4 for square, 6 for hexagon, but the pentagon has only 3 dots instead of 5)',
-        hint: 'Compare the number of dots inside each shape with the shape’s number of sides.',
+        title: 'Odd One Out — Visual IQ',
+        instruction: 'Which figure does NOT belong with the other four?',
+        answer: reason,
+        hint: 'Carefully compare the shapes, straight edges, dots, or orientations across all five options.',
         renderFn: function (ctx, x, y, w, h) {
           ctx.save();
           const cardW = 155, cardH = 220, gap = 24;
@@ -259,39 +282,54 @@ window.VisualIQGenerator = (function () {
           const startX = x + (w - totalW) / 2;
           const startY = y + (h - cardH) / 2 - 20;
 
-          const items = [
-            { id: 'A', sides: 3, dots: 3 },
-            { id: 'B', sides: 4, dots: 4 },
-            { id: 'C', sides: 5, dots: 3 }, // Mismatch!
-            { id: 'D', sides: 6, dots: 6 },
-            { id: 'E', sides: 8, dots: 8 }
-          ];
-
           items.forEach((item, i) => {
             const bx = startX + i * (cardW + gap);
             const by = startY;
             const cx = bx + cardW / 2;
             const cy = by + cardH / 2 - 10;
 
+            // Box
             drawRoundedBox(ctx, bx, by, cardW, cardH, 14, '#FFFFFF', '#0F172A', 2.5);
             drawOptionBadge(ctx, bx + 26, by + 26, item.id);
-            drawPolygon(ctx, cx, cy, 52, item.sides, '#F8FAFC', '#0F172A', 3);
 
-            // Draw internal dots arranged neatly
-            const dotR = 5;
-            for (let d = 0; d < item.dots; d++) {
-              const dotAngle = (d * 2 * Math.PI) / item.dots - Math.PI / 2;
-              const rad = item.dots === 1 ? 0 : 22;
-              const dx = cx + rad * Math.cos(dotAngle);
-              const dy = cy + rad * Math.sin(dotAngle);
-              drawCircle(ctx, dx, dy, dotR, '#DC2626', '#991B1B', 1);
+            if (item.type === 'circle') {
+              drawCircle(ctx, cx, cy, 48, item.fill, item.color, 3.5);
+            } else if (item.type === 'poly') {
+              drawPolygon(ctx, cx, cy, 48, item.sides, item.fill, item.color, 3.5);
+              if (item.dots) {
+                for (let d = 0; d < item.dots; d++) {
+                  const a = (d * 2 * Math.PI) / item.dots - Math.PI / 2;
+                  const rad = item.dots === 1 ? 0 : 20;
+                  drawCircle(ctx, cx + rad * Math.cos(a), cy + rad * Math.sin(a), 5, '#DC2626', '#991B1B', 1);
+                }
+              }
+            } else if (item.type === 'arrow') {
+              // Draw an arrow with orientation
+              ctx.save();
+              ctx.translate(cx, cy);
+              ctx.rotate(item.angle);
+              ctx.fillStyle = item.color;
+              ctx.strokeStyle = item.color;
+              ctx.lineWidth = 4;
+              ctx.beginPath();
+              ctx.moveTo(-8, 30);
+              ctx.lineTo(8, 30);
+              ctx.lineTo(8, -10);
+              ctx.lineTo(24, -10);
+              ctx.lineTo(0, -36);
+              ctx.lineTo(-24, -10);
+              ctx.lineTo(-8, -10);
+              ctx.closePath();
+              ctx.fill();
+              ctx.restore();
             }
 
+            // Label
             ctx.fillStyle = '#475569';
             ctx.font = '600 15px "Segoe UI", Arial, sans-serif';
             ctx.textAlign = 'center';
             ctx.textBaseline = 'alphabetic';
-            ctx.fillText(`${item.sides} sides, ${item.dots} dots`, cx, by + cardH - 22);
+            ctx.fillText(item.name || (item.sides ? item.sides + ' Sides' : 'Figure ' + item.id), cx, by + cardH - 22);
           });
           ctx.restore();
         }
@@ -299,102 +337,123 @@ window.VisualIQGenerator = (function () {
     },
 
     // =========================================================================
-    // 2. 2×2 PATTERN MATRIX
+    // 2. 2×2 PATTERN MATRIX (Randomized Rules, Dynamic Shuffled Choices)
     // =========================================================================
     _genMatrix2x2: function (diff) {
-      if (diff === 'easy') {
-        return {
-          type: 'visual-iq',
-          subtype: 'matrix-2x2',
-          difficulty: diff,
-          title: 'Visual IQ — 2×2 Matrix',
-          instruction: 'Which figure replaces the question mark (?) to complete the matrix?',
-          answer: 'Option A (Solid Filled Triangle — following row 1, the shape remains the same while hollow becomes solid)',
-          hint: 'Look horizontally: what change happens from the first column to the second column?',
-          renderFn: function (ctx, x, y, w, h) {
-            ctx.save();
-            const cy = y + h / 2 - 20;
+      const ruleType = pickOne(['fill-change', 'dot-count', 'shape-rotation']);
 
-            // Left 2×2 Matrix
-            const matX = x + 80;
-            const cellW = 150, cellH = 150, gap = 16;
-            const matW = 2 * cellW + gap;
-            const matH = 2 * cellH + gap;
-            const matY = cy - matH / 2;
+      let matrixData = {};
+      let options = [];
+      let correctLetter = 'A';
+      let explanation = '';
 
-            drawRoundedBox(ctx, matX - 14, matY - 14, matW + 28, matH + 28, 16, '#F8FAFC', '#0F172A', 3);
+      if (ruleType === 'fill-change') {
+        const shapes = shuffle([
+          { name: 'Square', sides: 4, rot: Math.PI / 4 },
+          { name: 'Triangle', sides: 3, rot: -Math.PI / 2 },
+          { name: 'Hexagon', sides: 6, rot: 0 },
+          { name: 'Diamond', sides: 4, rot: 0 }
+        ]);
+        const s1 = shapes[0];
+        const s2 = shapes[1];
 
-            // Cells (0,0), (1,0), (0,1), (1,1)
-            // (0,0): Hollow Square
-            drawRoundedBox(ctx, matX, matY, cellW, cellH, 10, '#FFFFFF', '#94A3B8', 2);
-            drawPolygon(ctx, matX + cellW / 2, matY + cellH / 2, 42, 4, null, '#1E3A8A', 4, Math.PI / 4);
-
-            // (1,0): Solid Square
-            drawRoundedBox(ctx, matX + cellW + gap, matY, cellW, cellH, 10, '#FFFFFF', '#94A3B8', 2);
-            drawPolygon(ctx, matX + cellW + gap + cellW / 2, matY + cellH / 2, 42, 4, '#1E3A8A', '#0F172A', 3, Math.PI / 4);
-
-            // (0,1): Hollow Triangle
-            drawRoundedBox(ctx, matX, matY + cellH + gap, cellW, cellH, 10, '#FFFFFF', '#94A3B8', 2);
-            drawPolygon(ctx, matX + cellW / 2, matY + cellH + gap + cellH / 2, 44, 3, null, '#DC2626', 4);
-
-            // (1,1): Question Mark Box
-            const qx = matX + cellW + gap;
-            const qy = matY + cellH + gap;
-            drawRoundedBox(ctx, qx, qy, cellW, cellH, 10, '#FEF2F2', '#DC2626', 3);
-            ctx.fillStyle = '#DC2626';
-            ctx.font = 'bold 64px "Segoe UI", Arial, sans-serif';
-            ctx.textAlign = 'center';
-            ctx.textBaseline = 'middle';
-            ctx.fillText('?', qx + cellW / 2, qy + cellH / 2);
-
-            // Right Options (A, B, C, D)
-            const optStartX = matX + matW + 80;
-            const optW = 180, optH = 140, optGapX = 24, optGapY = 24;
-
-            const opts = [
-              { id: 'A', type: 'tri', solid: true, color: '#DC2626' }, // Correct!
-              { id: 'B', type: 'tri', solid: false, color: '#DC2626' },
-              { id: 'C', type: 'circle', solid: true, color: '#1E3A8A' },
-              { id: 'D', type: 'square', solid: true, color: '#1E3A8A' }
-            ];
-
-            opts.forEach((opt, idx) => {
-              const col = idx % 2;
-              const row = Math.floor(idx / 2);
-              const bx = optStartX + col * (optW + optGapX);
-              const by = matY + row * (optH + optGapY + 12);
-              const cx = bx + optW / 2;
-              const cy2 = by + optH / 2 + 6;
-
-              drawRoundedBox(ctx, bx, by, optW, optH, 12, '#FFFFFF', '#0F172A', 2);
-              drawOptionBadge(ctx, bx + 24, by + 24, opt.id);
-
-              if (opt.type === 'tri') {
-                drawPolygon(ctx, cx, cy2, 38, 3, opt.solid ? opt.color : null, opt.color, 3.5);
-              } else if (opt.type === 'circle') {
-                drawCircle(ctx, cx, cy2, 36, opt.solid ? opt.color : null, opt.color, 3.5);
-              } else {
-                drawPolygon(ctx, cx, cy2, 36, 4, opt.solid ? opt.color : null, opt.color, 3.5, Math.PI / 4);
-              }
-            });
-
-            ctx.restore();
-          }
+        matrixData = {
+          c00: { shape: s1, solid: false },
+          c10: { shape: s1, solid: true },
+          c01: { shape: s2, solid: false },
+          c11: '?'
         };
+
+        const rawOpts = [
+          { shape: s2, solid: true, isCorrect: true }, // Correct!
+          { shape: s2, solid: false, isCorrect: false },
+          { shape: s1, solid: true, isCorrect: false },
+          { shape: shapes[2], solid: true, isCorrect: false }
+        ];
+
+        const shuffledOpts = shuffle(rawOpts);
+        const correctIdx = shuffledOpts.findIndex(o => o.isCorrect);
+        correctLetter = ['A', 'B', 'C', 'D'][correctIdx];
+
+        options = shuffledOpts.map((o, idx) => ({
+          ...o,
+          id: ['A', 'B', 'C', 'D'][idx]
+        }));
+
+        explanation = `Option ${correctLetter} (Solid ${s2.name} — from row 1, the shape remains the same while hollow changes to solid)`;
+
+      } else if (ruleType === 'dot-count') {
+        const shapes = shuffle(['circle', 'square']);
+        const s1 = shapes[0];
+        const s2 = shapes[1];
+        const startDots = rnd(1, 2);
+
+        matrixData = {
+          c00: { shape: s1, dots: startDots },
+          c10: { shape: s1, dots: startDots + 1 },
+          c01: { shape: s2, dots: startDots + 1 },
+          c11: '?'
+        };
+
+        const targetDots = startDots + 2;
+        const rawOpts = [
+          { shape: s2, dots: targetDots, isCorrect: true },
+          { shape: s2, dots: startDots, isCorrect: false },
+          { shape: s1, dots: targetDots, isCorrect: false },
+          { shape: s2, dots: targetDots + 1, isCorrect: false }
+        ];
+
+        const shuffledOpts = shuffle(rawOpts);
+        const correctIdx = shuffledOpts.findIndex(o => o.isCorrect);
+        correctLetter = ['A', 'B', 'C', 'D'][correctIdx];
+
+        options = shuffledOpts.map((o, idx) => ({
+          ...o,
+          id: ['A', 'B', 'C', 'D'][idx]
+        }));
+
+        explanation = `Option ${correctLetter} (${s2.toUpperCase()} with ${targetDots} dots — in each row, the dot count increases by 1 from left to right: ${startDots + 1} + 1 = ${targetDots})`;
+
+      } else {
+        // shape-rotation (Up ➔ Right)
+        matrixData = {
+          c00: { type: 'arrow', rot: 0 }, // Up
+          c10: { type: 'arrow', rot: Math.PI / 2 }, // Right
+          c01: { type: 'triangle', rot: -Math.PI / 2 }, // Pointing Up
+          c11: '?'
+        };
+
+        const rawOpts = [
+          { type: 'triangle', rot: 0, isCorrect: true }, // Pointing Right
+          { type: 'triangle', rot: -Math.PI / 2, isCorrect: false },
+          { type: 'arrow', rot: Math.PI / 2, isCorrect: false },
+          { type: 'triangle', rot: Math.PI, isCorrect: false }
+        ];
+
+        const shuffledOpts = shuffle(rawOpts);
+        const correctIdx = shuffledOpts.findIndex(o => o.isCorrect);
+        correctLetter = ['A', 'B', 'C', 'D'][correctIdx];
+
+        options = shuffledOpts.map((o, idx) => ({
+          ...o,
+          id: ['A', 'B', 'C', 'D'][idx]
+        }));
+
+        explanation = `Option ${correctLetter} (Triangle pointing Right — each figure in row 1 rotates 90° clockwise, so the upward triangle rotates to point right)`;
       }
 
-      // Medium: Dot Count Pattern
       return {
         type: 'visual-iq',
         subtype: 'matrix-2x2',
         difficulty: diff,
-        title: 'Visual IQ — Pattern Progression',
-        instruction: 'Which figure completes the 2×2 pattern matrix logically?',
-        answer: 'Option B (Circle with 3 dots — shape stays circle, dots increase: 2 + 1 = 3)',
-        hint: 'Notice how the number of dots increases from left to right in each row.',
+        title: 'Visual IQ — 2×2 Matrix',
+        instruction: 'Which figure replaces the question mark (?) to complete the matrix logically?',
+        answer: explanation,
+        hint: 'Look horizontally from left to right: observe what changes and what stays the same.',
         renderFn: function (ctx, x, y, w, h) {
           ctx.save();
           const cy = y + h / 2 - 20;
+
           const matX = x + 80;
           const cellW = 150, cellH = 150, gap = 16;
           const matW = 2 * cellW + gap;
@@ -403,67 +462,97 @@ window.VisualIQGenerator = (function () {
 
           drawRoundedBox(ctx, matX - 14, matY - 14, matW + 28, matH + 28, 16, '#F8FAFC', '#0F172A', 3);
 
-          function renderCellWithDots(bx, by, shape, dotCount) {
+          function renderCell(cellData, bx, by) {
             drawRoundedBox(ctx, bx, by, cellW, cellH, 10, '#FFFFFF', '#94A3B8', 2);
-            const cx = bx + cellW / 2;
-            const cy2 = by + cellH / 2;
-            if (shape === 'square') {
-              drawPolygon(ctx, cx, cy2, 44, 4, '#F1F5F9', '#1E3A8A', 3, Math.PI / 4);
-            } else {
-              drawCircle(ctx, cx, cy2, 44, '#F1F5F9', '#1E3A8A', 3);
+            const fcx = bx + cellW / 2;
+            const fcy = by + cellH / 2;
+
+            if (cellData === '?') {
+              drawRoundedBox(ctx, bx, by, cellW, cellH, 10, '#FEF2F2', '#DC2626', 3);
+              ctx.fillStyle = '#DC2626';
+              ctx.font = 'bold 64px "Segoe UI", Arial, sans-serif';
+              ctx.textAlign = 'center';
+              ctx.textBaseline = 'middle';
+              ctx.fillText('?', fcx, fcy);
+              return;
             }
-            for (let d = 0; d < dotCount; d++) {
-              const dx = cx + (d - (dotCount - 1) / 2) * 20;
-              drawCircle(ctx, dx, cy2, 5, '#DC2626', '#DC2626', 1);
+
+            if (cellData.shape && cellData.shape.sides) {
+              const fill = cellData.solid ? '#1E3A8A' : null;
+              drawPolygon(ctx, fcx, fcy, 42, cellData.shape.sides, fill, '#1E3A8A', 3.5, cellData.shape.rot);
+            } else if (cellData.dots !== undefined) {
+              if (cellData.shape === 'square') {
+                drawPolygon(ctx, fcx, fcy, 42, 4, '#F1F5F9', '#1E3A8A', 3, Math.PI / 4);
+              } else {
+                drawCircle(ctx, fcx, fcy, 42, '#F1F5F9', '#1E3A8A', 3);
+              }
+              for (let d = 0; d < cellData.dots; d++) {
+                const dx = fcx + (d - (cellData.dots - 1) / 2) * 20;
+                drawCircle(ctx, dx, fcy, 5, '#DC2626', '#DC2626', 1);
+              }
+            } else if (cellData.type === 'arrow') {
+              ctx.save();
+              ctx.translate(fcx, fcy);
+              ctx.rotate(cellData.rot);
+              ctx.fillStyle = '#1E3A8A';
+              ctx.beginPath();
+              ctx.moveTo(-6, 25); ctx.lineTo(6, 25); ctx.lineTo(6, -8);
+              ctx.lineTo(18, -8); ctx.lineTo(0, -28); ctx.lineTo(-18, -8); ctx.lineTo(-6, -8);
+              ctx.closePath();
+              ctx.fill();
+              ctx.restore();
+            } else if (cellData.type === 'triangle') {
+              drawPolygon(ctx, fcx, fcy, 42, 3, '#1E3A8A', '#0F172A', 3, cellData.rot);
             }
           }
 
-          // (0,0): Square with 1 dot
-          renderCellWithDots(matX, matY, 'square', 1);
-          // (1,0): Square with 2 dots
-          renderCellWithDots(matX + cellW + gap, matY, 'square', 2);
-          // (0,1): Circle with 2 dots
-          renderCellWithDots(matX, matY + cellH + gap, 'circle', 2);
+          // Draw the 4 matrix cells
+          renderCell(matrixData.c00, matX, matY);
+          renderCell(matrixData.c10, matX + cellW + gap, matY);
+          renderCell(matrixData.c01, matX, matY + cellH + gap);
+          renderCell(matrixData.c11, matX + cellW + gap, matY + cellH + gap);
 
-          // (1,1): Question mark
-          const qx = matX + cellW + gap;
-          const qy = matY + cellH + gap;
-          drawRoundedBox(ctx, qx, qy, cellW, cellH, 10, '#FEF2F2', '#DC2626', 3);
-          ctx.fillStyle = '#DC2626';
-          ctx.font = 'bold 64px "Segoe UI", Arial, sans-serif';
-          ctx.textAlign = 'center';
-          ctx.textBaseline = 'middle';
-          ctx.fillText('?', qx + cellW / 2, qy + cellH / 2);
-
-          // Options
+          // Options on Right
           const optStartX = matX + matW + 80;
           const optW = 180, optH = 140, optGapX = 24, optGapY = 24;
-          const opts = [
-            { id: 'A', shape: 'circle', dots: 1 },
-            { id: 'B', shape: 'circle', dots: 3 }, // Correct!
-            { id: 'C', shape: 'square', dots: 3 },
-            { id: 'D', shape: 'circle', dots: 4 }
-          ];
 
-          opts.forEach((opt, idx) => {
+          options.forEach((opt, idx) => {
             const col = idx % 2;
             const row = Math.floor(idx / 2);
             const bx = optStartX + col * (optW + optGapX);
             const by = matY + row * (optH + optGapY + 12);
-            const cx = bx + optW / 2;
-            const cy2 = by + optH / 2 + 8;
+            const fcx = bx + optW / 2;
+            const fcy = by + optH / 2 + 8;
 
             drawRoundedBox(ctx, bx, by, optW, optH, 12, '#FFFFFF', '#0F172A', 2);
             drawOptionBadge(ctx, bx + 24, by + 24, opt.id);
 
-            if (opt.shape === 'square') {
-              drawPolygon(ctx, cx, cy2, 34, 4, '#F8FAFC', '#1E3A8A', 2.5, Math.PI / 4);
-            } else {
-              drawCircle(ctx, cx, cy2, 34, '#F8FAFC', '#1E3A8A', 2.5);
-            }
-            for (let d = 0; d < opt.dots; d++) {
-              const dx = cx + (d - (opt.dots - 1) / 2) * 16;
-              drawCircle(ctx, dx, cy2, 4.5, '#DC2626', '#DC2626', 1);
+            if (opt.shape && opt.shape.sides) {
+              const fill = opt.solid ? '#1E3A8A' : null;
+              drawPolygon(ctx, fcx, fcy, 34, opt.shape.sides, fill, '#1E3A8A', 3, opt.shape.rot);
+            } else if (opt.dots !== undefined) {
+              if (opt.shape === 'square') {
+                drawPolygon(ctx, fcx, fcy, 34, 4, '#F8FAFC', '#1E3A8A', 2.5, Math.PI / 4);
+              } else {
+                drawCircle(ctx, fcx, fcy, 34, '#F8FAFC', '#1E3A8A', 2.5);
+              }
+              for (let d = 0; d < opt.dots; d++) {
+                const dx = fcx + (d - (opt.dots - 1) / 2) * 16;
+                drawCircle(ctx, dx, fcy, 4.5, '#DC2626', '#DC2626', 1);
+              }
+            } else if (opt.type === 'arrow') {
+              ctx.save();
+              ctx.translate(fcx, fcy);
+              ctx.rotate(opt.rot);
+              ctx.fillStyle = '#1E3A8A';
+              ctx.beginPath();
+              ctx.moveTo(-5, 20); ctx.lineTo(5, 20); ctx.lineTo(5, -6);
+              ctx.lineTo(14, -6); ctx.lineTo(0, -22); ctx.lineTo(-14, -6); ctx.lineTo(-5, -6);
+              ctx.closePath();
+              ctx.fill();
+              ctx.restore();
+            } else if (opt.type === 'triangle') {
+              drawPolygon(ctx, fcx, fcy, 34, 3, '#1E3A8A', '#0F172A', 2.5, opt.rot);
             }
           });
 
@@ -473,38 +562,80 @@ window.VisualIQGenerator = (function () {
     },
 
     // =========================================================================
-    // 3. COUNT THE TRIANGLES
+    // 3. COUNT THE TRIANGLES (Varied Levels, Divided Triangle & Square)
     // =========================================================================
     _genCountShapes: function (diff) {
-      if (diff === 'easy') {
-        return {
-          type: 'visual-iq',
-          subtype: 'count-shapes',
-          difficulty: diff,
-          title: 'Triangle Counting Challenge',
-          instruction: 'How many total triangles are hidden in this geometrical figure?',
-          answer: 'Option B (6 Triangles: 2 small top, 1 combined top, 2 bottom halves, 1 full large triangle)',
-          hint: 'Count the top level triangles first (2 small + 1 combined = 3), then the full triangles down to the base.',
-          renderFn: function (ctx, x, y, w, h) {
-            ctx.save();
-            const cx = x + w / 2;
-            const cy = y + 210;
+      // Pick between Divided Triangle (with random verticals & horizontals) or 8-Spoke Square
+      const diagType = pickOne(['divided-triangle', 'eight-spoke-square']);
 
-            // Frame for Diagram
-            const diagW = 440, diagH = 300;
-            drawRoundedBox(ctx, cx - diagW / 2, cy - diagH / 2, diagW, diagH, 16, '#F8FAFC', '#0F172A', 3);
+      let total = 0;
+      let options = [];
+      let explanation = '';
+      let diagConfig = {};
 
-            // Large Triangle
+      if (diagType === 'divided-triangle') {
+        const V = rnd(1, 2); // 1 or 2 vertical dividing lines from apex
+        const H = rnd(1, 2); // 1 or 2 horizontal lines
+        // Base segments = V + 1
+        // Triangles per horizontal tier = (V + 1)(V + 2) / 2
+        // Total = Tiers * (V + 1)(V + 2) / 2
+        const tierTriangles = ((V + 1) * (V + 2)) / 2;
+        total = tierTriangles * (H + 1);
+
+        diagConfig = { type: 'triangle', V, H };
+        explanation = `${total} Triangles (Each tier has ${tierTriangles} triangles, and there are ${H + 1} horizontal levels: ${tierTriangles} × ${H + 1} = ${total})`;
+
+      } else {
+        // 8-Spoke Square (Square with 2 diagonals and 2 medians)
+        total = 16;
+        diagConfig = { type: 'square' };
+        explanation = `16 Triangles (8 small single-cell, 4 medium corner triangles formed by 2 cells, and 4 large half-square diagonal triangles)`;
+      }
+
+      // Generate distractors
+      const distractors = [total - 2, total + 2, total + 4].map(v => Math.max(1, v));
+      const rawChoices = [
+        { val: `${total} Triangles`, isCorrect: true },
+        { val: `${distractors[0]} Triangles`, isCorrect: false },
+        { val: `${distractors[1]} Triangles`, isCorrect: false },
+        { val: `${distractors[2]} Triangles`, isCorrect: false }
+      ];
+
+      const shuffled = shuffle(rawChoices);
+      const correctIdx = shuffled.findIndex(c => c.isCorrect);
+      const correctLetter = ['A', 'B', 'C', 'D'][correctIdx];
+
+      options = shuffled.map((c, i) => ({
+        ...c,
+        id: ['A', 'B', 'C', 'D'][i]
+      }));
+
+      return {
+        type: 'visual-iq',
+        subtype: 'count-shapes',
+        difficulty: diff,
+        title: 'Triangle Counting Challenge',
+        instruction: 'How many total triangles of all sizes can you find in this figure?',
+        answer: `Option ${correctLetter} (${explanation})`,
+        hint: 'Count the smallest individual triangles first, then look for combinations that form larger triangles.',
+        renderFn: function (ctx, x, y, w, h) {
+          ctx.save();
+          const cx = x + w / 2;
+          const cy = y + 210;
+
+          const diagW = 440, diagH = 300;
+          drawRoundedBox(ctx, cx - diagW / 2, cy - diagH / 2, diagW, diagH, 16, '#F8FAFC', '#0F172A', 3);
+
+          if (diagConfig.type === 'triangle') {
             const topY = cy - 110;
             const botY = cy + 110;
-            const midY = (topY + botY) / 2;
             const halfBase = 150;
 
             ctx.strokeStyle = '#1E3A8A';
             ctx.lineWidth = 4;
             ctx.fillStyle = 'rgba(224,231,255,0.3)';
 
-            // Outer Triangle
+            // Outer triangle
             ctx.beginPath();
             ctx.moveTo(cx, topY);
             ctx.lineTo(cx + halfBase, botY);
@@ -513,101 +644,52 @@ window.VisualIQGenerator = (function () {
             ctx.fill();
             ctx.stroke();
 
-            // Vertical Median from apex to base
+            // Vertical radiating lines from apex to base
+            const segments = diagConfig.V + 1;
+            for (let v = 1; v <= diagConfig.V; v++) {
+              const bx = cx - halfBase + (v * (2 * halfBase)) / segments;
+              ctx.beginPath();
+              ctx.moveTo(cx, topY);
+              ctx.lineTo(bx, botY);
+              ctx.stroke();
+            }
+
+            // Horizontal crossbars
+            const hLevels = diagConfig.H;
+            for (let hIndex = 1; hIndex <= hLevels; hIndex++) {
+              const frac = hIndex / (hLevels + 1);
+              const hy = topY + frac * (botY - topY);
+              const hw = halfBase * frac;
+              ctx.beginPath();
+              ctx.moveTo(cx - hw, hy);
+              ctx.lineTo(cx + hw, hy);
+              ctx.stroke();
+            }
+
+          } else {
+            // 8-Spoke Square
+            const sqSize = 130;
+            ctx.fillStyle = '#EFF6FF';
+            ctx.strokeStyle = '#1E3A8A';
+            ctx.lineWidth = 4;
+            ctx.fillRect(cx - sqSize, cy - sqSize, sqSize * 2, sqSize * 2);
+            ctx.strokeRect(cx - sqSize, cy - sqSize, sqSize * 2, sqSize * 2);
+
             ctx.beginPath();
-            ctx.moveTo(cx, topY);
-            ctx.lineTo(cx, botY);
+            ctx.moveTo(cx - sqSize, cy - sqSize); ctx.lineTo(cx + sqSize, cy + sqSize);
+            ctx.moveTo(cx + sqSize, cy - sqSize); ctx.lineTo(cx - sqSize, cy + sqSize);
+            ctx.moveTo(cx - sqSize, cy); ctx.lineTo(cx + sqSize, cy);
+            ctx.moveTo(cx, cy - sqSize); ctx.lineTo(cx, cy + sqSize);
             ctx.stroke();
-
-            // Horizontal Midline
-            ctx.beginPath();
-            ctx.moveTo(cx - halfBase / 2, midY);
-            ctx.lineTo(cx + halfBase / 2, midY);
-            ctx.stroke();
-
-            // Multiple choice options below
-            const optY = cy + diagH / 2 + 55;
-            const optW = 160, optH = 75, gap = 24;
-            const totalOptW = 4 * optW + 3 * gap;
-            const optStartX = cx - totalOptW / 2;
-
-            const opts = [
-              { id: 'A', val: '4 Triangles' },
-              { id: 'B', val: '6 Triangles' }, // Correct!
-              { id: 'C', val: '8 Triangles' },
-              { id: 'D', val: '10 Triangles' }
-            ];
-
-            opts.forEach((opt, idx) => {
-              const bx = optStartX + idx * (optW + gap);
-              drawRoundedBox(ctx, bx, optY, optW, optH, 12, '#FFFFFF', '#0F172A', 2.5);
-              drawOptionBadge(ctx, bx + 22, optY + 22, opt.id);
-
-              ctx.fillStyle = '#0F172A';
-              ctx.font = 'bold 18px "Segoe UI", Arial, sans-serif';
-              ctx.textAlign = 'center';
-              ctx.textBaseline = 'middle';
-              ctx.fillText(opt.val, bx + optW / 2 + 10, optY + optH / 2);
-            });
-
-            ctx.restore();
           }
-        };
-      }
 
-      // Medium / Hard: 8-Spoke Divided Square (16 triangles)
-      return {
-        type: 'visual-iq',
-        subtype: 'count-shapes',
-        difficulty: diff,
-        title: 'Geometrical Triangle IQ',
-        instruction: 'Find the total number of triangles of all sizes in this square network.',
-        answer: 'Option C (16 Triangles: 8 small 1-cell, 4 corner 2-cell, and 4 large half-square diagonal triangles)',
-        hint: 'Combine single adjacent segments to find larger overlapping triangles.',
-        renderFn: function (ctx, x, y, w, h) {
-          ctx.save();
-          const cx = x + w / 2;
-          const cy = y + 210;
-
-          const sqSize = 130;
-          const diagW = 440, diagH = 300;
-          drawRoundedBox(ctx, cx - diagW / 2, cy - diagH / 2, diagW, diagH, 16, '#F8FAFC', '#0F172A', 3);
-
-          // Outer Square
-          ctx.fillStyle = '#EFF6FF';
-          ctx.strokeStyle = '#1E3A8A';
-          ctx.lineWidth = 4;
-          ctx.fillRect(cx - sqSize, cy - sqSize, sqSize * 2, sqSize * 2);
-          ctx.strokeRect(cx - sqSize, cy - sqSize, sqSize * 2, sqSize * 2);
-
-          // Diagonals
-          ctx.beginPath();
-          ctx.moveTo(cx - sqSize, cy - sqSize);
-          ctx.lineTo(cx + sqSize, cy + sqSize);
-          ctx.moveTo(cx + sqSize, cy - sqSize);
-          ctx.lineTo(cx - sqSize, cy + sqSize);
-
-          // Cross Bisectors
-          ctx.moveTo(cx - sqSize, cy);
-          ctx.lineTo(cx + sqSize, cy);
-          ctx.moveTo(cx, cy - sqSize);
-          ctx.lineTo(cx, cy + sqSize);
-          ctx.stroke();
-
-          // 4 Options below
+          // Options below
           const optY = cy + diagH / 2 + 55;
           const optW = 160, optH = 75, gap = 24;
           const totalOptW = 4 * optW + 3 * gap;
           const optStartX = cx - totalOptW / 2;
 
-          const opts = [
-            { id: 'A', val: '12 Triangles' },
-            { id: 'B', val: '14 Triangles' },
-            { id: 'C', val: '16 Triangles' }, // Correct!
-            { id: 'D', val: '18 Triangles' }
-          ];
-
-          opts.forEach((opt, idx) => {
+          options.forEach((opt, idx) => {
             const bx = optStartX + idx * (optW + gap);
             drawRoundedBox(ctx, bx, optY, optW, optH, 12, '#FFFFFF', '#0F172A', 2.5);
             drawOptionBadge(ctx, bx + 22, optY + 22, opt.id);
@@ -628,42 +710,72 @@ window.VisualIQGenerator = (function () {
     // 4. SHAPE ANALOGY (A : B :: C : ?)
     // =========================================================================
     _genShapeAnalogy: function (diff) {
+      // Pick 4 distinct shapes for outer/inner inversion
+      const shapesPool = shuffle(['circle', 'square', 'triangle', 'pentagon']);
+      const s1 = shapesPool[0];
+      const s2 = shapesPool[1];
+      const s3 = shapesPool[2];
+      const s4 = shapesPool[3];
+
+      // Pair 1: S1 inside S2 ➔ S2 inside S1 (swap places!)
+      // Pair 2: S3 inside S4 ➔ [ ? ] (Correct: S4 inside S3)
+      const correctOuter = s4;
+      const correctInner = s3;
+
+      const rawOpts = [
+        { outer: correctOuter, inner: correctInner, isCorrect: true },
+        { outer: s3, inner: s4, isCorrect: false },
+        { outer: s1, inner: s3, isCorrect: false },
+        { outer: s4, inner: s2, isCorrect: false }
+      ];
+
+      const shuffled = shuffle(rawOpts);
+      const correctIdx = shuffled.findIndex(o => o.isCorrect);
+      const correctLetter = ['A', 'B', 'C', 'D'][correctIdx];
+
+      const options = shuffled.map((o, idx) => ({
+        ...o,
+        id: ['A', 'B', 'C', 'D'][idx]
+      }));
+
+      const explanation = `Option ${correctLetter} (${correctOuter.toUpperCase()} with inner ${correctInner.toUpperCase()} — the inner and outer shapes swap positions: the inside shape becomes the outer container, and the outer container moves inside)`;
+
       return {
         type: 'visual-iq',
         subtype: 'shape-analogy',
         difficulty: diff,
         title: 'Shape Analogy IQ Test',
-        instruction: 'Figure A is to Figure B as Figure C is to [ ? ]. Which option completes the analogy?',
-        answer: 'Option B (Large Square with inner Circle — inner and outer shapes swap positions)',
-        hint: 'In the first pair, the inner shape becomes the outer container, and the outer shape moves inside.',
+        instruction: 'Figure 1 is to Figure 2 as Figure 3 is to [ ? ]. Which option completes the analogy?',
+        answer: explanation,
+        hint: 'Examine the relationship between Figure 1 and Figure 2: how do the outer and inner shapes transform?',
         renderFn: function (ctx, x, y, w, h) {
           ctx.save();
           const cx = x + w / 2;
           const topY = y + 70;
-
-          // Top Analogy Row: [Box 1] ➔ [Box 2]   ::   [Box 3] ➔ [ ? ]
           const boxSize = 120;
-          const spacing = 40;
 
-          function drawNestedFigure(bx, by, outerShape, innerShape) {
+          function renderNested(bx, by, outS, inS) {
             drawRoundedBox(ctx, bx, by, boxSize, boxSize, 12, '#FFFFFF', '#0F172A', 2.5);
             const fcx = bx + boxSize / 2;
             const fcy = by + boxSize / 2;
 
-            // Outer shape
-            if (outerShape === 'circle') drawCircle(ctx, fcx, fcy, 42, '#EFF6FF', '#1E3A8A', 3);
-            else if (outerShape === 'square') drawPolygon(ctx, fcx, fcy, 42, 4, '#EFF6FF', '#1E3A8A', 3, Math.PI / 4);
-            else if (outerShape === 'triangle') drawPolygon(ctx, fcx, fcy, 42, 3, '#FEF2F2', '#DC2626', 3);
+            function drawSingle(shape, r, isInner) {
+              const fill = isInner ? '#DC2626' : '#EFF6FF';
+              const stroke = isInner ? '#DC2626' : '#1E3A8A';
+              const lw = isInner ? 1 : 3;
+              if (shape === 'circle') drawCircle(ctx, fcx, fcy, r, fill, stroke, lw);
+              else if (shape === 'square') drawPolygon(ctx, fcx, fcy, r, 4, fill, stroke, lw, Math.PI / 4);
+              else if (shape === 'triangle') drawPolygon(ctx, fcx, fcy, r, 3, fill, stroke, lw);
+              else if (shape === 'pentagon') drawPolygon(ctx, fcx, fcy, r, 5, fill, stroke, lw);
+            }
 
-            // Inner shape
-            if (innerShape === 'circle') drawCircle(ctx, fcx, fcy, 18, '#DC2626', '#DC2626', 1);
-            else if (innerShape === 'square') drawPolygon(ctx, fcx, fcy, 18, 4, '#1E3A8A', '#1E3A8A', 1, Math.PI / 4);
-            else if (innerShape === 'triangle') drawPolygon(ctx, fcx, fcy, 18, 3, '#059669', '#059669', 1);
+            drawSingle(outS, 42, false);
+            drawSingle(inS, 18, true);
           }
 
-          // Pair 1: Circle with inner Square ➔ Square with inner Circle
+          // Pair 1: S2 containing S1 ➔ S1 containing S2
           const p1X = cx - 360;
-          drawNestedFigure(p1X, topY, 'circle', 'square');
+          renderNested(p1X, topY, s2, s1);
 
           ctx.fillStyle = '#64748B';
           ctx.font = 'bold 32px Arial';
@@ -671,40 +783,32 @@ window.VisualIQGenerator = (function () {
           ctx.textBaseline = 'middle';
           ctx.fillText('➔', p1X + boxSize + 30, topY + boxSize / 2);
 
-          drawNestedFigure(p1X + boxSize + 60, topY, 'square', 'circle');
+          renderNested(p1X + boxSize + 60, topY, s1, s2);
 
-          // Double Colon Divider ::
+          // Double Colon ::
           ctx.fillStyle = '#DC2626';
           ctx.font = 'bold 36px Arial';
           ctx.fillText('::', cx - 20, topY + boxSize / 2);
 
-          // Pair 2: Triangle with inner Circle ➔ [ ? ]
+          // Pair 2: S4 containing S3 ➔ [ ? ]
           const p2X = cx + 80;
-          drawNestedFigure(p2X, topY, 'triangle', 'circle');
+          renderNested(p2X, topY, s4, s3);
 
           ctx.fillStyle = '#64748B';
           ctx.font = 'bold 32px Arial';
           ctx.fillText('➔', p2X + boxSize + 30, topY + boxSize / 2);
 
-          // Question box
           const qbx = p2X + boxSize + 60;
           drawRoundedBox(ctx, qbx, topY, boxSize, boxSize, 12, '#FEF2F2', '#DC2626', 3);
           ctx.fillStyle = '#DC2626';
           ctx.font = 'bold 54px "Segoe UI", Arial, sans-serif';
           ctx.fillText('?', qbx + boxSize / 2, topY + boxSize / 2);
 
-          // Bottom Multiple Choice Options (A, B, C, D)
+          // Options (A, B, C, D)
           const optY = topY + boxSize + 85;
           const optW = 180, optH = 150, optGap = 24;
           const totalW = 4 * optW + 3 * optGap;
           const startOptX = cx - totalW / 2;
-
-          const options = [
-            { id: 'A', outer: 'triangle', inner: 'square' },
-            { id: 'B', outer: 'circle', inner: 'triangle' }, // Correct!
-            { id: 'C', outer: 'square', inner: 'triangle' },
-            { id: 'D', outer: 'circle', inner: 'square' }
-          ];
 
           options.forEach((opt, idx) => {
             const bx = startOptX + idx * (optW + optGap);
@@ -714,13 +818,18 @@ window.VisualIQGenerator = (function () {
             const ocx = bx + optW / 2;
             const ocy = optY + optH / 2 + 10;
 
-            if (opt.outer === 'circle') drawCircle(ctx, ocx, ocy, 36, '#EFF6FF', '#1E3A8A', 2.5);
-            else if (opt.outer === 'square') drawPolygon(ctx, ocx, ocy, 36, 4, '#EFF6FF', '#1E3A8A', 2.5, Math.PI / 4);
-            else if (opt.outer === 'triangle') drawPolygon(ctx, ocx, ocy, 36, 3, '#FEF2F2', '#DC2626', 2.5);
+            function drawSingle(shape, r, isInner) {
+              const fill = isInner ? '#DC2626' : '#EFF6FF';
+              const stroke = isInner ? '#DC2626' : '#1E3A8A';
+              const lw = isInner ? 1 : 2.5;
+              if (shape === 'circle') drawCircle(ctx, ocx, ocy, r, fill, stroke, lw);
+              else if (shape === 'square') drawPolygon(ctx, ocx, ocy, r, 4, fill, stroke, lw, Math.PI / 4);
+              else if (shape === 'triangle') drawPolygon(ctx, ocx, ocy, r, 3, fill, stroke, lw);
+              else if (shape === 'pentagon') drawPolygon(ctx, ocx, ocy, r, 5, fill, stroke, lw);
+            }
 
-            if (opt.inner === 'circle') drawCircle(ctx, ocx, ocy, 15, '#DC2626', '#DC2626', 1);
-            else if (opt.inner === 'square') drawPolygon(ctx, ocx, ocy, 15, 4, '#1E3A8A', '#1E3A8A', 1, Math.PI / 4);
-            else if (opt.inner === 'triangle') drawPolygon(ctx, ocx, ocy, 15, 3, '#059669', '#059669', 1);
+            drawSingle(opt.outer, 36, false);
+            drawSingle(opt.inner, 15, true);
           });
 
           ctx.restore();
@@ -729,23 +838,51 @@ window.VisualIQGenerator = (function () {
     },
 
     // =========================================================================
-    // 5. SPATIAL ROTATION (NOT MIRRORED)
+    // 5. SPATIAL ROTATION (Randomized Target Glyph & Shuffled Choices A-D)
     // =========================================================================
     _genSpatialRotation: function (diff) {
+      // Pick a random target rotation challenge:
+      // Target at angle 0. Rotated options: 90° CW, 180°, 270° CW, or mirrored!
+      const targetAngle = pickOne([0, Math.PI / 2, Math.PI, (3 * Math.PI) / 2]);
+      const requestedRot = pickOne([
+        { label: '90° clockwise', angle: Math.PI / 2 },
+        { label: '180°', angle: Math.PI },
+        { label: '90° counter-clockwise', angle: -Math.PI / 2 }
+      ]);
+
+      const correctRotAngle = targetAngle + requestedRot.angle;
+
+      const rawOpts = [
+        { rot: correctRotAngle, mirror: false, isCorrect: true },
+        { rot: correctRotAngle, mirror: true, isCorrect: false },
+        { rot: correctRotAngle + Math.PI, mirror: true, isCorrect: false },
+        { rot: correctRotAngle + Math.PI / 2, mirror: false, isCorrect: false }
+      ];
+
+      const shuffled = shuffle(rawOpts);
+      const correctIdx = shuffled.findIndex(o => o.isCorrect);
+      const correctLetter = ['A', 'B', 'C', 'D'][correctIdx];
+
+      const options = shuffled.map((o, idx) => ({
+        ...o,
+        id: ['A', 'B', 'C', 'D'][idx]
+      }));
+
+      const explanation = `Option ${correctLetter} (Exact ${requestedRot.label} rotation — notice that the red dot and arm preserve their true relative positions without being mirrored)`;
+
       return {
         type: 'visual-iq',
         subtype: 'spatial-rotation',
         difficulty: diff,
         title: 'Spatial Rotation IQ Test',
-        instruction: 'Which figure (A, B, C, or D) is an exact 90° clockwise rotation of the Target Figure (without flipping or mirroring)?',
-        answer: 'Option B (Exact 90° clockwise rotation with the red dot preserved on the long arm)',
-        hint: 'Track the direction of the red dot: when rotating 90° clockwise, top points to the right.',
+        instruction: `Which figure (A, B, C, or D) is an exact ${requestedRot.label} rotation of the Target Figure (without flipping or mirroring)?`,
+        answer: explanation,
+        hint: `Follow the orientation of the red dot: when rotating ${requestedRot.label}, track where the dot moves.`,
         renderFn: function (ctx, x, y, w, h) {
           ctx.save();
           const cy = y + h / 2 - 20;
 
-          // Helper to draw an L-polyomino with colored dot
-          function drawLFigure(fcx, fcy, scale, rotRad, isMirrored) {
+          function drawGlyph(fcx, fcy, scale, rotRad, isMirrored) {
             ctx.save();
             ctx.translate(fcx, fcy);
             if (isMirrored) ctx.scale(-1, 1);
@@ -756,19 +893,19 @@ window.VisualIQGenerator = (function () {
             ctx.strokeStyle = '#0F172A';
             ctx.lineWidth = 3;
 
-            // Vertical arm
+            // L-stem
             ctx.beginPath();
             ctx.rect(-12 * s, -45 * s, 24 * s, 90 * s);
             ctx.fill();
             ctx.stroke();
 
-            // Horizontal base
+            // L-arm
             ctx.beginPath();
             ctx.rect(12 * s, 15 * s, 36 * s, 30 * s);
             ctx.fill();
             ctx.stroke();
 
-            // Accent red dot on top tip
+            // Red dot on top tip
             ctx.fillStyle = '#DC2626';
             ctx.beginPath();
             ctx.arc(0, -32 * s, 7 * s, 0, Math.PI * 2);
@@ -787,18 +924,11 @@ window.VisualIQGenerator = (function () {
           ctx.textBaseline = 'alphabetic';
           ctx.fillText('TARGET FIGURE', leftX, cy - 100);
 
-          drawLFigure(leftX, cy + 20, 1.15, 0, false);
+          drawGlyph(leftX, cy + 20, 1.15, targetAngle, false);
 
-          // 4 Multiple Choice Options (A, B, C, D) on the Right
+          // 4 Options (A, B, C, D) on the Right
           const rightX = x + 460;
           const cardW = 195, cardH = 135, gapX = 30, gapY = 24;
-
-          const options = [
-            { id: 'A', rot: Math.PI, mirror: false, label: '180°' },
-            { id: 'B', rot: Math.PI / 2, mirror: false, label: '90° CW' }, // Correct!
-            { id: 'C', rot: Math.PI / 2, mirror: true, label: 'Mirrored' },
-            { id: 'D', rot: -Math.PI / 2, mirror: true, label: 'Mirrored' }
-          ];
 
           options.forEach((opt, idx) => {
             const col = idx % 2;
@@ -809,7 +939,7 @@ window.VisualIQGenerator = (function () {
             drawRoundedBox(ctx, bx, by, cardW, cardH, 12, '#FFFFFF', '#0F172A', 2);
             drawOptionBadge(ctx, bx + 24, by + 24, opt.id);
 
-            drawLFigure(bx + cardW / 2 + 10, by + cardH / 2 + 6, 0.75, opt.rot, opt.mirror);
+            drawGlyph(bx + cardW / 2 + 10, by + cardH / 2 + 6, 0.75, opt.rot, opt.mirror);
           });
 
           ctx.restore();
