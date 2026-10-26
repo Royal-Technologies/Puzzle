@@ -240,7 +240,7 @@ window.MatchstickGenerator = {
         subtype,
         difficulty,
         title: 'Fix the Equation',
-        instruction: `${puzzle.instruction}\n\n${puzzle.wrong}`,
+        instruction: puzzle.instruction,
         answer: puzzle.answer,
         hint: 'Think about which single matchstick can be removed and relocated to change a digit or operator.',
         renderFn(ctx, x, y, w, h) {
@@ -397,7 +397,7 @@ window.MatchstickGenerator = {
       subtype: 'make-shape',
       difficulty,
       title: 'Make the Shape',
-      instruction: `Use exactly ${puzzle.sticks} matchsticks to make ${puzzle.target}.\n${puzzle.hint}`,
+      instruction: `Use exactly ${puzzle.sticks} matchsticks to make ${puzzle.target}.`,
       answer: `Arrange ${puzzle.sticks} matchsticks into ${puzzle.target}.`,
       hint: puzzle.hint,
       renderFn(ctx, x, y, w, h) {

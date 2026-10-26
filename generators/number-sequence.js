@@ -130,7 +130,7 @@ window.NumberSequenceGenerator = {
     return {
       terms,
       hideLast: missingCount,
-      instruction: `Find the missing number(s) in this arithmetic sequence:\n${terms.slice(0, count - missingCount).join(', ')}, ?`,
+      instruction: 'Find the missing number(s) to complete this arithmetic sequence.',
       answer: answers.join(', '),
       hint: `The common difference is ${Math.abs(diff)} (${sign}${Math.abs(diff)} each step)`,
       ruleText: `Rule: ${sign} ${Math.abs(diff)} each step`,
@@ -151,7 +151,7 @@ window.NumberSequenceGenerator = {
     return {
       terms,
       hideLast: missingCount,
-      instruction: `Find the missing number(s) in this geometric sequence:\n${terms.slice(0, count - missingCount).join(', ')}, ?`,
+      instruction: 'Find the missing number(s) to complete this geometric sequence.',
       answer: terms.slice(count - missingCount).join(', '),
       hint: `Each term is multiplied by ${ratio}`,
       ruleText: `Rule: × ${ratio} each step`,
@@ -161,7 +161,9 @@ window.NumberSequenceGenerator = {
   _fibonacci(difficulty) {
     let a, b, count;
     if (difficulty === 'easy') {
-      a = 1; b = 1; count = 8;
+      const starts = [[1, 1], [1, 2], [2, 1], [1, 3], [2, 3], [3, 2]];
+      const pick = starts[this._rnd(0, starts.length - 1)];
+      a = pick[0]; b = pick[1]; count = 7;
     } else if (difficulty === 'medium') {
       a = this._rnd(2, 8); b = this._rnd(2, 8); count = 8;
     } else {
@@ -175,7 +177,7 @@ window.NumberSequenceGenerator = {
     return {
       terms,
       hideLast: missingCount,
-      instruction: `Each number is the sum of the two before it. Find the missing number(s):\n${terms.slice(0, count - missingCount).join(', ')}, ?`,
+      instruction: 'Each number is the sum of the two before it. Find the missing number(s).',
       answer: terms.slice(count - missingCount).join(', '),
       hint: 'Add the last two numbers to get the next.',
       ruleText: 'Rule: add last two',
@@ -202,7 +204,7 @@ window.NumberSequenceGenerator = {
     return {
       terms,
       hideLast: missingCount,
-      instruction: `Find the rule and the missing number(s):\n${terms.slice(0, count - missingCount).join(', ')}, ?`,
+      instruction: 'Find the rule and the missing number(s) in this sequence.',
       answer: terms.slice(count - missingCount).join(', '),
       hint: choice.hint,
       ruleText: `Rule: ${choice.rule}`,
@@ -230,7 +232,7 @@ window.NumberSequenceGenerator = {
     return {
       terms,
       hideLast: missingCount,
-      instruction: `What comes next?\n${terms.slice(0, count - missingCount).join(', ')}, ?`,
+      instruction: 'Determine the mathematical rule and find what comes next.',
       answer: terms.slice(count - missingCount).join(', '),
       hint: choice.hint,
       ruleText: `Rule: ${choice.rule}`,

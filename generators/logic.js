@@ -136,11 +136,21 @@ window.LogicGenerator = {
         ],
         answer: 'Dave — he was near the cookie jar and could have had chocolate on his fingers.',
       },
+      {
+        suspects: ['Lucas', 'Oliver', 'Zoe'],
+        crime: 'left the front door open',
+        clues: [
+          'The person was holding a soccer ball.',
+          'Zoe was playing video games inside.',
+          'Oliver was practicing piano upstairs.',
+        ],
+        answer: 'Lucas — the other two had clear alibis playing indoors.',
+      },
     ],
     medium: [
       {
         suspects: ['Grace', 'Henry', 'Ivy', 'Jake'],
-        crime: 'took the money',
+        crime: 'took the trophy from the cabinet',
         clues: [
           'The culprit was alone in the room between 2–3 PM.',
           'Grace was with Henry from 1–4 PM.',
@@ -149,62 +159,160 @@ window.LogicGenerator = {
         ],
         answer: 'Jake — he was the only one alone in the room during the 2–3 PM window.',
       },
+      {
+        suspects: ['Aaron', 'Bella', 'Carl', 'Diana'],
+        crime: 'borrowed the master key',
+        clues: [
+          'The person wore glasses.',
+          'Aaron and Diana do not wear glasses.',
+          'Bella was on a phone call with the manager all morning.',
+        ],
+        answer: 'Carl — he wears glasses and has no alibi.',
+      },
+      {
+        suspects: ['Eva', 'Felix', 'Gina', 'Hugo'],
+        crime: 'spilled paint in the studio',
+        clues: [
+          'The culprit has yellow paint on their shoes.',
+          'Eva was wearing blue boots without a mark.',
+          'Felix and Gina were working together in the computer lab.',
+        ],
+        answer: 'Hugo — he had access and yellow paint on his shoes.',
+      },
     ],
     hard: [
       {
         suspects: ['Leo', 'Maya', 'Nick', 'Olivia'],
-        crime: 'sent the anonymous letter',
+        crime: 'sent the anonymous coded letter',
         clues: [
-          'The sender knew the recipient\'s new address.',
+          'The sender knew the recipient\'s confidential address.',
           'Only Maya and Nick knew the new address.',
-          'Nick was abroad when the letter was sent.',
-          'Maya\'s handwriting matches a sample found.',
+          'Nick was on an international flight without internet.',
+          'Maya\'s handwriting matches the handwriting sample found.',
         ],
         answer: 'Maya — she knew the address, was present, and her handwriting matches.',
+      },
+      {
+        suspects: ['Marcus', 'Elena', 'Julian', 'Sophia'],
+        crime: 'hacked the secure database',
+        clues: [
+          'The breach occurred from an IP address inside Terminal B.',
+          'Elena and Sophia logged into Terminal A all afternoon.',
+          'Marcus was presenting in the main auditorium until 5 PM.',
+          'Julian was the only staff member logged into Terminal B.',
+        ],
+        answer: 'Julian — he was the only suspect logged into Terminal B during the breach.',
+      },
+      {
+        suspects: ['Victor', 'Chloe', 'Nathan', 'Tara'],
+        crime: 'swapped the display diamond with a fake',
+        clues: [
+          'The suspect had the vault passcode and visited after 8 PM.',
+          'Only Victor and Tara knew the vault passcode.',
+          'Tara checked out of the building security at 7:30 PM.',
+          'Victor badge-swiped the vault door at 8:14 PM.',
+        ],
+        answer: 'Victor — he had the passcode and entered after 8 PM.',
       },
     ],
   },
 
   _gridLogicPuzzles: {
-    easy: {
-      title: 'Match each person to their favourite colour.',
-      people: ['Anna', 'Brad', 'Cara'],
-      attributes: ['Red', 'Blue', 'Green'],
-      clues: [
-        'Anna\'s favourite is not Red.',
-        'Brad likes Blue.',
-        'Cara does not like Green.',
-      ],
-      solution: { Anna: 'Green', Brad: 'Blue', Cara: 'Red' },
-      prefilled: { 'Brad-Blue': true },
-    },
-    medium: {
-      title: 'Match each student to their subject and score.',
-      people: ['Sam', 'Tina', 'Uri'],
-      attributes: ['Math', 'Science', 'History'],
-      clues: [
-        'Sam did not take History.',
-        'The Science student scored highest.',
-        'Tina took History.',
-        'Uri\'s subject is not Math.',
-      ],
-      solution: { Sam: 'Science', Tina: 'History', Uri: 'Math' },
-      prefilled: { 'Tina-History': true },
-    },
-    hard: {
-      title: 'Four friends each own a different pet and live on different floors.',
-      people: ['Alex', 'Beth', 'Cole', 'Dana'],
-      attributes: ['Dog', 'Cat', 'Fish', 'Bird'],
-      clues: [
-        'Alex does not have a Dog or Cat.',
-        'Beth has the Bird.',
-        'Cole\'s pet is not the Fish.',
-        'Dana does not have the Bird.',
-        'The person with the Fish lives on floor 2.',
-      ],
-      solution: { Alex: 'Fish', Beth: 'Bird', Cole: 'Dog', Dana: 'Cat' },
-      prefilled: { 'Beth-Bird': true },
-    },
+    easy: [
+      {
+        title: 'Match each person to their favourite colour.',
+        people: ['Anna', 'Brad', 'Cara'],
+        attributes: ['Red', 'Blue', 'Green'],
+        clues: [
+          'Anna\'s favourite is not Red.',
+          'Brad likes Blue.',
+          'Cara does not like Green.',
+        ],
+        solution: { Anna: 'Green', Brad: 'Blue', Cara: 'Red' },
+        prefilled: { 'Brad-Blue': true },
+      },
+      {
+        title: 'Match each friend to their favorite fruit.',
+        people: ['Ben', 'Daisy', 'Leo'],
+        attributes: ['Apple', 'Banana', 'Mango'],
+        clues: [
+          'Ben is allergic to Apples.',
+          'Daisy loves Mangoes.',
+          'Leo does not like Apples.',
+        ],
+        solution: { Ben: 'Banana', Daisy: 'Mango', Leo: 'Apple' },
+        prefilled: { 'Daisy-Mango': true },
+      },
+    ],
+    medium: [
+      {
+        title: 'Match each student to their subject and score.',
+        people: ['Sam', 'Tina', 'Uri'],
+        attributes: ['Math', 'Science', 'History'],
+        clues: [
+          'Sam did not take History.',
+          'The Science student scored highest.',
+          'Tina took History.',
+          'Uri\'s subject is not Math.',
+        ],
+        solution: { Sam: 'Science', Tina: 'History', Uri: 'Math' },
+        prefilled: { 'Tina-History': true },
+      },
+      {
+        title: 'Match each coworker to their morning drink.',
+        people: ['Liam', 'Noah', 'Emma'],
+        attributes: ['Coffee', 'Tea', 'Juice'],
+        clues: [
+          'Liam never drinks hot beverages.',
+          'Noah drinks black Coffee every day.',
+          'Emma prefers Herbal Tea.',
+        ],
+        solution: { Liam: 'Juice', Noah: 'Coffee', Emma: 'Tea' },
+        prefilled: { 'Noah-Coffee': true },
+      },
+    ],
+    hard: [
+      {
+        title: 'Four friends each own a different pet and live on different floors.',
+        people: ['Alex', 'Beth', 'Cole', 'Dana'],
+        attributes: ['Dog', 'Cat', 'Fish', 'Bird'],
+        clues: [
+          'Alex does not have a Dog or Cat.',
+          'Beth has the Bird.',
+          'Cole\'s pet is not the Fish.',
+          'Dana does not have the Bird.',
+          'The person with the Fish lives on floor 2.',
+        ],
+        solution: { Alex: 'Fish', Beth: 'Bird', Cole: 'Dog', Dana: 'Cat' },
+        prefilled: { 'Beth-Bird': true },
+      },
+      {
+        title: 'Four athletes won medals in four different Olympic sports.',
+        people: ['Ryan', 'Sara', 'Tom', 'Yuki'],
+        attributes: ['Swimming', 'Judo', 'Archery', 'Track'],
+        clues: [
+          'Ryan does not compete in water sports.',
+          'Sara won her medal in Archery.',
+          'Tom does not do Track or Swimming.',
+          'Yuki won gold in the pool.',
+        ],
+        solution: { Ryan: 'Track', Sara: 'Archery', Tom: 'Judo', Yuki: 'Swimming' },
+        prefilled: { 'Sara-Archery': true },
+      },
+      {
+        title: 'Four musicians each play a distinct classical instrument.',
+        people: ['Chloe', 'Ethan', 'Mia', 'Lucas'],
+        attributes: ['Piano', 'Violin', 'Flute', 'Cello'],
+        clues: [
+          'Chloe does not play string instruments.',
+          'Ethan plays the grand Piano.',
+          'Mia plays an instrument smaller than a Cello.',
+          'Lucas does not play the Flute.',
+        ],
+        solution: { Chloe: 'Flute', Ethan: 'Piano', Mia: 'Violin', Lucas: 'Cello' },
+        prefilled: { 'Ethan-Piano': true },
+      },
+    ],
   },
 
   _syllogismPuzzles: [
@@ -557,80 +665,176 @@ window.LogicGenerator = {
   },
 
   _renderRiverCrossing(ctx, x, y, w, h, puzzle) {
+    ctx.save();
     const cx = x + w / 2;
-    const riverY = y + h * 0.38;
-    const riverH = 90;
+    const topY = y + 15;
 
-    // Sky / ground background hint
-    ctx.fillStyle = 'rgba(255,255,255,0.0)';
-
-    // Left bank
-    ctx.fillStyle = '#A0C880';
-    ctx.fillRect(x + 20, riverY - 60, w * 0.28, riverH + 120);
-    // River
-    ctx.fillStyle = 'rgba(46,196,182,0.35)';
-    ctx.fillRect(x + 20 + w * 0.28, riverY, w * 0.44, riverH);
-    // Ripples
-    ctx.strokeStyle = 'rgba(46,196,182,0.6)';
-    ctx.lineWidth = 1.5;
-    for (let rx = x + 20 + w * 0.28 + 20; rx < x + 20 + w * 0.72 - 20; rx += 30) {
-      ctx.beginPath();
-      ctx.arc(rx, riverY + riverH / 2, 10, Math.PI, 0);
-      ctx.stroke();
-    }
-    // Right bank
-    ctx.fillStyle = '#D0C880';
-    ctx.fillRect(x + 20 + w * 0.72, riverY - 60, w * 0.27, riverH + 120);
-
-    // Bank labels
-    ctx.font = 'bold 18px Arial, sans-serif';
-    ctx.fillStyle = '#1A1A2E';
+    // 1. Puzzle Title
+    ctx.fillStyle = '#1E3A8A';
+    ctx.font = 'bold 26px "Segoe UI", Arial, sans-serif';
     ctx.textAlign = 'center';
-    ctx.fillText('START', x + 20 + w * 0.14, riverY - 68);
-    ctx.fillText('GOAL', x + 20 + w * 0.72 + w * 0.135, riverY - 68);
+    ctx.textBaseline = 'alphabetic';
+    ctx.fillText(puzzle.title, cx, topY + 25);
 
-    // Boat in middle of river
-    const boatCx = x + 20 + w * 0.50;
-    const boatY = riverY + riverH * 0.55;
-    ctx.fillStyle = '#8B4513';
+    // 2. River Scene (Start Bank, River with Boat, Goal Bank)
+    const riverY = topY + 55;
+    const riverH = 170;
+    const bankW = w * 0.28;
+    const riverW = w * 0.38;
+
+    // Left bank (Start)
+    const leftX = x + 25;
+    ctx.fillStyle = '#DCFCE7';
+    ctx.strokeStyle = '#16A34A';
+    ctx.lineWidth = 2.5;
     ctx.beginPath();
-    ctx.ellipse(boatCx, boatY, 50, 16, 0, 0, 2 * Math.PI);
+    if (ctx.roundRect) ctx.roundRect(leftX, riverY, bankW, riverH, 12);
+    else ctx.rect(leftX, riverY, bankW, riverH);
     ctx.fill();
-    ctx.font = '26px Arial, sans-serif';
-    ctx.fillText('⛵', boatCx, boatY + 4);
+    ctx.stroke();
 
-    // Items on left bank
-    const itemsLeft = puzzle.items;
-    ctx.font = '28px Arial, sans-serif';
-    const leftBankCx = x + 20 + w * 0.14;
-    itemsLeft.forEach((item, i) => {
-      const ix = leftBankCx + (i % 2 === 0 ? -28 : 28);
-      const iy = riverY - 20 + Math.floor(i / 2) * 40;
-      ctx.fillText(item.length <= 2 ? item : item[0], ix, iy);
+    ctx.fillStyle = '#166534';
+    ctx.font = 'bold 17px "Segoe UI", Arial, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('START BANK', leftX + bankW / 2, riverY + 28);
+
+    // Items on start bank - rendered as neat chips
+    const items = puzzle.items || ['Farmer', 'Fox', 'Chicken', 'Grain'];
+    const isSmall = items.length > 4;
+    const chipW = bankW * 0.42;
+    const chipH = isSmall ? 28 : 34;
+    const chipFont = isSmall ? 'bold 15px "Segoe UI", Arial, sans-serif' : 'bold 17px "Segoe UI", Arial, sans-serif';
+
+    items.forEach((item, i) => {
+      const col = i % 2;
+      const row = Math.floor(i / 2);
+      const chX = leftX + (col === 0 ? 12 : bankW / 2 + 6);
+      const chY = riverY + (isSmall ? 44 + row * 38 : 50 + row * 48);
+
+      ctx.fillStyle = '#FFFFFF';
+      ctx.strokeStyle = '#86EFAC';
+      ctx.lineWidth = 1.5;
+      ctx.beginPath();
+      if (ctx.roundRect) ctx.roundRect(chX, chY, chipW, chipH, 8);
+      else ctx.rect(chX, chY, chipW, chipH);
+      ctx.fill();
+      ctx.stroke();
+
+      ctx.fillStyle = '#14532D';
+      ctx.font = chipFont;
+      ctx.textAlign = 'center';
+      ctx.fillText(item, chX + chipW / 2, chY + chipH / 2 + 5);
     });
 
-    // Question mark on right bank
-    ctx.font = 'bold 40px Arial, sans-serif';
-    ctx.fillStyle = '#E74C3C';
-    ctx.fillText('?', x + 20 + w * 0.72 + w * 0.135, riverY + 12);
+    // River Water
+    const riverStartX = leftX + bankW + 10;
+    ctx.fillStyle = '#E0F2FE';
+    ctx.strokeStyle = '#0284C7';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    if (ctx.roundRect) ctx.roundRect(riverStartX, riverY, riverW, riverH, 12);
+    else ctx.rect(riverStartX, riverY, riverW, riverH);
+    ctx.fill();
+    ctx.stroke();
 
-    // Puzzle title and scenario
-    const textY = riverY + riverH + 28;
-    ctx.font = 'bold 22px Arial, sans-serif';
-    ctx.fillStyle = '#6C63FF';
+    // Water Ripples
+    ctx.strokeStyle = '#38BDF8';
+    ctx.lineWidth = 2;
+    for (let rx = riverStartX + 35; rx < riverStartX + riverW - 20; rx += 55) {
+      ctx.beginPath();
+      ctx.arc(rx, riverY + 45, 14, Math.PI, 0);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.arc(rx + 25, riverY + 125, 14, Math.PI, 0);
+      ctx.stroke();
+    }
+
+    // Wooden Boat with Mast & Sail (Crisp Vector)
+    const boatCx = riverStartX + riverW / 2;
+    const boatCy = riverY + riverH / 2 + 12;
+    const boatW = 84, boatH = 22;
+
+    // Boat Hull
+    ctx.fillStyle = '#92400E';
+    ctx.strokeStyle = '#451A03';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(boatCx - boatW / 2, boatCy);
+    ctx.lineTo(boatCx + boatW / 2, boatCy);
+    ctx.lineTo(boatCx + boatW / 2 - 12, boatCy + boatH);
+    ctx.lineTo(boatCx - boatW / 2 + 12, boatCy + boatH);
+    ctx.closePath();
+    ctx.fill();
+    ctx.stroke();
+
+    // Mast
+    ctx.strokeStyle = '#451A03';
+    ctx.lineWidth = 2.5;
+    ctx.beginPath();
+    ctx.moveTo(boatCx, boatCy);
+    ctx.lineTo(boatCx, boatCy - 38);
+    ctx.stroke();
+
+    // Sail
+    ctx.fillStyle = '#F8FAFC';
+    ctx.strokeStyle = '#0284C7';
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.moveTo(boatCx, boatCy - 38);
+    ctx.lineTo(boatCx + 26, boatCy - 12);
+    ctx.lineTo(boatCx, boatCy - 12);
+    ctx.closePath();
+    ctx.fill();
+    ctx.stroke();
+
+    // Right bank (Goal)
+    const rightX = riverStartX + riverW + 10;
+    ctx.fillStyle = '#FEF9C3';
+    ctx.strokeStyle = '#CA8A04';
+    ctx.lineWidth = 2.5;
+    ctx.beginPath();
+    if (ctx.roundRect) ctx.roundRect(rightX, riverY, bankW, riverH, 12);
+    else ctx.rect(rightX, riverY, bankW, riverH);
+    ctx.fill();
+    ctx.stroke();
+
+    ctx.fillStyle = '#854D0E';
+    ctx.font = 'bold 17px "Segoe UI", Arial, sans-serif';
     ctx.textAlign = 'center';
-    ctx.fillText(puzzle.title, cx, y + 30);
+    ctx.fillText('GOAL BANK', rightX + bankW / 2, riverY + 28);
 
-    ctx.font = '19px Arial, sans-serif';
-    ctx.fillStyle = '#444';
+    // Target question mark on goal bank
+    ctx.font = 'bold 58px Arial, sans-serif';
+    ctx.fillStyle = '#DC2626';
+    ctx.fillText('?', rightX + bankW / 2, riverY + 115);
+
+    // 3. Scenario Description Card below river
+    const descY = riverY + riverH + 30;
+    const descH = 155;
+    const descW = w - 50;
+    const descX = x + 25;
+
+    ctx.fillStyle = '#FFFFFF';
+    ctx.strokeStyle = '#CBD5E1';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    if (ctx.roundRect) ctx.roundRect(descX, descY, descW, descH, 14);
+    else ctx.rect(descX, descY, descW, descH);
+    ctx.fill();
+    ctx.stroke();
+
+    ctx.font = '600 21px "Segoe UI", Arial, sans-serif';
+    ctx.fillStyle = '#334155';
     ctx.textAlign = 'left';
-    this._drawWrappedText(ctx, puzzle.scenario, x + 30, textY, w - 60, 24);
+    this._drawWrappedText(ctx, puzzle.scenario, descX + 25, descY + 38, descW - 50, 30);
 
-    ctx.font = 'bold 22px Arial, sans-serif';
-    ctx.fillStyle = '#E74C3C';
+    // 4. Question highlighted at bottom
+    ctx.font = 'bold 24px "Segoe UI", Arial, sans-serif';
+    ctx.fillStyle = '#DC2626';
     ctx.textAlign = 'center';
-    ctx.fillText(puzzle.question, cx, y + h - 22);
-    ctx.textAlign = 'left';
+    ctx.fillText(puzzle.question, cx, descY + descH + 46);
+
+    ctx.restore();
   },
 
   // ─── Main Generate ────────────────────────────────────────────────────────
@@ -644,9 +848,7 @@ window.LogicGenerator = {
       return {
         type: 'logic', subtype, difficulty,
         title: 'Truth & Lies',
-        instruction: Object.entries(puzzle.statements)
-          .map(([name, stmt]) => `${name} says: "${stmt}"`)
-          .join('\n'),
+        instruction: 'One person is lying. Use deductive logic to discover who is telling the truth and who is the liar.',
         answer: puzzle.answer,
         hint: 'If someone lies, their statement about themselves or others must be false.',
         renderFn(ctx, x, y, w, h) { gen._renderTruthLies(ctx, x, y, w, h, puzzle); }
@@ -659,8 +861,7 @@ window.LogicGenerator = {
       return {
         type: 'logic', subtype, difficulty,
         title: 'Who Did It?',
-        instruction: `Someone ${puzzle.crime}. Read the clues and find the culprit.\n\n` +
-          puzzle.clues.map((c, i) => `${i + 1}. ${c}`).join('\n'),
+        instruction: `Someone ${puzzle.crime}. Read the clues below to identify the culprit!`,
         answer: puzzle.answer,
         hint: 'Eliminate suspects using each clue until only one remains.',
         renderFn(ctx, x, y, w, h) { gen._renderWhoIsIt(ctx, x, y, w, h, puzzle); }
@@ -668,11 +869,13 @@ window.LogicGenerator = {
     }
 
     if (subtype === 'grid-logic') {
-      const puzzle = this._gridLogicPuzzles[difficulty] || this._gridLogicPuzzles.easy;
+      const rawPool = this._gridLogicPuzzles[difficulty] || this._gridLogicPuzzles.hard || this._gridLogicPuzzles.easy;
+      const pool = Array.isArray(rawPool) ? rawPool : [rawPool];
+      const puzzle = pool[this._rnd(0, pool.length - 1)];
       return {
         type: 'logic', subtype, difficulty,
         title: 'Grid Logic',
-        instruction: `${puzzle.title}\n\nClues:\n` + puzzle.clues.map((c, i) => `${i + 1}. ${c}`).join('\n'),
+        instruction: `${puzzle.title}: Match each person with their correct item using the clues.`,
         answer: Object.entries(puzzle.solution).map(([k, v]) => `${k} → ${v}`).join(', '),
         hint: 'Use process of elimination. Mark what\'s impossible to find what\'s certain.',
         renderFn(ctx, x, y, w, h) { gen._renderGridLogic(ctx, x, y, w, h, puzzle); }
@@ -685,7 +888,7 @@ window.LogicGenerator = {
       return {
         type: 'logic', subtype, difficulty,
         title: 'Syllogism',
-        instruction: `Premise 1: ${puzzle.p1}\nPremise 2: ${puzzle.p2}\nConclusion: ${puzzle.conclusion}\n\nIs the conclusion valid?`,
+        instruction: 'Read the premises below and determine whether the conclusion logically follows.',
         answer: puzzle.valid ? 'VALID — the conclusion logically follows.' : 'INVALID — the conclusion does not necessarily follow.',
         hint: 'Check if the conclusion MUST be true if both premises are true.',
         renderFn(ctx, x, y, w, h) { gen._renderSyllogism(ctx, x, y, w, h, puzzle); }
@@ -698,7 +901,7 @@ window.LogicGenerator = {
     return {
       type: 'logic', subtype, difficulty,
       title: 'River Crossing',
-      instruction: `${puzzle.title}\n\n${puzzle.scenario}\n\n${puzzle.question}`,
+      instruction: puzzle.question,
       answer: puzzle.answer,
       hint: puzzle.hint,
       renderFn(ctx, x, y, w, h) { gen._renderRiverCrossing(ctx, x, y, w, h, puzzle); }

@@ -199,25 +199,55 @@ window.VisualPatternGenerator = (function () {
       };
     },
 
-    // ── 4. Complete Series ──
+    // ── 4. Complete Series (Diverse Pattern Sequences) ──
     _genSeries: function (diff) {
-      const series = ['3 Sides (▲)', '4 Sides (■)', '5 Sides (⬟)', '6 Sides (⬢)', '?'];
+      const seriesPool = [
+        {
+          items: ['3 Sides (▲)', '4 Sides (■)', '5 Sides (⬟)', '6 Sides (⬢)', '?'],
+          ans: 'Heptagon (7-sided regular polygon)',
+          hint: 'Count the number of vertices or sides in each consecutive figure: +1 side each step.'
+        },
+        {
+          items: ['2 Dots (●●)', '4 Dots (●●●●)', '6 Dots (●●●●●●)', '8 Dots', '?'],
+          ans: '10 Dots (Pattern adds 2 dots at each step: +2)',
+          hint: 'Observe the arithmetic progression of the dots.'
+        },
+        {
+          items: ['1 Square (■)', '4 Squares (2×2)', '9 Squares (3×3)', '16 Squares (4×4)', '?'],
+          ans: '25 Squares (5×5 square numbers: 1², 2², 3², 4², 5² = 25)',
+          hint: 'Think about square numbers: 1, 4, 9, 16...'
+        },
+        {
+          items: ['Up (⬆)', 'Right (➡)', 'Down (⬇)', 'Left (⬅)', '?'],
+          ans: 'Up (⬆) — 90° clockwise continuous rotation completes a full cycle',
+          hint: 'Track the clockwise rotation angle (90° at each step).'
+        },
+        {
+          items: ['1 Ring (◎)', '2 Rings', '3 Rings', '4 Rings', '?'],
+          ans: '5 Concentric Rings (+1 outer ring added at each step)',
+          hint: 'Count the number of concentric circles.'
+        }
+      ];
+
+      const sPick = seriesPool[Math.floor(Math.random() * seriesPool.length)];
+
       return {
         type: 'visual-pattern',
         subtype: 'complete-series',
         difficulty: diff,
         title: 'Complete the Geometric Series',
-        instruction: 'Identify the rule and determine the next figure in the sequence.',
-        answer: 'Heptagon (7-sided polygon)',
-        hint: 'Count the number of vertices or sides in each consecutive figure.',
+        instruction: 'Identify the transformation rule and determine the next figure in the sequence.',
+        answer: sPick.ans,
+        hint: sPick.hint,
         renderFn: function (ctx, x, y, w, h) {
+          ctx.save();
           const boxSize = 140;
           const gap = 24;
           const totalW = 5 * boxSize + 4 * gap;
           const startX = x + (w - totalW) / 2;
           const cy = y + h / 2 - 70;
 
-          series.forEach((s, idx) => {
+          sPick.items.forEach((s, idx) => {
             const bx = startX + idx * (boxSize + gap);
             const isQ = idx === 4;
 
@@ -229,7 +259,7 @@ window.VisualPatternGenerator = (function () {
             ctx.stroke();
 
             ctx.fillStyle = isQ ? '#DC2626' : '#0F172A';
-            ctx.font = isQ ? 'bold 64px "Segoe UI", Arial, sans-serif' : 'bold 44px "Segoe UI", Arial, sans-serif';
+            ctx.font = isQ ? 'bold 64px "Segoe UI", Arial, sans-serif' : 'bold 36px "Segoe UI", Arial, sans-serif';
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';
             const symbol = s.includes('(') ? s.split('(')[1].replace(')', '') : s;
@@ -241,27 +271,38 @@ window.VisualPatternGenerator = (function () {
               ctx.fillText('➜', bx + boxSize + gap / 2, cy + boxSize / 2);
             }
           });
+          ctx.restore();
         }
       };
     },
 
-    // ── 5. Mirror Image ──
+    // ── 5. Mirror Image (Randomized Shapes & Asymmetric Details) ──
     _genMirror: function (diff) {
+      const shapes = [
+        { name: 'Triangle with offset flag', type: 'triangle-flag', ans: 'Option B is the exact lateral reflection across the vertical axis.' },
+        { name: 'Asymmetric L-block with target dot', type: 'l-block', ans: 'Option B (the arm points left instead of right, dot reflects symmetrically).' },
+        { name: 'Letter F Glyph', type: 'letter-f', ans: 'Option B (backwards F with horizontal bars facing the mirror line).' },
+        { name: 'Diagonal Wedge with notch', type: 'wedge', ans: 'Option B (laterally inverted wedge reflection).' }
+      ];
+
+      const sh = shapes[Math.floor(Math.random() * shapes.length)];
+
       return {
         type: 'visual-pattern',
         subtype: 'mirror-image',
         difficulty: diff,
         title: 'Mirror Image Reflection',
-        instruction: 'If the object on the left is reflected across the dashed red mirror line, what does it look like?',
-        answer: 'Option B is the exact lateral inversion.',
-        hint: 'Left and right flip, top and bottom remain unchanged.',
+        instruction: `If the ${sh.name} on the left is reflected across the dashed mirror line, what does it look like?`,
+        answer: sh.ans,
+        hint: 'Lateral inversion: left and right swap across the mirror line, while top and bottom stay identical.',
         renderFn: function (ctx, x, y, w, h) {
+          ctx.save();
           const midX = x + w / 2;
           const cy = y + h / 2 - 30;
 
           // Mirror line
           ctx.strokeStyle = '#DC2626';
-          ctx.lineWidth = 3;
+          ctx.lineWidth = 3.5;
           ctx.setLineDash([8, 8]);
           ctx.beginPath();
           ctx.moveTo(midX, y + 40);
@@ -274,23 +315,44 @@ window.VisualPatternGenerator = (function () {
           ctx.textAlign = 'center';
           ctx.fillText('MIRROR LINE', midX, y + 25);
 
-          // Left shape
+          // Draw the Left Shape
           ctx.fillStyle = '#1E3A8A';
           ctx.strokeStyle = '#0F172A';
           ctx.lineWidth = 3;
 
-          ctx.beginPath();
-          ctx.moveTo(midX - 160, cy - 80);
-          ctx.lineTo(midX - 60, cy);
-          ctx.lineTo(midX - 160, cy + 80);
-          ctx.closePath();
-          ctx.fill();
-          ctx.stroke();
+          if (sh.type === 'letter-f') {
+            const fx = midX - 120;
+            ctx.fillRect(fx - 15, cy - 70, 25, 140);
+            ctx.fillRect(fx + 10, cy - 70, 50, 22);
+            ctx.fillRect(fx + 10, cy - 20, 35, 20);
+          } else if (sh.type === 'l-block') {
+            const lx = midX - 120;
+            ctx.fillRect(lx - 20, cy - 60, 30, 120);
+            ctx.fillRect(lx + 10, cy + 20, 50, 40);
+            ctx.fillStyle = '#DC2626';
+            ctx.beginPath();
+            ctx.arc(lx - 5, cy - 40, 8, 0, Math.PI * 2);
+            ctx.fill();
+          } else {
+            ctx.beginPath();
+            ctx.moveTo(midX - 160, cy - 80);
+            ctx.lineTo(midX - 60, cy);
+            ctx.lineTo(midX - 160, cy + 80);
+            ctx.closePath();
+            ctx.fill();
+            ctx.stroke();
+            // Accent dot
+            ctx.fillStyle = '#DC2626';
+            ctx.beginPath();
+            ctx.arc(midX - 90, cy, 10, 0, Math.PI * 2);
+            ctx.fill();
+          }
 
           // Right side question mark
           ctx.fillStyle = '#DC2626';
           ctx.font = 'bold 72px "Segoe UI", Arial, sans-serif';
           ctx.fillText('?', midX + 110, cy);
+          ctx.restore();
         }
       };
     }

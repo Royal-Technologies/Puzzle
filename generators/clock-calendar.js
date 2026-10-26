@@ -138,21 +138,36 @@ window.ClockCalendarGenerator = (function () {
 
     // ── 2. Elapsed Time ──
     _genTimeElapsed: function (diff) {
-      const scenarios = [
-        { dep: '08:45 AM', arr: '01:15 PM', dur: '4 hours 30 minutes', hint: '8:45 AM to 12:00 PM (3h 15m) + 1h 15m = 4h 30m' },
-        { dep: '09:20 AM', arr: '02:50 PM', dur: '5 hours 30 minutes', hint: '9:20 AM to 2:20 PM is 5h, then +30m' },
-        { dep: '10:15 AM', arr: '04:45 PM', dur: '6 hours 30 minutes', hint: '10:15 to 4:15 is 6 hours, plus 30 minutes' }
-      ];
-      const sc = scenarios[Math.floor(Math.random() * scenarios.length)];
+      const depHour = Math.floor(Math.random() * 8) + 1; // 1 to 8
+      const depMin = [0, 15, 20, 30, 45, 50][Math.floor(Math.random() * 6)];
+      const durHours = Math.floor(Math.random() * 4) + 3; // 3 to 6 hours
+      const durMins = [15, 20, 30, 40, 45][Math.floor(Math.random() * 5)];
+
+      const totalDepMinutes = depHour * 60 + depMin;
+      const totalArrMinutes = totalDepMinutes + durHours * 60 + durMins;
+
+      let arrHour24 = Math.floor(totalArrMinutes / 60);
+      const arrMin = totalArrMinutes % 60;
+
+      const formatTime = (h, m, isPM) => {
+        const hh = h % 12 === 0 ? 12 : h % 12;
+        const mm = m < 10 ? '0' + m : m;
+        return `${hh < 10 ? '0' + hh : hh}:${mm} ${isPM ? 'PM' : 'AM'}`;
+      };
+
+      const depStr = formatTime(depHour, depMin, false); // AM
+      const arrStr = formatTime(arrHour24, arrMin, arrHour24 >= 12); // PM
+
+      const durStr = `${durHours} hour${durHours > 1 ? 's' : ''} ${durMins} minutes`;
 
       return {
         type: 'clock-calendar',
         subtype: 'time-elapsed',
         difficulty: diff,
         title: 'Elapsed Time Calculation',
-        instruction: `A flight departed at ${sc.dep} and arrived at ${sc.arr}. How long was the flight?`,
-        answer: sc.dur,
-        hint: sc.hint,
+        instruction: `A flight departed at ${depStr} and arrived at ${arrStr}. How long was the flight?`,
+        answer: durStr,
+        hint: `Break into steps: count the hours first, then the remaining minutes.`,
         renderFn: function (ctx, x, y, w, h) {
           const startX = x + 100;
           const cy = y + h / 2 - 30;
@@ -170,8 +185,8 @@ window.ClockCalendarGenerator = (function () {
           ctx.textAlign = 'center';
           ctx.fillText('🛫 DEPARTURE', startX + 130, cy - 30);
           ctx.fillStyle = '#1E3A8A';
-          ctx.font = 'bold 38px "Segoe UI", Arial, sans-serif';
-          ctx.fillText(sc.dep, startX + 130, cy + 25);
+          ctx.font = 'bold 36px "Segoe UI", Arial, sans-serif';
+          ctx.fillText(depStr, startX + 130, cy + 25);
 
           // Arrow
           ctx.fillStyle = '#64748B';
@@ -191,8 +206,8 @@ window.ClockCalendarGenerator = (function () {
           ctx.font = 'bold 20px "Segoe UI", Arial, sans-serif';
           ctx.fillText('🛬 ARRIVAL', endX + 130, cy - 30);
           ctx.fillStyle = '#0F172A';
-          ctx.font = 'bold 38px "Segoe UI", Arial, sans-serif';
-          ctx.fillText(sc.arr, endX + 130, cy + 25);
+          ctx.font = 'bold 36px "Segoe UI", Arial, sans-serif';
+          ctx.fillText(arrStr, endX + 130, cy + 25);
 
           // Duration Prompt
           ctx.fillStyle = '#DC2626';
@@ -202,11 +217,15 @@ window.ClockCalendarGenerator = (function () {
       };
     },
 
-    // ── 3. Day of the Week ──
+    // ── 3. Day of the Week (Dynamic Day & Number) ──
     _genDayCalc: function (diff) {
       const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-      const addDays = diff === 'easy' ? 25 : 45;
-      const startIdx = 2; // Wednesday
+      const shortDays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+      const startIdx = Math.floor(Math.random() * 7);
+      const startDay = days[startIdx];
+      const startShort = shortDays[startIdx];
+
+      const addDays = Math.floor(Math.random() * 60) + 18;
       const targetIdx = (startIdx + (addDays % 7)) % 7;
       const targetDay = days[targetIdx];
 
@@ -215,11 +234,10 @@ window.ClockCalendarGenerator = (function () {
         subtype: 'day-calculation',
         difficulty: diff,
         title: 'Day of the Week Calculation',
-        instruction: `If today is Wednesday, what day of the week will it be exactly ${addDays} days from today?`,
-        answer: `${targetDay} (${addDays} ÷ 7 = ${Math.floor(addDays / 7)} weeks remainder ${addDays % 7} days)`,
-        hint: `Divide ${addDays} by 7 and count forward by the remainder.`,
+        instruction: `If today is ${startDay}, what day of the week will it be exactly ${addDays} days from today?`,
+        answer: `${targetDay} (${addDays} ÷ 7 = ${Math.floor(addDays / 7)} weeks with remainder ${addDays % 7} days)`,
+        hint: `Divide ${addDays} by 7 and count forward by the remainder (${addDays % 7} days from ${startDay}).`,
         renderFn: function (ctx, x, y, w, h) {
-          const shortDays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
           const cardW = 95, cardH = 90, gap = 12;
           const totalW = 7 * cardW + 6 * gap;
           const startX = x + (w - totalW) / 2;
@@ -227,7 +245,7 @@ window.ClockCalendarGenerator = (function () {
 
           shortDays.forEach((day, i) => {
             const bx = startX + i * (cardW + gap);
-            const isToday = (day === 'Wed');
+            const isToday = (i === startIdx);
 
             ctx.fillStyle = isToday ? '#DC2626' : '#FFFFFF';
             ctx.strokeStyle = '#0F172A';
@@ -251,21 +269,50 @@ window.ClockCalendarGenerator = (function () {
           ctx.fillStyle = '#0F172A';
           ctx.font = 'bold 36px "Segoe UI", Arial, sans-serif';
           ctx.textAlign = 'center';
-          ctx.fillText(`Today + ${addDays} Days = What Day?`, x + w / 2, cy + 150);
+          ctx.fillText(`Today (${startDay}) + ${addDays} Days = What Day?`, x + w / 2, cy + 150);
         }
       };
     },
 
-    // ── 4. Calendar Riddle ──
+    // ── 4. Calendar Riddle (Diverse Pool) ──
     _genCalendar: function (diff) {
+      const riddles = [
+        {
+          title: 'Condition: Exactly 3 Tuesdays fall on even dates.',
+          q: 'In a 31-day month, exactly 3 Tuesdays fall on even dates. What day is the 21st?',
+          a: 'Sunday (Tuesdays are on dates 2, 9, 16, 23, 30. If 23rd is Tuesday, 21st is Sunday)',
+          h: 'A month has at most 5 Tuesdays. To get 3 even Tuesdays, the 1st Tuesday must fall on the 2nd.'
+        },
+        {
+          title: 'Condition: 5 Fridays, 5 Saturdays, and 5 Sundays in a month.',
+          q: 'A month has 5 Fridays, 5 Saturdays, and 5 Sundays. What day is the 1st of this month?',
+          a: 'Friday (A 31-day month has 3 days that appear 5 times. These must be dates 1, 2, and 3)',
+          h: '31 days = 4 weeks + 3 extra days. Those 3 days are the 1st, 2nd, and 3rd of the month.'
+        },
+        {
+          title: 'Condition: Month begins on a Wednesday.',
+          q: 'A 30-day month begins on a Wednesday. What day of the week is the last day of the month?',
+          a: 'Thursday (30 ÷ 7 = 4 weeks + 2 days; 1st = Wed, 2nd = Thu, so 30th = Thu)',
+          h: 'Calculate 30 mod 7 = 2.'
+        },
+        {
+          title: 'Condition: Leap Year February.',
+          q: 'In a leap year, February 1st is a Monday. What day of the week is March 1st?',
+          a: 'Tuesday (February has 29 days in a leap year; 29 mod 7 = 1 day forward)',
+          h: 'Remember that leap year February has 29 days.'
+        }
+      ];
+
+      const r = riddles[Math.floor(Math.random() * riddles.length)];
+
       return {
         type: 'clock-calendar',
         subtype: 'calendar-puzzle',
         difficulty: diff,
         title: 'Calendar Month Logic',
-        instruction: 'In a certain month, exactly 3 Tuesdays fall on even dates. What day of the week is the 21st of that month?',
-        answer: 'Sunday (Tuesdays are on dates 2, 9, 16, 23, 30. If 23rd is Tuesday, 21st is Sunday)',
-        hint: 'A month has at most 5 Tuesdays. To get 3 even Tuesdays, the 1st Tuesday must fall on the 2nd.',
+        instruction: r.q,
+        answer: r.a,
+        hint: r.h,
         renderFn: function (ctx, x, y, w, h) {
           const cardX = x + 80;
           const cardY = y + 40;
@@ -285,31 +332,41 @@ window.ClockCalendarGenerator = (function () {
           ctx.fillText('🗓️ MONTHLY CALENDAR RIDDLE', cardX + cardW / 2, cardY + 60);
 
           ctx.fillStyle = '#334155';
-          ctx.font = '600 26px "Segoe UI", Arial, sans-serif';
-          ctx.fillText('Condition: Exactly 3 Tuesdays fall on even dates.', cardX + cardW / 2, cardY + 140);
+          ctx.font = '600 24px "Segoe UI", Arial, sans-serif';
+          ctx.fillText(r.title, cardX + cardW / 2, cardY + 135);
 
           ctx.fillStyle = '#DC2626';
-          ctx.font = 'bold 36px "Segoe UI", Arial, sans-serif';
-          ctx.fillText('What day of the week is the 21st?', cardX + cardW / 2, cardY + 220);
+          ctx.font = 'bold 30px "Segoe UI", Arial, sans-serif';
+          ctx.fillText(r.q.split('.')[0] + '?', cardX + cardW / 2, cardY + 210);
         }
       };
     },
 
-    // ── 5. Time Zones ──
+    // ── 5. Time Zones (Diverse City Pairs) ──
     _genTimeZones: function (diff) {
+      const pairs = [
+        { c1: 'LONDON (UTC +0)', c2: 'TOKYO (UTC +9)', t1: '03:00 PM', diffHours: 9, t2: '12:00 Midnight', label: '+ 9 Hours' },
+        { c1: 'NEW YORK (UTC -5)', c2: 'PARIS (UTC +1)', t1: '10:00 AM', diffHours: 6, t2: '04:00 PM', label: '+ 6 Hours' },
+        { c1: 'DHAKA (UTC +6)', c2: 'SYDNEY (UTC +10)', t1: '01:00 PM', diffHours: 4, t2: '05:00 PM', label: '+ 4 Hours' },
+        { c1: 'DUBAI (UTC +4)', c2: 'NEW YORK (UTC -5)', t1: '06:00 PM', diffHours: -9, t2: '09:00 AM', label: '- 9 Hours' },
+        { c1: 'TOKYO (UTC +9)', c2: 'LOS ANGELES (UTC -8)', t1: '11:00 AM', diffHours: -17, t2: '06:00 PM (Prev Day)', label: '- 17 Hours' }
+      ];
+
+      const p = pairs[Math.floor(Math.random() * pairs.length)];
+
       return {
         type: 'clock-calendar',
         subtype: 'time-zones',
         difficulty: diff,
         title: 'Global Time Zone Challenge',
-        instruction: 'If it is 03:00 PM in London (UTC +0), what time is it in Tokyo (UTC +9)?',
-        answer: '12:00 Midnight (same night)',
-        hint: 'Add 9 hours to 3:00 PM (15:00 + 9:00 = 24:00 midnight).',
+        instruction: `If it is ${p.t1} in ${p.c1.split(' ')[0]}, what time is it in ${p.c2.split(' ')[0]}?`,
+        answer: p.t2,
+        hint: `Apply the timezone difference: ${p.label}.`,
         renderFn: function (ctx, x, y, w, h) {
           const startX = x + 100;
           const cy = y + h / 2 - 30;
 
-          // London
+          // Origin City
           ctx.fillStyle = '#FFFFFF';
           ctx.strokeStyle = '#0F172A';
           ctx.lineWidth = 3;
@@ -318,19 +375,19 @@ window.ClockCalendarGenerator = (function () {
           ctx.stroke();
 
           ctx.fillStyle = '#0F172A';
-          ctx.font = 'bold 22px Arial';
+          ctx.font = 'bold 20px Arial';
           ctx.textAlign = 'center';
-          ctx.fillText('LONDON (UTC +0)', startX + 135, cy - 28);
+          ctx.fillText(p.c1, startX + 135, cy - 28);
           ctx.fillStyle = '#1E3A8A';
-          ctx.font = 'bold 40px Arial';
-          ctx.fillText('03:00 PM', startX + 135, cy + 30);
+          ctx.font = 'bold 36px Arial';
+          ctx.fillText(p.t1, startX + 135, cy + 30);
 
-          // Arrow
+          // Arrow with offset
           ctx.fillStyle = '#64748B';
-          ctx.font = 'bold 34px Arial';
-          ctx.fillText('+ 9 Hours ➔', x + w / 2, cy);
+          ctx.font = 'bold 30px Arial';
+          ctx.fillText(p.label + ' ➔', x + w / 2, cy);
 
-          // Tokyo
+          // Destination City
           const endX = x + w - 370;
           ctx.fillStyle = '#FFFFFF';
           ctx.strokeStyle = '#0F172A';
@@ -340,8 +397,8 @@ window.ClockCalendarGenerator = (function () {
           ctx.stroke();
 
           ctx.fillStyle = '#DC2626';
-          ctx.font = 'bold 22px Arial';
-          ctx.fillText('TOKYO (UTC +9)', endX + 135, cy - 28);
+          ctx.font = 'bold 20px Arial';
+          ctx.fillText(p.c2, endX + 135, cy - 28);
           ctx.fillStyle = '#DC2626';
           ctx.font = 'bold 44px Arial';
           ctx.fillText('?', endX + 135, cy + 30);

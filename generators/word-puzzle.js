@@ -246,16 +246,56 @@ window.WordPuzzleGenerator = (function () {
       };
     },
 
-    // ── 3. Rebus Riddle ──
+    // ── 3. Rebus Riddle (Diverse Pool of Classic Rebuses) ──
     _genRebus: function (diff) {
+      const rebusList = [
+        {
+          top: 'STAND',
+          bot: 'I',
+          divider: true,
+          answer: '"I UNDERSTAND" (The word STAND is placed physically over I)',
+          hint: 'Look closely at which word is over or under the other.'
+        },
+        {
+          top: 'MIND',
+          bot: 'MATTER',
+          divider: true,
+          answer: '"MIND OVER MATTER" (MIND is located physically over MATTER)',
+          hint: 'The top word is "over" the bottom word.'
+        },
+        {
+          top: 'HEAD',
+          bot: 'HEELS',
+          divider: true,
+          answer: '"HEAD OVER HEELS" (HEAD is positioned over HEELS)',
+          hint: 'Think of a common expression about falling in love.'
+        },
+        {
+          top: 'FORGIVE',
+          bot: 'FORGET',
+          divider: false,
+          answer: '"FORGIVE AND FORGET" (Both action words placed together)',
+          hint: 'A famous proverb about letting go of grievances.'
+        },
+        {
+          top: 'READING',
+          bot: 'THE LINES',
+          divider: true,
+          answer: '"READING BETWEEN THE LINES" (READING placed right on the line)',
+          hint: 'Look at the line dividing the words.'
+        }
+      ];
+
+      const rb = rebusList[Math.floor(Math.random() * rebusList.length)];
+
       return {
         type: 'word-puzzle',
         subtype: 'rebus',
         difficulty: diff,
         title: 'Visual Rebus Word Riddle',
         instruction: 'Decipher the positional word placement to uncover the hidden common English expression.',
-        answer: '"I UNDERSTAND" (The word STAND is placed physically over I)',
-        hint: 'Look closely at which word is over or under the other.',
+        answer: rb.answer,
+        hint: rb.hint,
         renderFn: function (ctx, x, y, w, h) {
           const cx = x + w / 2;
           const cy = y + h / 2 - 20;
@@ -264,32 +304,34 @@ window.WordPuzzleGenerator = (function () {
           ctx.fillStyle = '#FFFFFF';
           ctx.strokeStyle = '#0F172A';
           ctx.lineWidth = 3;
-          safeRoundRect(ctx, cx - 220, cy - 120, 440, 240, 16);
+          safeRoundRect(ctx, cx - 240, cy - 130, 480, 260, 16);
           ctx.fill();
           ctx.stroke();
 
-          // Top: STAND
+          // Top Word
           ctx.fillStyle = '#DC2626';
-          ctx.font = 'bold 58px Arial';
+          ctx.font = 'bold 52px Arial';
           ctx.textAlign = 'center';
-          ctx.fillText('STAND', cx, cy - 30);
+          ctx.fillText(rb.top, cx, cy - 35);
 
-          // Divider bar
-          ctx.strokeStyle = '#0F172A';
-          ctx.lineWidth = 4;
-          ctx.beginPath();
-          ctx.moveTo(cx - 150, cy + 5);
-          ctx.lineTo(cx + 150, cy + 5);
-          ctx.stroke();
+          // Optional Divider bar
+          if (rb.divider) {
+            ctx.strokeStyle = '#0F172A';
+            ctx.lineWidth = 4;
+            ctx.beginPath();
+            ctx.moveTo(cx - 160, cy + 5);
+            ctx.lineTo(cx + 160, cy + 5);
+            ctx.stroke();
+          }
 
-          // Bottom: I
+          // Bottom Word
           ctx.fillStyle = '#0F172A';
           ctx.font = 'bold 46px Arial';
-          ctx.fillText('I', cx, cy + 60);
+          ctx.fillText(rb.bot, cx, cy + 65);
 
           ctx.fillStyle = '#0F172A';
           ctx.font = 'bold 26px "Segoe UI", Arial, sans-serif';
-          ctx.fillText('What common phrase does this represent?', cx, cy + 180);
+          ctx.fillText('What common phrase does this represent?', cx, cy + 190);
         }
       };
     },
@@ -299,7 +341,9 @@ window.WordPuzzleGenerator = (function () {
       const items = [
         { letters: ['R', 'A', '?', 'I', 'U', 'S'], ans: 'RADIUS', clue: 'Distance from circle center to boundary' },
         { letters: ['A', '?', 'G', 'L', 'E'],      ans: 'ANGLE',  clue: 'Figure formed by two rays sharing a vertex' },
-        { letters: ['P', 'R', '?', 'S', 'M'],      ans: 'PRISM',  clue: 'Solid 3D geometric figure with flat faces' }
+        { letters: ['P', 'R', '?', 'S', 'M'],      ans: 'PRISM',  clue: 'Solid 3D geometric figure with flat faces' },
+        { letters: ['C', 'I', 'R', '?', 'L', 'E'], ans: 'CIRCLE', clue: 'Round plane figure whose boundary is equidistant from center' },
+        { letters: ['V', 'E', 'R', '?', 'E', 'X'], ans: 'VERTEX', clue: 'Common endpoint where two lines or rays meet' }
       ];
       const it = items[Math.floor(Math.random() * items.length)];
 
@@ -345,28 +389,62 @@ window.WordPuzzleGenerator = (function () {
       };
     },
 
-    // ── 5. Word Analogy ──
+    // ── 5. Word Analogy (Diverse Geometric & Spatial Analogies) ──
     _genAnalogy: function (diff) {
+      const analogies = [
+        {
+          left: 'SQUARE  :  AREA   ::   CUBE  :  ?',
+          opts: ['A) Side', 'B) Perimeter', 'C) Volume', 'D) Degree'],
+          ans: 'C) Volume (Square measures 2D area; Cube measures 3D volume)',
+          hint: 'Think about dimensions: 2D vs 3D measurements.'
+        },
+        {
+          left: 'CIRCLE  :  CIRCUMFERENCE   ::   SQUARE  :  ?',
+          opts: ['A) Diameter', 'B) Perimeter', 'C) Diagonal', 'D) Radius'],
+          ans: 'B) Perimeter (Circumference is the boundary of a circle; Perimeter is the boundary of a polygon)',
+          hint: 'Both terms describe the outer boundary length of the shape.'
+        },
+        {
+          left: 'TRIANGLE  :  180°   ::   QUADRILATERAL  :  ?',
+          opts: ['A) 270°', 'B) 360°', 'C) 540°', 'D) 720°'],
+          ans: 'B) 360° (Interior angles of triangle sum to 180°; quadrilateral sum is 360°)',
+          hint: 'Sum of interior angles formula: (n - 2) × 180°.'
+        },
+        {
+          left: 'LINE  :  1D   ::   PLANE  :  ?',
+          opts: ['A) 0D', 'B) 2D', 'C) 3D', 'D) 4D'],
+          ans: 'B) 2D (A line is one-dimensional; a flat plane is two-dimensional)',
+          hint: 'Consider geometric dimensionality.'
+        },
+        {
+          left: 'RADIUS  :  DIAMETER   ::   HALF  :  ?',
+          opts: ['A) Quarter', 'B) Whole', 'C) Double', 'D) Third'],
+          ans: 'B) Whole (Diameter is 2 × radius, so Whole is 2 × half)',
+          hint: 'Look at the 1 : 2 ratio.'
+        }
+      ];
+
+      const an = analogies[Math.floor(Math.random() * analogies.length)];
+
       return {
         type: 'word-puzzle',
         subtype: 'word-analogy',
         difficulty: diff,
         title: 'Dimensional Word Analogy',
-        instruction: 'Complete the proportional geometric analogy based on spatial dimensions.',
-        answer: 'C) VOLUME (Square is 2D area, Cube is 3D volume)',
-        hint: 'Square represents 2-dimensional area, while Cube represents 3 dimensions.',
+        instruction: 'Complete the proportional geometric analogy based on mathematical relationships.',
+        answer: an.ans,
+        hint: an.hint,
         renderFn: function (ctx, x, y, w, h) {
           const cx = x + w / 2;
           const cy = y + h / 2 - 60;
 
-          ctx.font = 'bold 36px "Segoe UI", Arial, sans-serif';
+          ctx.font = 'bold 34px "Segoe UI", Arial, sans-serif';
           ctx.fillStyle = '#0F172A';
           ctx.textAlign = 'center';
-          ctx.fillText('SQUARE  :  AREA   ::   CUBE  :  ?', cx, cy);
+          ctx.fillText(an.left, cx, cy);
 
           // Options A, B, C, D
-          const opts = ['A) Side', 'B) Perimeter', 'C) Volume', 'D) Degree'];
-          opts.forEach((opt, idx) => {
+          an.opts.forEach((opt, idx) => {
             const ox = x + 160 + (idx % 2) * 350;
             const oy = cy + 70 + Math.floor(idx / 2) * 85;
 

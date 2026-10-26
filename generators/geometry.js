@@ -207,7 +207,7 @@ window.GeometryGenerator = {
     const idx = this._rnd(0, shapeData.length - 1);
     const shape = shapeData[idx];
     return {
-      instruction: `A shape has these properties:\n• ${shape.props.join('\n• ')}\n\nWhat shape is this?`,
+      instruction: 'Identify the geometric shape that satisfies all properties shown below.',
       answer: shape.name,
       hint: `Count the sides and check the angle properties.`,
       renderData: { shape: shape.name.toLowerCase().replace(/\s+/g, '_'), props: shape.props }
@@ -217,38 +217,42 @@ window.GeometryGenerator = {
   // ─── Subtype: shape-sequence ──────────────────────────────────────────────
 
   _shapeSequence(difficulty) {
+    const allShapes = ['circle', 'square', 'triangle', 'pentagon', 'hexagon'];
+    // Shuffle and pick 3 distinct shapes for pattern
+    const pool = this._shuffle ? this._shuffle(allShapes) : allShapes.sort(() => Math.random() - 0.5);
+    const s1 = pool[0], s2 = pool[1], s3 = pool[2];
+
     if (difficulty === 'easy') {
-      const seq = ['circle', 'square', 'triangle', 'circle', 'square', 'triangle', '?'];
+      const seq = [s1, s2, s1, s2, '?'];
       return {
-        instruction: 'What comes next in the shape sequence?',
-        answer: 'Triangle (the pattern repeats: circle, square, triangle)',
-        hint: 'Look for a repeating pattern.',
+        instruction: 'What shape comes next in this alternating sequence?',
+        answer: `${s1.toUpperCase()} (alternates: ${s1}, ${s2})`,
+        hint: `Look at the two repeating shapes: ${s1} and ${s2}.`,
         renderData: { type: 'repeat', seq }
       };
     }
     if (difficulty === 'medium') {
-      // Sides increase: 3, 4, 5, 6, ?
-      const shapesBySides = {3:'triangle',4:'square',5:'pentagon',6:'hexagon',7:'heptagon',8:'octagon'};
-      const start = 3;
+      const shapesBySides = {3:'triangle', 4:'square', 5:'pentagon', 6:'hexagon', 7:'heptagon', 8:'octagon'};
+      const start = this._rnd ? this._rnd(3, 4) : 3;
       const count = 4;
       const seqSides = Array.from({length: count}, (_, i) => start + i);
       const nextSides = start + count;
-      const seq = seqSides.map(s => shapesBySides[s]);
+      const seq = seqSides.map(s => shapesBySides[s] || 'pentagon');
       seq.push('?');
       return {
         instruction: 'Each shape has one more side than the previous. What shape comes next?',
-        answer: `${shapesBySides[nextSides]} (${nextSides} sides)`,
-        hint: 'Count the number of sides in each shape.',
+        answer: `${(shapesBySides[nextSides] || 'polygon').toUpperCase()} (${nextSides} sides)`,
+        hint: 'Count the number of sides in each consecutive shape.',
         renderData: { type: 'sides', seq, seqSides, nextSides }
       };
     }
-    // hard: 6-shape pattern, missing the last shape
-    const shapes = ['circle', 'square', 'triangle', 'circle', 'square', '?'];
+    // hard: 3-shape repeating pattern
+    const seq = [s1, s2, s3, s1, s2, '?'];
     return {
-      instruction: 'The shapes follow a repeating pattern. What shape comes next (marked ?)?',
-      answer: 'Triangle (pattern repeats: circle, square, triangle)',
-      hint: 'Look for the cycle of repeating shapes.',
-      renderData: { type: 'repeat', seq: shapes }
+      instruction: 'The shapes follow a repeating 3-phase cycle. What shape replaces the question mark (?)?',
+      answer: `${s3.toUpperCase()} (cycle: ${s1}, ${s2}, ${s3})`,
+      hint: `Follow the 3-shape repeating sequence: ${s1} ➔ ${s2} ➔ ${s3}.`,
+      renderData: { type: 'repeat', seq }
     };
   },
 
