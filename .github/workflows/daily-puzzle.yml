@@ -1,0 +1,43 @@
+name: Daily Puzzle Generation & Publishing
+
+on:
+  schedule:
+    # 03:00 UTC is exactly 09:00 AM Asia/Dhaka time
+    - cron: '0 3 * * *'
+  workflow_dispatch:
+    inputs:
+      category:
+        description: 'Specific category (leave empty for random daily selection)'
+        required: false
+        default: ''
+  repository_dispatch:
+    types: [generate-puzzle]
+
+permissions:
+  contents: write
+
+jobs:
+  generate-and-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Generate Daily Puzzle & Render 1080x1080 PNG
+        run: node scripts/generate-puzzle.js
+
+      - name: Commit & Push Daily Puzzle Assets
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add puzzles/ package.json package-lock.json
+          git commit -m "chore(daily): generate daily puzzle for $(date +'%Y-%m-%d') [skip ci]" || echo "No changes to commit"
+          git push origin main

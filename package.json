@@ -1,0 +1,32 @@
+{
+  "name": "puzzle",
+  "version": "1.0.0",
+  "description": "Royal Puzzle Generator — Bright Path | Royal Technologies",
+  "main": "index.html",
+  "scripts": {
+    "generate": "node scripts/generate-puzzle.js",
+    "test": "node scripts/generate-puzzle.js"
+  },
+  "dependencies": {
+    "@napi-rs/canvas": "^0.1.66"
+  },
+  "optionalDependencies": {
+    "@napi-rs/canvas-win32-x64-msvc": "^0.1.66",
+    "@napi-rs/canvas-linux-x64-gnu": "^0.1.66",
+    "@napi-rs/canvas-linux-x64-musl": "^0.1.66",
+    "@napi-rs/canvas-darwin-x64": "^0.1.66",
+    "@napi-rs/canvas-darwin-arm64": "^0.1.66"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Royal-Technologies/Puzzle.git"
+  },
+  "keywords": [
+    "puzzle",
+    "mathematics-marvels",
+    "bright-path",
+    "royal-technologies"
+  ],
+  "author": "Royal Technologies",
+  "license": "MIT"
+}
