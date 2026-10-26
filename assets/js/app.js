@@ -5,19 +5,41 @@
 
 'use strict';
 
-// ── Generator registry (all 10 categories) ──
-const GENERATORS = {
-  'geometry':        window.GeometryGenerator,
-  'sudoku':          window.SudokuGenerator,
-  'number-sequence': window.NumberSequenceGenerator,
-  'matchstick':      window.MatchstickGenerator,
-  'logic':           window.LogicGenerator,
-  'clock-calendar':  window.ClockCalendarGenerator,
-  'word-puzzle':     window.WordPuzzleGenerator,
-  'visual-iq':       window.VisualIQGenerator,
-  'missing-number':  window.MissingNumberGenerator,
-  'visual-pattern':  window.VisualPatternGenerator,
-};
+// ── Universal Canvas roundRect polyfill ──
+if (typeof CanvasRenderingContext2D !== 'undefined' && !CanvasRenderingContext2D.prototype.roundRect) {
+  CanvasRenderingContext2D.prototype.roundRect = function (x, y, w, h, r) {
+    if (r === undefined) r = 0;
+    if (typeof r === 'number') r = [r, r, r, r];
+    const tl = r[0] || 0, tr = r[1] || r[0] || 0, br = r[2] || r[0] || 0, bl = r[3] || r[1] || r[0] || 0;
+    this.moveTo(x + tl, y);
+    this.lineTo(x + w - tr, y);
+    this.quadraticCurveTo(x + w, y, x + w, y + tr);
+    this.lineTo(x + w, y + h - br);
+    this.quadraticCurveTo(x + w, y + h, x + w - br, y + h);
+    this.lineTo(x + bl, y + h);
+    this.quadraticCurveTo(x, y + h, x, y + h - bl);
+    this.lineTo(x, y + tl);
+    this.quadraticCurveTo(x, y, x + tl, y);
+    return this;
+  };
+}
+
+// ── Dynamic generator lookup (always fresh from window) ──
+function getGenerator(type) {
+  const map = {
+    'geometry':        window.GeometryGenerator,
+    'sudoku':          window.SudokuGenerator,
+    'number-sequence': window.NumberSequenceGenerator,
+    'matchstick':      window.MatchstickGenerator,
+    'logic':           window.LogicGenerator,
+    'clock-calendar':  window.ClockCalendarGenerator,
+    'word-puzzle':     window.WordPuzzleGenerator,
+    'visual-iq':       window.VisualIQGenerator,
+    'missing-number':  window.MissingNumberGenerator,
+    'visual-pattern':  window.VisualPatternGenerator,
+  };
+  return map[type] || null;
+}
 
 // ── State ──
 let activeType    = 'geometry';
@@ -50,7 +72,7 @@ const themeLabel       = document.getElementById('theme-label');
 
 // ── Populate subtype <select> for the given puzzle type ──
 function populateSubtypes(type) {
-  const gen = GENERATORS[type];
+  const gen = getGenerator(type);
   subtypeSelect.innerHTML = '';
   if (!gen || !gen.subtypes || !gen.subtypes.length) {
     const opt = document.createElement('option');
@@ -65,12 +87,14 @@ function populateSubtypes(type) {
     opt.textContent = label;
     subtypeSelect.appendChild(opt);
   });
+  subtypeSelect.selectedIndex = 0;
 }
 
 // ── Switch active puzzle type ──
 function switchType(type) {
-  if (!GENERATORS[type]) {
-    console.warn(`Generator not found for type: ${type}`);
+  const gen = getGenerator(type);
+  if (!gen) {
+    console.warn(`Generator not found for type: "${type}"`);
     return;
   }
   activeType = type;
@@ -129,13 +153,16 @@ function renderCurrentToCanvas() {
 
 // ── Generate and render a puzzle ──
 function generatePuzzle() {
-  const gen = GENERATORS[activeType];
+  const gen = getGenerator(activeType);
   if (!gen) {
     console.error(`No generator registered for type: ${activeType}`);
     return;
   }
 
-  const subtype = subtypeSelect.value || 'default';
+  let subtype = subtypeSelect.value;
+  if (!subtype && gen.subtypes && gen.subtypes.length) {
+    subtype = gen.subtypes[0].value;
+  }
 
   btnGenerate.textContent = '⏳ Generating…';
   btnGenerate.disabled = true;
