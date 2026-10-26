@@ -36,30 +36,31 @@
   <!-- ===== MAIN LAYOUT ===== -->
   <main class="main-layout">
 
-    <!-- LEFT: Controls Panel (Wider) -->
+    <!-- LEFT: Controls Panel (Wider: 480px) -->
     <aside class="controls-panel">
 
-      <!-- Puzzle Type Dropdown (10 types) -->
-      <div class="control-group">
-        <label class="control-label" for="puzzle-type-select">Puzzle Category (10 Types)</label>
-        <select id="puzzle-type-select" class="subtype-select type-select">
-          <option value="geometry">🔺 1. Geometry Puzzles</option>
-          <option value="sudoku">🔢 2. Sudoku</option>
-          <option value="number-sequence">🔢 3. Number Sequence</option>
-          <option value="matchstick">🔥 4. Matchstick Puzzles</option>
-          <option value="logic">🧠 5. Logic Puzzles</option>
-          <option value="clock-calendar">🕐 6. Clock, Calendar &amp; Time Puzzles</option>
-          <option value="word-puzzle">📝 7. Word &amp; Rebus Puzzles</option>
-          <option value="visual-iq">🎯 8. Visual IQ Puzzles</option>
-          <option value="missing-number">❓ 9. Missing Number / Math Riddles</option>
-          <option value="visual-pattern">👁️ 10. Visual Pattern Puzzles</option>
-        </select>
-      </div>
+      <!-- Row 1: Puzzle Category (10 Types) + Sub Type in ONE row -->
+      <div class="control-row">
+        <div class="control-group">
+          <label class="control-label" for="puzzle-type-select">Puzzle Category (10)</label>
+          <select id="puzzle-type-select" class="subtype-select type-select">
+            <option value="geometry">🔺 1. Geometry</option>
+            <option value="sudoku">🔢 2. Sudoku</option>
+            <option value="number-sequence">🔢 3. Sequence</option>
+            <option value="matchstick">🔥 4. Matchstick</option>
+            <option value="logic">🧠 5. Logic</option>
+            <option value="clock-calendar">🕐 6. Clock &amp; Time</option>
+            <option value="word-puzzle">📝 7. Word &amp; Rebus</option>
+            <option value="visual-iq">🎯 8. Visual IQ</option>
+            <option value="missing-number">❓ 9. Missing Number</option>
+            <option value="visual-pattern">👁️ 10. Pattern</option>
+          </select>
+        </div>
 
-      <!-- Subtype -->
-      <div class="control-group">
-        <label class="control-label" for="subtype-select">Sub Type</label>
-        <select id="subtype-select" class="subtype-select"></select>
+        <div class="control-group">
+          <label class="control-label" for="subtype-select">Sub Type</label>
+          <select id="subtype-select" class="subtype-select"></select>
+        </div>
       </div>
 
       <!-- Difficulty -->
@@ -72,24 +73,25 @@
         </div>
       </div>
 
-      <!-- Canvas Background Color Option -->
-      <div class="control-group">
-        <label class="control-label" for="canvas-bg-select">Canvas Background / Style</label>
-        <select id="canvas-bg-select" class="subtype-select">
-          <option value="cream-paper" selected>📜 Light Cream (Paper Texture)</option>
-          <option value="clean-white">⚪ Clean Minimalist White</option>
-          <option value="warm-parchment">📜 Warm Vintage Parchment</option>
-          <option value="dark-slate">🌙 Dark Slate / Chalkboard</option>
-        </select>
-      </div>
+      <!-- Row 2: Canvas Background / Style + Header Title Style in ONE row -->
+      <div class="control-row">
+        <div class="control-group">
+          <label class="control-label" for="canvas-bg-select">Canvas Background</label>
+          <select id="canvas-bg-select" class="subtype-select">
+            <option value="cream-paper" selected>📜 Cream Paper</option>
+            <option value="clean-white">⚪ Clean White</option>
+            <option value="warm-parchment">📜 Warm Parchment</option>
+            <option value="dark-slate">🌙 Dark Slate</option>
+          </select>
+        </div>
 
-      <!-- Title Style Selector -->
-      <div class="control-group">
-        <label class="control-label" for="title-style-select">Header Title Style</label>
-        <select id="title-style-select" class="subtype-select">
-          <option value="nopen" selected>⚡ "NO PEN! NO PAPER!!"</option>
-          <option value="puzzle">🏷️ Selected Puzzle Title</option>
-        </select>
+        <div class="control-group">
+          <label class="control-label" for="title-style-select">Header Title</label>
+          <select id="title-style-select" class="subtype-select">
+            <option value="nopen" selected>⚡ "NO PEN! NO PAPER!!"</option>
+            <option value="puzzle">🏷️ Puzzle Title</option>
+          </select>
+        </div>
       </div>
 
       <!-- Buttons -->

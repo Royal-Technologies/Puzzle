@@ -152,13 +152,13 @@ a:hover { opacity: 0.8; }
   border-color: var(--primary);
 }
 
-/* ---------- Main Layout (Left Panel Wider: 390px) ---------- */
+/* ---------- Main Layout (Left Panel Wider: 480px) ---------- */
 .main-layout {
   display: grid;
-  grid-template-columns: 390px 1fr;
-  gap: 20px;
-  padding: 20px;
-  max-width: 1500px;
+  grid-template-columns: 480px 1fr;
+  gap: 24px;
+  padding: 24px;
+  max-width: 1560px;
   margin: 0 auto;
   width: 100%;
   flex: 1;
@@ -169,12 +169,19 @@ a:hover { opacity: 0.8; }
   background-color: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-  padding: 20px;
+  padding: 22px;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 16px;
   height: fit-content;
   box-shadow: var(--shadow-card);
+}
+
+/* Control Row for side-by-side selects */
+.control-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
 }
 
 .control-group {
@@ -256,9 +263,9 @@ a:hover { opacity: 0.8; }
 
 /* Action Buttons */
 .action-buttons {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
   margin-top: 4px;
 }
 
