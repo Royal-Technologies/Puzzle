@@ -242,13 +242,13 @@ window.GeometryGenerator = {
         renderData: { type: 'sides', seq, seqSides, nextSides }
       };
     }
-    // hard: 2×3 grid pattern, missing one
+    // hard: 6-shape pattern, missing the last shape
     const shapes = ['circle', 'square', 'triangle', 'circle', 'square', '?'];
     return {
-      instruction: 'The grid follows a pattern. What shape belongs in the missing cell (marked ?).',
-      answer: 'Triangle — each row contains circle, square, triangle',
-      hint: 'Look at each row and column for a pattern.',
-      renderData: { type: 'grid', shapes }
+      instruction: 'The shapes follow a repeating pattern. What shape comes next (marked ?)?',
+      answer: 'Triangle (pattern repeats: circle, square, triangle)',
+      hint: 'Look for the cycle of repeating shapes.',
+      renderData: { type: 'repeat', seq: shapes }
     };
   },
 
@@ -662,8 +662,8 @@ window.GeometryGenerator = {
   // ─── Render: shape-sequence ───────────────────────────────────────────────
 
   _renderShapeSequence(ctx, x, y, w, h, data) {
-    const rd = data.renderData;
-    const seq = rd.seq;
+    const rd = data.renderData || {};
+    const seq = rd.seq || rd.shapes || [];
     const count = seq.length;
     const cellW = Math.min(130, (w - 40) / count);
     const cellH = cellW;
