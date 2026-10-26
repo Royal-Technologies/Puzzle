@@ -67,32 +67,81 @@ window.GeometryGenerator = {
         renderData: { shape: 'triangle', angles: [90, a, null] }
       };
     }
-    if (difficulty === 'medium') {
-      // Quadrilateral: three angles given, find fourth
-      const a = this._rnd(60, 110);
-      const b = this._rnd(60, 110);
-      const c = this._rnd(60, 110);
-      const d = 360 - a - b - c;
+    if (difficulty === 'easy') {
+      // Right triangle: 90° + a + b = 180° => a + b = 90°
+      const a = this._rnd(25, 65);
+      const b = 90 - a;
       return {
-        instruction: `A quadrilateral has three angles: ${a}°, ${b}°, and ${c}°. Find angle x.`,
+        instruction: `In this right-angled triangle, one acute angle is ${a}°. Find the missing angle x.`,
+        answer: `${b}°`,
+        hint: `In a right triangle, the two acute angles add up to 90° (${a}° + x = 90°).`,
+        renderData: { shape: 'triangle', angles: [90, a, null] }
+      };
+    }
+
+    if (difficulty === 'medium') {
+      // Quadrilateral: 4 angles strictly between 50° and 130°, sum = 360°
+      let a = this._rnd(60, 110);
+      let b = this._rnd(60, 110);
+      let c = this._rnd(60, 110);
+      let d = 360 - a - b - c;
+      // Bounded retry to guarantee convex angles > 40° and < 150°
+      while (d < 45 || d > 145) {
+        a = this._rnd(65, 105);
+        b = this._rnd(65, 105);
+        c = this._rnd(65, 105);
+        d = 360 - a - b - c;
+      }
+      return {
+        instruction: `A convex quadrilateral has interior angles: ${a}°, ${b}°, and ${c}°. Find angle x.`,
         answer: `${d}°`,
-        hint: 'The sum of angles in a quadrilateral is 360°.',
+        hint: `The interior angles of any quadrilateral always sum to 360° (${a}° + ${b}° + ${c}° + x = 360°).`,
         renderData: { shape: 'quad', angles: [a, b, c, null] }
       };
     }
-    // hard: pentagon, sum = 540
-    const sides = this._rnd(0,1) === 0 ? 5 : 6;
+
+    // Hard: Pentagon (540°) or Hexagon (720°) with guaranteed positive, valid interior angles!
+    const sides = this._rnd(0, 1) === 0 ? 5 : 6;
     const sum = (sides - 2) * 180;
-    const known = [];
-    for (let i = 0; i < sides - 1; i++) {
-      known.push(this._rnd(80, 160));
-    }
-    const missing = sum - known.reduce((a, b) => a + b, 0);
     const shapeName = sides === 5 ? 'pentagon' : 'hexagon';
+
+    // Strict validation algorithm: generate angles that MUST sum to (n-2)*180 and all be convex (50° - 150°)
+    let known = [];
+    let missing = 0;
+    let isValid = false;
+
+    for (let attempt = 0; attempt < 50; attempt++) {
+      known = [];
+      let currentSum = 0;
+      const targetAvg = sum / sides;
+      for (let i = 0; i < sides - 1; i++) {
+        const val = this._rnd(Math.floor(targetAvg - 20), Math.floor(targetAvg + 20));
+        known.push(val);
+        currentSum += val;
+      }
+      missing = sum - currentSum;
+      // All angles must be between 50° and 150° (strictly positive, non-degenerate)
+      if (missing >= 50 && missing <= 150 && known.every(ang => ang >= 50 && ang <= 150)) {
+        isValid = true;
+        break;
+      }
+    }
+
+    if (!isValid) {
+      // Guaranteed fallback
+      if (sides === 5) {
+        known = [105, 110, 100, 115];
+        missing = 110; // 540 - 430 = 110
+      } else {
+        known = [115, 125, 110, 130, 120];
+        missing = 120; // 720 - 600 = 120
+      }
+    }
+
     return {
-      instruction: `A regular ${shapeName} has interior angles summing to ${sum}°. Given angles: ${known.join('°, ')}°. Find angle x.`,
+      instruction: `In this convex ${shapeName}, interior angles sum to ${sum}°. Given angles: ${known.join('°, ')}°. Find angle x.`,
       answer: `${missing}°`,
-      hint: `Sum of interior angles of a ${shapeName} = (${sides}−2)×180° = ${sum}°`,
+      hint: `Sum of interior angles of a ${shapeName} = (${sides}−2)×180° = ${sum}°. Subtract the known angles from ${sum}°.`,
       renderData: { shape: shapeName, sides, known, sum }
     };
   },

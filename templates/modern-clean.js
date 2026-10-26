@@ -1,6 +1,6 @@
 /* ============================================================
-   Mathematics Marvels & Puzzle Template (1080×1080 px)
-   Royal Technologies | royaltechbd.com
+   Bright Path Puzzle Template (1080×1080 px)
+   Branding: Bright Path | Royal Technologies
    ============================================================ */
 
 'use strict';
@@ -10,23 +10,19 @@ window.ModernCleanTemplate = (function () {
   const W = 1080;
   const H = 1080;
 
-  // Strict non-overlapping zones
-  const HEADER_H    = 140; // 0 -> 140
-  const BANNER_Y    = 148;
-  const BANNER_H    = 80;  // 148 -> 228
-  const CONTENT_X   = 50;
-  const CONTENT_Y   = 236; // 236 -> 960 (strictly isolated!)
-  const CONTENT_W   = 980;
-  const CONTENT_H   = 724;
-  const FOOTER_Y    = 968; // 968 -> 1080
-  const FOOTER_H    = 112;
+  // Single unified card layout (NO double lines, NO awkward separated banner)
+  const HEADER_H    = 145; // 0 -> 145
+  const CARD_X      = 50;
+  const CARD_Y      = 155; // 155 -> 965 (One seamless card)
+  const CARD_W      = 980;
+  const CARD_H      = 810;
+  const FOOTER_Y    = 975; // 975 -> 1080
+  const FOOTER_H    = 105;
 
   const BG_THEMES = {
     'cream-paper': {
       outerBg: '#0A192F',
       cardBg: '#FAF6EE',
-      bannerBg: '#F3ECE0',
-      bannerText: '#0F172A',
       headerGrad: ['#0A192F', '#1E3A8A'],
       borderColor: '#D8CEBF',
       paperTexture: true,
@@ -36,8 +32,6 @@ window.ModernCleanTemplate = (function () {
     'clean-white': {
       outerBg: '#0F172A',
       cardBg: '#FFFFFF',
-      bannerBg: '#F1F5F9',
-      bannerText: '#0F172A',
       headerGrad: ['#0F172A', '#1E293B'],
       borderColor: '#CBD5E1',
       paperTexture: false,
@@ -47,8 +41,6 @@ window.ModernCleanTemplate = (function () {
     'warm-parchment': {
       outerBg: '#1C1917',
       cardBg: '#F5EFEB',
-      bannerBg: '#E8DFD3',
-      bannerText: '#1C1917',
       headerGrad: ['#1C1917', '#44403C'],
       borderColor: '#D7CCC8',
       paperTexture: true,
@@ -58,8 +50,6 @@ window.ModernCleanTemplate = (function () {
     'dark-slate': {
       outerBg: '#030712',
       cardBg: '#0F172A',
-      bannerBg: '#1E293B',
-      bannerText: '#F8FAFC',
       headerGrad: ['#030712', '#1E293B'],
       borderColor: '#334155',
       paperTexture: false,
@@ -73,6 +63,18 @@ window.ModernCleanTemplate = (function () {
     medium: '#F59E0B',
     hard:   '#EF4444'
   };
+
+  function safeRoundRect(ctx, x, y, w, h, r) {
+    if (r === undefined) r = 8;
+    r = Math.min(r, Math.abs(w) / 2, Math.abs(h) / 2);
+    ctx.beginPath();
+    ctx.moveTo(x + r, y);
+    ctx.arcTo(x + w, y, x + w, y + h, r);
+    ctx.arcTo(x + w, y + h, x, y + h, r);
+    ctx.arcTo(x, y + h, x, y, r);
+    ctx.arcTo(x, y, x + w, y, r);
+    ctx.closePath();
+  }
 
   function render(canvas, puzzleData, options) {
     options = options || {};
@@ -90,13 +92,10 @@ window.ModernCleanTemplate = (function () {
     // 2. Header
     _drawHeader(ctx, puzzleData, theme, titleMode);
 
-    // 3. Isolated Instruction Banner
-    _drawInstructionBanner(ctx, puzzleData, theme);
+    // 3. Single Unified Card (No double lines!)
+    _drawUnifiedCard(ctx, puzzleData, theme);
 
-    // 4. Content Area
-    _drawContentCard(ctx, puzzleData, theme);
-
-    // 5. Footer
+    // 4. Footer with "Bright Path"
     _drawFooter(ctx, theme);
   }
 
@@ -107,14 +106,14 @@ window.ModernCleanTemplate = (function () {
     ctx.fillStyle = grad;
     ctx.fillRect(0, 0, W, HEADER_H);
 
-    // Category Badge
+    // Category Badge (Top-Left)
     const typeLabel = (puzzleData.type || 'PUZZLE').toUpperCase().replace(/-/g, ' ');
-    drawBadge(ctx, typeLabel, 30, 18, 'rgba(255,255,255,0.18)', '#FFFFFF');
+    drawBadge(ctx, typeLabel, 36, 18, 'rgba(255,255,255,0.22)', '#FFFFFF');
 
-    // Difficulty Badge
+    // Difficulty Badge (Top-Right)
     const diff = (puzzleData.difficulty || 'medium').toLowerCase();
     const diffColor = DIFF_COLORS[diff] || DIFF_COLORS.medium;
-    drawBadge(ctx, '⚡ ' + diff.toUpperCase(), W - 145, 18, diffColor, '#FFFFFF');
+    drawBadge(ctx, '⚡ ' + diff.toUpperCase(), W - 140, 18, diffColor, '#FFFFFF');
 
     // Main Header Title
     ctx.save();
@@ -138,12 +137,12 @@ window.ModernCleanTemplate = (function () {
       ctx.fillStyle = '#FFFFFF';
       ctx.shadowColor = 'rgba(0,0,0,0.5)';
       ctx.shadowBlur = 8;
-      ctx.fillText(puzzleData.title || 'Math Puzzle', W / 2, 68);
+      ctx.fillText(puzzleData.title || 'Brain Teaser', W / 2, 68);
 
       ctx.shadowBlur = 0;
       ctx.font = 'bold 20px Inter, Arial, sans-serif';
       ctx.fillStyle = '#FBBF24';
-      ctx.fillText('✦  MATHEMATICS MARVELS  ✦', W / 2, 108);
+      ctx.fillText('✦  BRIGHT PATH  ✦', W / 2, 108);
     }
     ctx.restore();
 
@@ -152,59 +151,67 @@ window.ModernCleanTemplate = (function () {
     ctx.fillRect(0, HEADER_H - 3, W, 3);
   }
 
-  function _drawInstructionBanner(ctx, puzzleData, theme) {
-    const bx = CONTENT_X;
-    const by = BANNER_Y;
-    const bw = CONTENT_W;
-    const bh = BANNER_H;
-
+  // ── Single Unified Card (Instruction at top + Diagram below) ──
+  function _drawUnifiedCard(ctx, puzzleData, theme) {
     ctx.save();
-    ctx.fillStyle = theme.bannerBg;
-    ctx.strokeStyle = theme.borderColor;
-    ctx.lineWidth = 1.5;
-    roundRect(ctx, bx, by, bw, bh, 10);
-    ctx.fill();
-    ctx.stroke();
-
-    const text = puzzleData.instruction || 'Solve the puzzle below:';
-    ctx.fillStyle = theme.bannerText;
-    ctx.font = '600 22px Inter, "Segoe UI", Arial, sans-serif';
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
-    wrapText(ctx, text, bx + bw / 2, by + bh / 2, bw - 60, 28);
-    ctx.restore();
-  }
-
-  function _drawContentCard(ctx, puzzleData, theme) {
-    ctx.save();
+    // Card Background
     ctx.fillStyle = theme.cardBg;
     ctx.strokeStyle = theme.borderColor;
-    ctx.lineWidth = 2;
-    roundRect(ctx, CONTENT_X, CONTENT_Y, CONTENT_W, CONTENT_H, 12);
+    ctx.lineWidth = 2.5;
+    safeRoundRect(ctx, CARD_X, CARD_Y, CARD_W, CARD_H, 14);
     ctx.fill();
     ctx.stroke();
 
     if (theme.paperTexture) {
-      _applyPaperTexture(ctx, CONTENT_X, CONTENT_Y, CONTENT_W, CONTENT_H);
+      _applyPaperTexture(ctx, CARD_X, CARD_Y, CARD_W, CARD_H);
     }
 
-    // Clip strictly within content card
+    // Top Instruction Section inside the card (Height: 90px)
+    const instH = 85;
+    ctx.fillStyle = theme.isDark ? 'rgba(255,255,255,0.04)' : 'rgba(15,23,42,0.03)';
     ctx.beginPath();
-    roundRect(ctx, CONTENT_X + 2, CONTENT_Y + 2, CONTENT_W - 4, CONTENT_H - 4, 10);
+    ctx.rect(CARD_X + 2, CARD_Y + 2, CARD_W - 4, instH);
+    ctx.fill();
+
+    // Divider line between instruction and diagram
+    ctx.strokeStyle = theme.borderColor;
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.moveTo(CARD_X + 20, CARD_Y + instH);
+    ctx.lineTo(CARD_X + CARD_W - 20, CARD_Y + instH);
+    ctx.stroke();
+
+    // Instruction text
+    const text = puzzleData.instruction || 'Solve the puzzle below:';
+    ctx.fillStyle = theme.textColor;
+    ctx.font = '600 22px Inter, "Segoe UI", Arial, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    wrapText(ctx, text, CARD_X + CARD_W / 2, CARD_Y + instH / 2, CARD_W - 80, 28);
+
+    // Clip strictly within the remaining diagram zone of the card
+    const diagramY = CARD_Y + instH + 10;
+    const diagramH = CARD_H - instH - 20;
+
+    ctx.save();
+    ctx.beginPath();
+    safeRoundRect(ctx, CARD_X + 4, diagramY, CARD_W - 8, diagramH, 10);
     ctx.clip();
 
-    // Call puzzle-specific render function with safe padded dimensions
+    // Call puzzle-specific render function
     if (typeof puzzleData.renderFn === 'function') {
       try {
-        puzzleData.renderFn(ctx, CONTENT_X + 20, CONTENT_Y + 20, CONTENT_W - 40, CONTENT_H - 40);
+        puzzleData.renderFn(ctx, CARD_X + 20, diagramY + 10, CARD_W - 40, diagramH - 20);
       } catch (err) {
         console.error('Puzzle render error:', err);
         ctx.fillStyle = '#DC2626';
         ctx.font = '24px Arial, sans-serif';
         ctx.textAlign = 'center';
-        ctx.fillText('Render error: ' + err.message, W / 2, CONTENT_Y + CONTENT_H / 2);
+        ctx.fillText('Render error: ' + err.message, W / 2, diagramY + diagramH / 2);
       }
     }
+    ctx.restore();
+
     ctx.restore();
   }
 
@@ -233,12 +240,14 @@ window.ModernCleanTemplate = (function () {
     ctx.fillRect(0, FOOTER_Y + 3, W, FOOTER_H);
 
     ctx.save();
+    // Left branding: Bright Path (as requested!)
     ctx.fillStyle = '#FFFFFF';
-    ctx.font = 'bold 32px Georgia, "Times New Roman", serif';
+    ctx.font = 'bold 34px Georgia, "Times New Roman", serif';
     ctx.textAlign = 'left';
     ctx.textBaseline = 'middle';
-    ctx.fillText('✦  Mathematics Marvels', 60, FOOTER_Y + FOOTER_H / 2);
+    ctx.fillText('✦  Bright Path', 60, FOOTER_Y + FOOTER_H / 2);
 
+    // Right credit
     ctx.fillStyle = '#94A3B8';
     ctx.font = '500 20px Inter, Arial, sans-serif';
     ctx.textAlign = 'right';
@@ -270,22 +279,6 @@ window.ModernCleanTemplate = (function () {
     });
   }
 
-  function roundRect(ctx, x, y, w, h, r) {
-    if (typeof ctx.roundRect === 'function') {
-      ctx.roundRect(x, y, w, h, r);
-      return;
-    }
-    if (w < 2 * r) r = w / 2;
-    if (h < 2 * r) r = h / 2;
-    ctx.beginPath();
-    ctx.moveTo(x + r, y);
-    ctx.arcTo(x + w, y, x + w, y + h, r);
-    ctx.arcTo(x + w, y + h, x, y + h, r);
-    ctx.arcTo(x, y + h, x, y, r);
-    ctx.arcTo(x, y, x + w, y, r);
-    ctx.closePath();
-  }
-
   function drawBadge(ctx, text, x, y, bgColor, textColor) {
     ctx.save();
     ctx.font = 'bold 16px Inter, "Segoe UI", Arial, sans-serif';
@@ -295,7 +288,7 @@ window.ModernCleanTemplate = (function () {
     const bh = 30;
 
     ctx.fillStyle = bgColor;
-    roundRect(ctx, x, y, bw, bh, bh / 2);
+    safeRoundRect(ctx, x, y, bw, bh, bh / 2);
     ctx.fill();
 
     ctx.fillStyle = textColor;
@@ -308,7 +301,7 @@ window.ModernCleanTemplate = (function () {
   return {
     render: render,
     wrapText: wrapText,
-    roundRect: roundRect,
+    roundRect: safeRoundRect,
     drawBadge: drawBadge
   };
 

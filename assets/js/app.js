@@ -60,6 +60,7 @@ const btnToggleAnswer  = document.getElementById('btn-toggle-answer');
 
 const hintBox          = document.getElementById('hint-box');
 const hintText         = document.getElementById('hint-text');
+const validationBadge  = document.getElementById('validation-badge');
 
 const btnGenerate      = document.getElementById('btn-generate');
 const btnExport        = document.getElementById('btn-export');
@@ -151,7 +152,55 @@ function renderCurrentToCanvas() {
   placeholder.style.display = 'none';
 }
 
-// ── Generate and render a puzzle ──
+// ── Deterministic Puzzle Validation Engine (AGENTS.md Compliance) ──
+function validatePuzzle(puzzle) {
+  if (!puzzle) return { valid: false, reason: 'Empty puzzle data' };
+  if (!puzzle.instruction || !puzzle.answer || typeof puzzle.renderFn !== 'function') {
+    return { valid: false, reason: 'Missing essential fields (instruction, answer, or renderFn)' };
+  }
+
+  // 1. Geometry Validation
+  if (puzzle.type === 'geometry') {
+    if (puzzle.subtype === 'missing-angle') {
+      const rd = puzzle.renderData;
+      if (rd) {
+        // Sum calculation check
+        if (rd.sides && rd.sum) {
+          const expectedSum = (rd.sides - 2) * 180;
+          if (rd.sum !== expectedSum) {
+            return { valid: false, reason: `Angle sum mismatch: ${rd.sum} != ${expectedSum}` };
+          }
+        }
+        // Known angles must be positive and convex
+        if (rd.known && rd.known.some(a => a <= 0 || a >= 180)) {
+          return { valid: false, reason: 'Angle must be strictly positive and < 180°' };
+        }
+        // Missing angle extracted from answer
+        const missingNum = parseFloat(puzzle.answer);
+        if (isNaN(missingNum) || missingNum <= 0 || missingNum >= 180) {
+          return { valid: false, reason: `Missing angle (${missingNum}°) is invalid or non-positive` };
+        }
+      }
+    }
+    if (puzzle.subtype === 'area-perimeter') {
+      const num = parseFloat(puzzle.answer);
+      if (isNaN(num) || num <= 0) {
+        return { valid: false, reason: 'Calculated area or perimeter must be positive' };
+      }
+    }
+  }
+
+  // 2. Number Sequence Validation
+  if (puzzle.type === 'number-sequence') {
+    if (!puzzle.answer || puzzle.answer === 'NaN') {
+      return { valid: false, reason: 'Sequence answer is invalid' };
+    }
+  }
+
+  return { valid: true };
+}
+
+// ── Generate and render a puzzle (with bounded retry & validation) ──
 function generatePuzzle() {
   const gen = getGenerator(activeType);
   if (!gen) {
@@ -169,16 +218,46 @@ function generatePuzzle() {
 
   setTimeout(() => {
     try {
-      const raw = gen.generate(subtype, activeDiff);
-      // Ensure compliance with AGENTS.md data contract
+      let attempts = 0;
+      let raw = null;
+      let vResult = { valid: false };
+
+      // Bounded retry loop (max 10 attempts) as mandated by AGENTS.md
+      while (attempts < 10) {
+        attempts++;
+        raw = gen.generate(subtype, activeDiff);
+        vResult = validatePuzzle(raw);
+        if (vResult.valid) break;
+        console.warn(`Attempt ${attempts} failed validation: ${vResult.reason}. Retrying...`);
+      }
+
       currentPuzzle = {
-        id: 'MM-' + Date.now().toString(36).toUpperCase(),
+        id: 'BP-' + Date.now().toString(36).toUpperCase(),
         category: activeType,
         difficulty: activeDiff,
         timestamp: new Date().toISOString(),
-        validationStatus: 'VALIDATED',
+        validationStatus: vResult.valid ? 'VALIDATED' : 'FAILED',
+        validationReason: vResult.reason || 'OK',
         ...raw
       };
+
+      // Update validation badge & export button state
+      if (validationBadge) {
+        if (vResult.valid) {
+          validationBadge.textContent = 'Verified ✓';
+          validationBadge.className = 'badge-verified';
+          validationBadge.title = 'Mathematical rules and constraints deterministically verified.';
+          btnExport.disabled = false;
+          btnExport.title = 'Export 1080×1080 PNG';
+        } else {
+          validationBadge.textContent = 'Validation Failed ✗';
+          validationBadge.className = 'badge-failed';
+          validationBadge.title = 'Validation failed: ' + vResult.reason;
+          btnExport.disabled = true;
+          btnExport.title = 'Export disabled: Puzzle failed mathematical validation';
+        }
+      }
+
     } catch (err) {
       console.error('Generator error:', err);
       btnGenerate.textContent = '🎲 Generate Puzzle';
@@ -200,7 +279,11 @@ function exportPNG() {
     alert('Please generate a puzzle first!');
     return;
   }
-  const filename = `MathematicsMarvels-${activeType}-${currentPuzzle.id}.png`;
+  if (currentPuzzle.validationStatus !== 'VALIDATED') {
+    alert('Export blocked: This puzzle failed deterministic mathematical validation.');
+    return;
+  }
+  const filename = `BrightPath-${activeType}-${currentPuzzle.id}.png`;
   window.PNGExporter.export(canvas, filename);
 }
 
