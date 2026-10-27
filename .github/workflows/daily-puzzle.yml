@@ -2,11 +2,9 @@ name: Daily Puzzle Generation & Publishing
 
 on:
   schedule:
-    # 3 times daily (Asia/Dhaka = UTC+6):
-    # 02:30 UTC = 08:30 AM Dhaka  (Morning edition)
-    # 08:30 UTC = 02:30 PM Dhaka  (Afternoon edition)
-    # 14:30 UTC = 08:30 PM Dhaka  (Evening edition)
-    - cron: '30 2,8,14 * * *'
+    # Once daily (Asia/Dhaka = UTC+6):
+    # 04:00 UTC = 10:00 AM Dhaka
+    - cron: '0 4 * * *'
   workflow_dispatch:
     inputs:
       category:
