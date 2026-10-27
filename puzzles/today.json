@@ -1,13 +1,13 @@
 {
-  "puzzleId": "BP-20261027-1F2N",
-  "category": "matchstick",
-  "subtype": "fix-equation",
+  "puzzleId": "BP-20261027-IAPZ",
+  "category": "geometry",
+  "subtype": "shaded-region",
   "difficulty": "hard",
   "answerVerified": true,
-  "answer": "5+5=10 (move vertical from + to turn 9 into 10)",
-  "hint": "Think about which single matchstick can be removed and relocated to change a digit or operator.",
+  "answer": "90 cm²",
+  "hint": "Shaded = Rectangle area − Triangle area",
   "caption": "⚡ Master Level IQ & Math Challenge from Bright Path! Drop your solution below. 🏆\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
   "imageUrl": "https://royal-technologies.github.io/Puzzle/puzzles/today.png",
-  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261027-1F2N.png",
-  "generatedAt": "2026-10-27T10:44:47.479+06:00"
+  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261027-IAPZ.png",
+  "generatedAt": "2026-10-27T18:33:09.042+06:00"
 }
