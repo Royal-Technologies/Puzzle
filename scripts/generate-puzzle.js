@@ -120,7 +120,7 @@ function generateSocialCaption(category, puzzleTitle, difficulty) {
     '#SudokuChallenge'
   ];
 
-  return `${hook}\n\nCategory: ${puzzleTitle || category.toUpperCase()} (Difficulty: HARD)\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n${hashtags.join(' ')}`;
+  return `${hook}\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n${hashtags.join(' ')}`;
 }
 
 // ── Main Daily Puzzle Generation Function ──
@@ -188,16 +188,17 @@ function generateDailyPuzzle(options = {}) {
     throw new Error(`Failed to generate valid puzzle after 10 attempts: ${validationResult.reason}`);
   }
 
-  // 4. Stable Puzzle ID & Timestamp
+  // 4. Stable Puzzle ID & Timestamp (Always use Asia/Dhaka +06:00)
   const now = new Date();
-  const dateStr = now.toISOString().slice(0, 10).replace(/-/g, '');
+  const dhakaOffset = 6 * 60; // minutes
+  const dhakaTime = new Date(now.getTime() + (dhakaOffset + now.getTimezoneOffset()) * 60000);
+  const dateStr = dhakaTime.toISOString().slice(0, 10).replace(/-/g, '');
   const randomSuffix = Math.random().toString(36).substring(2, 6).toUpperCase();
   const puzzleId = `BP-${dateStr}-${randomSuffix}`;
 
   // Asia/Dhaka ISO timestamp (+06:00)
-  const dhakaOffset = 6 * 60;
-  const localTime = new Date(now.getTime() + (dhakaOffset + now.getTimezoneOffset()) * 60000);
-  const isoDhaka = now.toISOString().replace('Z', '+06:00');
+  const pad = n => String(n).padStart(2, '0');
+  const isoDhaka = `${dhakaTime.getFullYear()}-${pad(dhakaTime.getMonth()+1)}-${pad(dhakaTime.getDate())}T${pad(dhakaTime.getHours())}:${pad(dhakaTime.getMinutes())}:${pad(dhakaTime.getSeconds())}.${String(dhakaTime.getMilliseconds()).padStart(3,'0')}+06:00`;
 
   const puzzleData = {
     id: puzzleId,

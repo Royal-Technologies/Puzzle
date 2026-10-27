@@ -67,18 +67,6 @@ window.GeometryGenerator = {
         renderData: { shape: 'triangle', angles: [90, a, null] }
       };
     }
-    if (difficulty === 'easy') {
-      // Right triangle: 90° + a + b = 180° => a + b = 90°
-      const a = this._rnd(25, 65);
-      const b = 90 - a;
-      return {
-        instruction: `In this right-angled triangle, one acute angle is ${a}°. Find the missing angle x.`,
-        answer: `${b}°`,
-        hint: `In a right triangle, the two acute angles add up to 90° (${a}° + x = 90°).`,
-        renderData: { shape: 'triangle', angles: [90, a, null] }
-      };
-    }
-
     if (difficulty === 'medium') {
       // Quadrilateral: 4 angles strictly between 50° and 130°, sum = 360°
       let a = this._rnd(60, 110);

@@ -493,7 +493,8 @@ window.LogicGenerator = {
       ctx.strokeStyle = '#FF6584';
       ctx.lineWidth = 1.8;
       ctx.beginPath();
-      ctx.roundRect(bx, boxY, boxW, boxH, 10);
+      if (ctx.roundRect) ctx.roundRect(bx, boxY, boxW, boxH, 10);
+      else ctx.rect(bx, boxY, boxW, boxH);
       ctx.fill();
       ctx.stroke();
       ctx.font = 'bold 20px Arial, sans-serif';
@@ -621,7 +622,8 @@ window.LogicGenerator = {
     ctx.strokeStyle = '#6C63FF';
     ctx.lineWidth = 1.5;
     ctx.beginPath();
-    ctx.roundRect(x + 30, y + 20, w - 60, h - 100, 16);
+    if (ctx.roundRect) ctx.roundRect(x + 30, y + 20, w - 60, h - 100, 16);
+    else ctx.rect(x + 30, y + 20, w - 60, h - 100);
     ctx.fill();
     ctx.stroke();
 
@@ -654,7 +656,8 @@ window.LogicGenerator = {
       ctx.strokeStyle = i === 0 ? '#2EC4B6' : '#E74C3C';
       ctx.lineWidth = 2;
       ctx.beginPath();
-      ctx.roundRect(bx, curY, 120, 44, 10);
+      if (ctx.roundRect) ctx.roundRect(bx, curY, 120, 44, 10);
+      else ctx.rect(bx, curY, 120, 44);
       ctx.fill();
       ctx.stroke();
       ctx.font = 'bold 20px Arial, sans-serif';

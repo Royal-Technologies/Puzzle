@@ -2,10 +2,10 @@ name: Daily Puzzle Generation & Publishing
 
 on:
   schedule:
-    # 3 times daily (Asia/Dhaka time):
-    # 02:30 UTC = 08:30 AM Dhaka (Morning edition)
-    # 08:30 UTC = 02:30 PM Dhaka (Afternoon edition)
-    # 14:30 UTC = 08:30 PM Dhaka (Evening edition)
+    # 3 times daily (Asia/Dhaka = UTC+6):
+    # 02:30 UTC = 08:30 AM Dhaka  (Morning edition)
+    # 08:30 UTC = 02:30 PM Dhaka  (Afternoon edition)
+    # 14:30 UTC = 08:30 PM Dhaka  (Evening edition)
     - cron: '30 2,8,14 * * *'
   workflow_dispatch:
     inputs:
@@ -22,6 +22,10 @@ permissions:
 jobs:
   generate-and-publish:
     runs-on: ubuntu-latest
+    env:
+      TZ: Asia/Dhaka   # ← Force Dhaka timezone for all steps
+      PUZZLE_CATEGORY: ${{ github.event.inputs.category }}
+
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -32,7 +36,7 @@ jobs:
           node-version: '20'
 
       - name: Install Dependencies
-        run: npm install
+        run: npm ci
 
       - name: Generate Daily Puzzle & Render 1080x1080 PNG
         run: node scripts/generate-puzzle.js
@@ -41,6 +45,12 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add puzzles/ package.json package-lock.json
-          git commit -m "chore(daily): generate puzzle for $(date +'%Y-%m-%d %H:%M UTC') [skip ci]" || echo "No changes to commit"
-          git push origin main
+          git add puzzles/
+          # Only commit + push when there are actual changes
+          if git diff --cached --quiet; then
+            echo "No changes to commit — puzzle unchanged."
+          else
+            DHAKA_TIME=$(TZ=Asia/Dhaka date +'%Y-%m-%d %H:%M %Z')
+            git commit -m "chore(puzzle): auto-generate ${DHAKA_TIME}"
+            git push origin main
+          fi
