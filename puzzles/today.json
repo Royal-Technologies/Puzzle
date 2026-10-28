@@ -1,13 +1,13 @@
 {
-  "puzzleId": "BP-20261028-IG75",
-  "category": "clock-calendar",
-  "subtype": "day-calculation",
+  "puzzleId": "BP-20261028-YKND",
+  "category": "missing-number",
+  "subtype": "number-triangle",
   "difficulty": "hard",
   "answerVerified": true,
-  "answer": "Saturday (31 ÷ 7 = 4 weeks with remainder 3 days)",
-  "hint": "Divide 31 by 7 and count forward by the remainder (3 days from Wednesday).",
+  "answer": "32 (Rule: Top × (Left + Right) = 4 × (5 + 3) = 32)",
+  "hint": "Multiply the top apex number by the sum of the bottom two numbers.",
   "caption": "🔥 Hard Level Challenge! Can you crack today’s Bright Path puzzle? Share your answer in the comments below! 🧠⚡\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
   "imageUrl": "https://royal-technologies.github.io/Puzzle/puzzles/today.png",
-  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261028-IG75.png",
-  "generatedAt": "2026-10-28T18:59:08.126+06:00"
+  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261028-YKND.png",
+  "generatedAt": "2026-10-29T00:11:10.150+06:00"
 }
