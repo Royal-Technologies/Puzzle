@@ -11,3 +11,7 @@ Thumbs.db
 
 # Logs
 *.log
+
+# Secrets — কখনো push করা যাবে না!
+scripts/.pat
+.pat

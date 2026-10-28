@@ -1,0 +1,37 @@
+name: Keepalive — Prevent Scheduled Workflow Disable
+
+# GitHub automatically DISABLES scheduled workflows
+# if there is no repository activity for 60 days.
+# This workflow runs weekly and makes a tiny commit
+# to reset the 60-day inactivity timer.
+
+on:
+  schedule:
+    # Every Sunday at 09:00 UTC = 03:00 PM Dhaka
+    - cron: '0 9 * * 0'
+  workflow_dispatch:  # Allow manual trigger any time
+
+permissions:
+  contents: write
+  actions: write
+
+jobs:
+  keepalive:
+    name: Keep Workflows Active
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Full history needed for date checks
+
+      - name: Run Keepalive Action
+        uses: gautamkrishnar/keepalive-workflow@v2
+        with:
+          # Only commits if last commit was more than 50 days ago
+          # (safely before GitHub's 60-day cutoff)
+          time_elapsed: 50
+          commit_message: "chore(keepalive): prevent scheduled workflow disable [skip ci]"
+          committer_username: "github-actions[bot]"
+          committer_email: "github-actions[bot]@users.noreply.github.com"
