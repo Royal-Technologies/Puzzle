@@ -1,5 +1,5 @@
 {
-  "lastCategory": "word-puzzle",
+  "lastCategory": "clock-calendar",
   "publishedIds": [
     "BP-20261026-M8X6",
     "BP-20261026-HJDD",
@@ -21,14 +21,15 @@
     "BP-20261026-89OG",
     "BP-20261027-1F2N",
     "BP-20261027-IAPZ",
-    "BP-20261027-F37Z"
+    "BP-20261027-F37Z",
+    "BP-20261028-IG75"
   ],
   "categoryCounts": {
     "geometry": 2,
     "sudoku": 7,
     "matchstick": 2,
     "logic": 2,
-    "clock-calendar": 1,
+    "clock-calendar": 2,
     "visual-iq": 1,
     "missing-number": 1,
     "number-sequence": 2,
