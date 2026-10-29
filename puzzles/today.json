@@ -1,13 +1,13 @@
 {
-  "puzzleId": "BP-20261029-PQUF",
-  "category": "visual-iq",
-  "subtype": "spatial-rotation",
+  "puzzleId": "BP-20261029-AMBN",
+  "category": "visual-pattern",
+  "subtype": "complete-series",
   "difficulty": "hard",
   "answerVerified": true,
-  "answer": "Option C (Exact 90° clockwise rotation — notice that the red dot and arm preserve their true relative positions without being mirrored)",
-  "hint": "Follow the orientation of the red dot: when rotating 90° clockwise, track where the dot moves.",
+  "answer": "Heptagon (7-sided regular polygon)",
+  "hint": "Count the number of vertices or sides in each consecutive figure: +1 side each step.",
   "caption": "⚡ Master Level IQ & Math Challenge from Bright Path! Drop your solution below. 🏆\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
   "imageUrl": "https://royal-technologies.github.io/Puzzle/puzzles/today.png",
-  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261029-PQUF.png",
-  "generatedAt": "2026-10-29T10:44:22.778+06:00"
+  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261029-AMBN.png",
+  "generatedAt": "2026-10-29T19:06:27.892+06:00"
 }
