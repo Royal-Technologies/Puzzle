@@ -1,5 +1,5 @@
 {
-  "lastCategory": "visual-pattern",
+  "lastCategory": "geometry",
   "publishedIds": [
     "BP-20261026-M8X6",
     "BP-20261026-HJDD",
@@ -25,10 +25,11 @@
     "BP-20261028-IG75",
     "BP-20261028-YKND",
     "BP-20261029-PQUF",
-    "BP-20261029-AMBN"
+    "BP-20261029-AMBN",
+    "BP-20261029-4WF0"
   ],
   "categoryCounts": {
-    "geometry": 2,
+    "geometry": 3,
     "sudoku": 7,
     "matchstick": 2,
     "logic": 2,
