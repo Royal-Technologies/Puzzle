@@ -1,13 +1,13 @@
 {
-  "puzzleId": "BP-20261030-CHH0",
-  "category": "logic",
-  "subtype": "truth-lies",
+  "puzzleId": "BP-20261030-NQIY",
+  "category": "number-sequence",
+  "subtype": "fibonacci",
   "difficulty": "hard",
   "answerVerified": true,
-  "answer": "Jack is the only liar. Kim and Leo tell the truth.",
-  "hint": "If someone lies, their statement about themselves or others must be false.",
-  "caption": "🔥 Hard Level Challenge! Can you crack today’s Bright Path puzzle? Share your answer in the comments below! 🧠⚡\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
+  "answer": "100, 162",
+  "hint": "Add the last two numbers to get the next.",
+  "caption": "⚡ Master Level IQ & Math Challenge from Bright Path! Drop your solution below. 🏆\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
   "imageUrl": "https://royal-technologies.github.io/Puzzle/puzzles/today.png",
-  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261030-CHH0.png",
-  "generatedAt": "2026-10-30T10:43:38.723+06:00"
+  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261030-NQIY.png",
+  "generatedAt": "2026-10-30T18:59:24.855+06:00"
 }
