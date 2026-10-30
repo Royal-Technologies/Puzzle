@@ -1,13 +1,13 @@
 {
-  "puzzleId": "BP-20261029-4WF0",
-  "category": "geometry",
-  "subtype": "shaded-region",
+  "puzzleId": "BP-20261030-CHH0",
+  "category": "logic",
+  "subtype": "truth-lies",
   "difficulty": "hard",
   "answerVerified": true,
-  "answer": "84 cm²",
-  "hint": "Shaded = Rectangle area − Triangle area",
+  "answer": "Jack is the only liar. Kim and Leo tell the truth.",
+  "hint": "If someone lies, their statement about themselves or others must be false.",
   "caption": "🔥 Hard Level Challenge! Can you crack today’s Bright Path puzzle? Share your answer in the comments below! 🧠⚡\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
   "imageUrl": "https://royal-technologies.github.io/Puzzle/puzzles/today.png",
-  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261029-4WF0.png",
-  "generatedAt": "2026-10-30T00:17:11.412+06:00"
+  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261030-CHH0.png",
+  "generatedAt": "2026-10-30T10:43:38.723+06:00"
 }
