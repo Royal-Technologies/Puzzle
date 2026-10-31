@@ -1,13 +1,13 @@
 {
-  "puzzleId": "BP-20261030-Y2FN",
-  "category": "word-puzzle",
-  "subtype": "word-chain",
+  "puzzleId": "BP-20261031-JBKB",
+  "category": "clock-calendar",
+  "subtype": "time-zones",
   "difficulty": "hard",
   "answerVerified": true,
-  "answer": "COLD ➔ CORD ➔ CARD ➔ WARD ➔ WARM",
-  "hint": "Each step must be a valid English dictionary word.",
-  "caption": "⚡ Master Level IQ & Math Challenge from Bright Path! Drop your solution below. 🏆\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
+  "answer": "09:00 AM",
+  "hint": "Apply the timezone difference: - 9 Hours.",
+  "caption": "💡 Can you solve today’s expert puzzle? Only 10% get this right on the first try! 🧩\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
   "imageUrl": "https://royal-technologies.github.io/Puzzle/puzzles/today.png",
-  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261030-Y2FN.png",
-  "generatedAt": "2026-10-30T23:52:47.779+06:00"
+  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261031-JBKB.png",
+  "generatedAt": "2026-10-31T10:28:25.742+06:00"
 }
