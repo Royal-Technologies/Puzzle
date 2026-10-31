@@ -1,13 +1,13 @@
 {
-  "puzzleId": "BP-20261031-JBKB",
-  "category": "clock-calendar",
-  "subtype": "time-zones",
+  "puzzleId": "BP-20261031-X7VQ",
+  "category": "visual-iq",
+  "subtype": "matrix-2x2",
   "difficulty": "hard",
   "answerVerified": true,
-  "answer": "09:00 AM",
-  "hint": "Apply the timezone difference: - 9 Hours.",
-  "caption": "💡 Can you solve today’s expert puzzle? Only 10% get this right on the first try! 🧩\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
+  "answer": "Option A (SQUARE with 3 dots — in each row, the dot count increases by 1 from left to right: 2 + 1 = 3)",
+  "hint": "Look horizontally from left to right: observe what changes and what stays the same.",
+  "caption": "🧠 Expert Brain Workout: Here is today’s challenging puzzle. What is your solution? 👇\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
   "imageUrl": "https://royal-technologies.github.io/Puzzle/puzzles/today.png",
-  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261031-JBKB.png",
-  "generatedAt": "2026-10-31T10:28:25.742+06:00"
+  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261031-X7VQ.png",
+  "generatedAt": "2026-10-31T18:37:27.923+06:00"
 }
