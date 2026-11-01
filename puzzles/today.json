@@ -1,13 +1,13 @@
 {
-  "puzzleId": "BP-20261101-6WJH",
-  "category": "missing-number",
-  "subtype": "number-triangle",
+  "puzzleId": "BP-20261101-2P21",
+  "category": "number-sequence",
+  "subtype": "fibonacci",
   "difficulty": "hard",
   "answerVerified": true,
-  "answer": "63 (Rule: Top × (Left + Right) = 7 × (3 + 6) = 63)",
-  "hint": "Multiply the top apex number by the sum of the bottom two numbers.",
+  "answer": "132, 214",
+  "hint": "Add the last two numbers to get the next.",
   "caption": "⚡ Master Level IQ & Math Challenge from Bright Path! Drop your solution below. 🏆\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
   "imageUrl": "https://royal-technologies.github.io/Puzzle/puzzles/today.png",
-  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261101-6WJH.png",
-  "generatedAt": "2026-11-01T10:48:16.620+06:00"
+  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261101-2P21.png",
+  "generatedAt": "2026-11-01T19:28:48.002+06:00"
 }
