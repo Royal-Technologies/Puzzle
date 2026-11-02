@@ -1,13 +1,13 @@
 {
-  "puzzleId": "BP-20261101-W1EM",
-  "category": "visual-pattern",
-  "subtype": "shape-transform",
+  "puzzleId": "BP-20261102-0PSV",
+  "category": "logic",
+  "subtype": "grid-logic",
   "difficulty": "hard",
   "answerVerified": true,
-  "answer": "Pentagon (⬟)",
-  "hint": "Analyze the rule applied from left to right.",
+  "answer": "Ryan → Track, Sara → Archery, Tom → Judo, Yuki → Swimming",
+  "hint": "Use process of elimination. Mark what's impossible to find what's certain.",
   "caption": "🧠 Expert Brain Workout: Here is today’s challenging puzzle. What is your solution? 👇\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
   "imageUrl": "https://royal-technologies.github.io/Puzzle/puzzles/today.png",
-  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261101-W1EM.png",
-  "generatedAt": "2026-11-01T23:48:48.310+06:00"
+  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261102-0PSV.png",
+  "generatedAt": "2026-11-02T10:49:43.159+06:00"
 }
