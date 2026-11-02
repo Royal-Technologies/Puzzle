@@ -1,13 +1,13 @@
 {
-  "puzzleId": "BP-20261102-MFQ5",
-  "category": "matchstick",
-  "subtype": "move-matches",
+  "puzzleId": "BP-20261102-IMKK",
+  "category": "clock-calendar",
+  "subtype": "time-elapsed",
   "difficulty": "hard",
   "answerVerified": true,
-  "answer": "Collapse the two rows into one row of 3 squares.",
-  "hint": "You are allowed to move exactly 4 matchstick(s).",
-  "caption": "⚡ Master Level IQ & Math Challenge from Bright Path! Drop your solution below. 🏆\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
+  "answer": "5 hours 30 minutes",
+  "hint": "Break into steps: count the hours first, then the remaining minutes.",
+  "caption": "🔥 Hard Level Challenge! Can you crack today’s Bright Path puzzle? Share your answer in the comments below! 🧠⚡\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
   "imageUrl": "https://royal-technologies.github.io/Puzzle/puzzles/today.png",
-  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261102-MFQ5.png",
-  "generatedAt": "2026-11-02T21:59:57.368+06:00"
+  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261102-IMKK.png",
+  "generatedAt": "2026-11-03T03:35:40.055+06:00"
 }

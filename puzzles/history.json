@@ -1,5 +1,5 @@
 {
-  "lastCategory": "matchstick",
+  "lastCategory": "clock-calendar",
   "publishedIds": [
     "BP-20261026-M8X6",
     "BP-20261026-HJDD",
@@ -37,14 +37,15 @@
     "BP-20261101-2P21",
     "BP-20261101-W1EM",
     "BP-20261102-0PSV",
-    "BP-20261102-MFQ5"
+    "BP-20261102-MFQ5",
+    "BP-20261102-IMKK"
   ],
   "categoryCounts": {
     "geometry": 3,
     "sudoku": 7,
     "matchstick": 4,
     "logic": 4,
-    "clock-calendar": 3,
+    "clock-calendar": 4,
     "visual-iq": 3,
     "missing-number": 3,
     "number-sequence": 4,
