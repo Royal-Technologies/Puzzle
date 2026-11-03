@@ -1,13 +1,13 @@
 {
-  "puzzleId": "BP-20261103-0PB8",
-  "category": "word-puzzle",
-  "subtype": "word-chain",
+  "puzzleId": "BP-20261103-N63Z",
+  "category": "geometry",
+  "subtype": "missing-angle",
   "difficulty": "hard",
   "answerVerified": true,
-  "answer": "HEAD ➔ HEAL ➔ TEAL ➔ TELL",
-  "hint": "Each step must be a valid English dictionary word.",
-  "caption": "💡 Can you solve today’s expert puzzle? Only 10% get this right on the first try! 🧩\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
+  "answer": "145°",
+  "hint": "Sum of interior angles of a hexagon = (6−2)×180° = 720°. Subtract the known angles from 720°.",
+  "caption": "⚡ Master Level IQ & Math Challenge from Bright Path! Drop your solution below. 🏆\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
   "imageUrl": "https://royal-technologies.github.io/Puzzle/puzzles/today.png",
-  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261103-0PB8.png",
-  "generatedAt": "2026-11-03T11:39:57.526+06:00"
+  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261103-N63Z.png",
+  "generatedAt": "2026-11-03T20:20:15.174+06:00"
 }
