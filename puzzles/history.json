@@ -1,5 +1,5 @@
 {
-  "lastCategory": "clock-calendar",
+  "lastCategory": "word-puzzle",
   "publishedIds": [
     "BP-20261026-M8X6",
     "BP-20261026-HJDD",
@@ -38,7 +38,8 @@
     "BP-20261101-W1EM",
     "BP-20261102-0PSV",
     "BP-20261102-MFQ5",
-    "BP-20261102-IMKK"
+    "BP-20261102-IMKK",
+    "BP-20261103-0PB8"
   ],
   "categoryCounts": {
     "geometry": 3,
@@ -50,6 +51,6 @@
     "missing-number": 3,
     "number-sequence": 4,
     "visual-pattern": 3,
-    "word-puzzle": 3
+    "word-puzzle": 4
   }
 }
