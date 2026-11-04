@@ -1,13 +1,13 @@
 {
-  "puzzleId": "BP-20261104-DDDO",
-  "category": "number-sequence",
-  "subtype": "next-in-series",
+  "puzzleId": "BP-20261104-M7MG",
+  "category": "matchstick",
+  "subtype": "move-matches",
   "difficulty": "hard",
   "answerVerified": true,
-  "answer": "63, 127",
-  "hint": "Try doubling and adding 1.",
-  "caption": "🧠 Expert Brain Workout: Here is today’s challenging puzzle. What is your solution? 👇\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
+  "answer": "Collapse the two rows into one row of 3 squares.",
+  "hint": "You are allowed to move exactly 4 matchstick(s).",
+  "caption": "🔥 Hard Level Challenge! Can you crack today’s Bright Path puzzle? Share your answer in the comments below! 🧠⚡\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
   "imageUrl": "https://royal-technologies.github.io/Puzzle/puzzles/today.png",
-  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261104-DDDO.png",
-  "generatedAt": "2026-11-04T20:36:58.306+06:00"
+  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261104-M7MG.png",
+  "generatedAt": "2026-11-05T01:36:14.769+06:00"
 }
