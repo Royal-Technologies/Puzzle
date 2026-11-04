@@ -1,5 +1,5 @@
 {
-  "lastCategory": "missing-number",
+  "lastCategory": "geometry",
   "publishedIds": [
     "BP-20261026-M8X6",
     "BP-20261026-HJDD",
@@ -41,10 +41,11 @@
     "BP-20261102-IMKK",
     "BP-20261103-0PB8",
     "BP-20261103-N63Z",
-    "BP-20261103-600F"
+    "BP-20261103-600F",
+    "BP-20261104-E7O5"
   ],
   "categoryCounts": {
-    "geometry": 4,
+    "geometry": 5,
     "sudoku": 7,
     "matchstick": 4,
     "logic": 4,
