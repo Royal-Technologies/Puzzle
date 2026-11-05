@@ -1,5 +1,5 @@
 {
-  "lastCategory": "visual-pattern",
+  "lastCategory": "logic",
   "publishedIds": [
     "BP-20261026-M8X6",
     "BP-20261026-HJDD",
@@ -45,13 +45,14 @@
     "BP-20261104-E7O5",
     "BP-20261104-DDDO",
     "BP-20261104-M7MG",
-    "BP-20261105-MG3D"
+    "BP-20261105-MG3D",
+    "BP-20261105-VB4T"
   ],
   "categoryCounts": {
     "geometry": 5,
     "sudoku": 7,
     "matchstick": 5,
-    "logic": 4,
+    "logic": 5,
     "clock-calendar": 4,
     "visual-iq": 3,
     "missing-number": 4,

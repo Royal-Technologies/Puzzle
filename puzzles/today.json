@@ -1,13 +1,13 @@
 {
-  "puzzleId": "BP-20261105-MG3D",
-  "category": "visual-pattern",
-  "subtype": "matrix-pattern",
+  "puzzleId": "BP-20261105-VB4T",
+  "category": "logic",
+  "subtype": "truth-lies",
   "difficulty": "hard",
   "answerVerified": true,
-  "answer": "✖",
-  "hint": "Notice each row and column contains each symbol exactly once (Latin square rule).",
-  "caption": "🧠 Expert Brain Workout: Here is today’s challenging puzzle. What is your solution? 👇\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
+  "answer": "Jack is the only liar. Kim and Leo tell the truth.",
+  "hint": "If someone lies, their statement about themselves or others must be false.",
+  "caption": "💡 Can you solve today’s expert puzzle? Only 10% get this right on the first try! 🧩\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
   "imageUrl": "https://royal-technologies.github.io/Puzzle/puzzles/today.png",
-  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261105-MG3D.png",
-  "generatedAt": "2026-11-05T11:31:56.227+06:00"
+  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261105-VB4T.png",
+  "generatedAt": "2026-11-05T20:42:59.394+06:00"
 }
