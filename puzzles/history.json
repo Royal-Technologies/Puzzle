@@ -1,5 +1,5 @@
 {
-  "lastCategory": "logic",
+  "lastCategory": "missing-number",
   "publishedIds": [
     "BP-20261026-M8X6",
     "BP-20261026-HJDD",
@@ -46,7 +46,8 @@
     "BP-20261104-DDDO",
     "BP-20261104-M7MG",
     "BP-20261105-MG3D",
-    "BP-20261105-VB4T"
+    "BP-20261105-VB4T",
+    "BP-20261105-AG0F"
   ],
   "categoryCounts": {
     "geometry": 5,
@@ -55,7 +56,7 @@
     "logic": 5,
     "clock-calendar": 4,
     "visual-iq": 3,
-    "missing-number": 4,
+    "missing-number": 5,
     "number-sequence": 5,
     "visual-pattern": 4,
     "word-puzzle": 4

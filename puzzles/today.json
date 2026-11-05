@@ -1,13 +1,15 @@
 {
-  "puzzleId": "BP-20261105-VB4T",
-  "category": "logic",
-  "subtype": "truth-lies",
+  "puzzleId": "BP-20261105-AG0F",
+  "category": "missing-number",
+  "subtype": "number-triangle",
   "difficulty": "hard",
+  "layout": "scenic-crimson-horizon",
+  "theme": "warm-parchment",
   "answerVerified": true,
-  "answer": "Jack is the only liar. Kim and Leo tell the truth.",
-  "hint": "If someone lies, their statement about themselves or others must be false.",
-  "caption": "💡 Can you solve today’s expert puzzle? Only 10% get this right on the first try! 🧩\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
+  "answer": "60 (Rule: Top × (Left + Right) = 5 × (5 + 7) = 60)",
+  "hint": "Multiply the top apex number by the sum of the bottom two numbers.",
+  "caption": "⚡ Master Level IQ & Math Challenge from Bright Path! Drop your solution below. 🏆\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
   "imageUrl": "https://royal-technologies.github.io/Puzzle/puzzles/today.png",
-  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261105-VB4T.png",
-  "generatedAt": "2026-11-05T20:42:59.394+06:00"
+  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261105-AG0F.png",
+  "generatedAt": "2026-11-05T21:09:53.799+06:00"
 }

@@ -50,8 +50,10 @@ let currentPuzzle = null;
 const canvas           = document.getElementById('puzzle-canvas');
 const subtypeSelect    = document.getElementById('subtype-select');
 const typeSelect       = document.getElementById('puzzle-type-select');
-const canvasBgSelect   = document.getElementById('canvas-bg-select');
+const layoutSelect     = document.getElementById('layout-select') || document.getElementById('canvas-bg-select');
+const themeSelect      = document.getElementById('theme-select');
 const titleStyleSelect = document.getElementById('title-style-select');
+const metaStyleTag     = document.getElementById('meta-style-tag');
 
 const answerBox        = document.getElementById('answer-box');
 const answerWrapper    = document.getElementById('answer-wrapper');
@@ -136,14 +138,30 @@ function showPuzzleInfo(puzzleData) {
 // ── Render current puzzle to canvas with active options ──
 function renderCurrentToCanvas() {
   if (!currentPuzzle) return;
-  const bgTheme = canvasBgSelect.value || 'cream-paper';
-  const titleMode = titleStyleSelect.value || 'nopen';
+  const requestedLayout = layoutSelect ? layoutSelect.value : 'random';
+  const requestedTheme  = themeSelect ? themeSelect.value : 'random';
+  const titleMode       = titleStyleSelect ? titleStyleSelect.value : 'nopen';
+
+  // Use fixed layout/theme on puzzle unless user explicitly selects from dropdown
+  const layout = requestedLayout !== 'random' ? requestedLayout : (currentPuzzle.layout || 'random');
+  const theme  = requestedTheme !== 'random' ? requestedTheme : (currentPuzzle.theme || 'random');
 
   try {
-    window.ModernCleanTemplate.render(canvas, currentPuzzle, {
-      bgTheme: bgTheme,
+    const result = window.ModernCleanTemplate.render(canvas, currentPuzzle, {
+      layout: layout,
+      theme: theme,
       titleMode: titleMode
     });
+
+    if (result) {
+      currentPuzzle.layout = result.layout;
+      currentPuzzle.theme = result.theme;
+      if (metaStyleTag) {
+        const lName = result.layoutInfo ? result.layoutInfo.name.split('(')[0].trim() : result.layout;
+        const tName = result.themeInfo ? result.themeInfo.name.split('(')[0].trim() : result.theme;
+        metaStyleTag.textContent = `🎨 ${lName} • ${tName}`;
+      }
+    }
   } catch (err) {
     console.error('Template render error:', err);
   }
@@ -231,10 +249,28 @@ function generatePuzzle() {
         console.warn(`Attempt ${attempts} failed validation: ${vResult.reason}. Retrying...`);
       }
 
+      // Pick Random Layout & Theme from 200 Royal Noor variations (or respect select)
+      const template = window.ModernCleanTemplate;
+      const layoutList = template.LAYOUT_KEYS || Object.keys(template.LAYOUTS);
+      const themeList = template.THEME_KEYS || Object.keys(template.THEMES);
+
+      const requestedLayout = layoutSelect ? layoutSelect.value : 'random';
+      const requestedTheme  = themeSelect ? themeSelect.value : 'random';
+
+      const chosenLayout = (requestedLayout && requestedLayout !== 'random' && template.LAYOUTS[requestedLayout])
+        ? requestedLayout
+        : layoutList[Math.floor(Math.random() * layoutList.length)];
+
+      const chosenTheme = (requestedTheme && requestedTheme !== 'random' && template.THEMES[requestedTheme])
+        ? requestedTheme
+        : themeList[Math.floor(Math.random() * themeList.length)];
+
       currentPuzzle = {
         id: 'BP-' + Date.now().toString(36).toUpperCase(),
         category: activeType,
         difficulty: activeDiff,
+        layout: chosenLayout,
+        theme: chosenTheme,
         timestamp: new Date().toISOString(),
         validationStatus: vResult.valid ? 'VALIDATED' : 'FAILED',
         validationReason: vResult.reason || 'OK',
@@ -302,10 +338,34 @@ diffBtns.forEach(btn => {
   });
 });
 
-// ── Canvas background & title style selectors: re-render instantly! ──
-canvasBgSelect.addEventListener('change', () => {
-  if (currentPuzzle) renderCurrentToCanvas();
-});
+// ── Layout, Theme & Title style selectors: re-render instantly! ──
+if (layoutSelect) {
+  layoutSelect.addEventListener('change', () => {
+    if (currentPuzzle) {
+      if (layoutSelect.value === 'random') {
+        const layoutList = window.ModernCleanTemplate.LAYOUT_KEYS;
+        currentPuzzle.layout = layoutList[Math.floor(Math.random() * layoutList.length)];
+      } else {
+        currentPuzzle.layout = layoutSelect.value;
+      }
+      renderCurrentToCanvas();
+    }
+  });
+}
+
+if (themeSelect) {
+  themeSelect.addEventListener('change', () => {
+    if (currentPuzzle) {
+      if (themeSelect.value === 'random') {
+        const themeList = window.ModernCleanTemplate.THEME_KEYS;
+        currentPuzzle.theme = themeList[Math.floor(Math.random() * themeList.length)];
+      } else {
+        currentPuzzle.theme = themeSelect.value;
+      }
+      renderCurrentToCanvas();
+    }
+  });
+}
 
 titleStyleSelect.addEventListener('change', () => {
   if (currentPuzzle) renderCurrentToCanvas();

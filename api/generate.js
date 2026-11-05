@@ -25,11 +25,15 @@ module.exports = async function handler(req, res) {
     const excludeCategory = body.excludeCategory || query.excludeCategory || null;
     const excludePuzzleIds = body.excludePuzzleIds || (query.excludePuzzleIds ? query.excludePuzzleIds.split(',') : []);
     const preferredCategory = body.category || query.category || null;
+    const layout = body.layout || query.layout || null;
+    const theme = body.theme || query.theme || null;
 
     const result = generateDailyPuzzle({
       excludeCategory,
       excludePuzzleIds,
-      preferredCategory
+      preferredCategory,
+      layout,
+      theme
     });
 
     // Remove imageBuffer from JSON response (as required by contract)

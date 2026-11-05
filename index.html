@@ -93,25 +93,64 @@
         </div>
       </div>
 
-      <!-- Row 2: Canvas Background / Style + Header Title Style in ONE row -->
+      <!-- Row 2: Royal Noor 20 Layouts & 10 Themes (200 Variations) -->
       <div class="control-row">
         <div class="control-group">
-          <label class="control-label" for="canvas-bg-select">Canvas Background</label>
-          <select id="canvas-bg-select" class="subtype-select">
-            <option value="cream-paper" selected>📜 Cream Paper</option>
-            <option value="clean-white">⚪ Clean White</option>
-            <option value="warm-parchment">📜 Warm Parchment</option>
-            <option value="dark-slate">🌙 Dark Slate</option>
+          <label class="control-label" for="layout-select">Design / Background (20 Styles)</label>
+          <select id="layout-select" class="subtype-select">
+            <option value="random" selected>🎲 Random Layout (20 Styles)</option>
+            <optgroup label="🏛️ Architectural Layouts (১০টি স্থাপত্য ফ্রেম)">
+              <option value="mihrab-arch">১. মেহরাব আর্চ (Mihrab Sanctuary Arch)</option>
+              <option value="royal-minimal">২. রাজকীয় মিনিমালিজম (Royal Modern Luxury)</option>
+              <option value="geometric-mandala">৩. ইসলামিক রজেট ও মান্ডালা (Sacred Rosette)</option>
+              <option value="illuminated-manuscript">৪. মদিনা পাণ্ডুলিপি ফ্রেম (Illuminated Manuscript)</option>
+              <option value="iznik-tiles">৫. অটোমান ইজনিক টাইলস (Ottoman Iznik Border)</option>
+              <option value="architectural-pillars">৬. রাজকীয় স্তম্ভ ও তোরণ (Royal Twin Pillars)</option>
+              <option value="celestial-crescent">৭. হিলাল ও সেলিস্টিয়াল গ্যালাক্সি (Celestial Crescent)</option>
+              <option value="alhambra-palace">৮. আন্দালুসীয় আলহামব্রা (Alhambra Arabesque)</option>
+              <option value="octagram-medallion">৯. আটকোণা মেডেলিয়ন (Rub el Hizb Seal)</option>
+              <option value="kiswah-gold-ribbon">১০. কাবার গিলাফ স্বর্ণসূত্র ফিতা (Kiswah Silk Ribbon)</option>
+            </optgroup>
+            <optgroup label="🌄 Scenic Backgrounds (১০টি সিনিক ব্যাকগ্রাউন্ড)">
+              <option value="scenic-mountain-twilight">১১. গোধূলি বেলার পাহাড় (Mountain Twilight)</option>
+              <option value="scenic-kaaba-parchment">১২. ভিন্টেজ কাবা পাণ্ডুলিপি (Kaaba Vintage Sketch)</option>
+              <option value="scenic-rehal-quran">১৩. কাঠের রেহাল ও কোরআন (Rehal &amp; Quran Studio)</option>
+              <option value="scenic-desert-stars">১৪. তারকাময় মরুভূমি (Desert Dunes &amp; Stars)</option>
+              <option value="scenic-golden-clouds">১৫. সোনালী সূর্যাস্ত মেঘমালা (Golden Sunset Clouds)</option>
+              <option value="scenic-mosque-dusk">১৬. গোধূলি মসজিদ গম্বুজ (Mosque Dome at Dusk)</option>
+              <option value="scenic-medina-sanctuary">১৭. মদিনার শ্যামলিম প্রাঙ্গণ (Medina Emerald Sanctuary)</option>
+              <option value="scenic-alabaster-gold">১৮. শুভ্র আইভরি ও সোনা (Alabaster Minimal Gold)</option>
+              <option value="scenic-crimson-horizon">১৯. রক্তিম দামেস্ক দিগন্ত (Crimson Dusk Horizon)</option>
+              <option value="scenic-kiswah-night">২০. কাবার কালো রেশম (Kiswah Midnight Silk)</option>
+            </optgroup>
           </select>
         </div>
 
         <div class="control-group">
-          <label class="control-label" for="title-style-select">Header Title</label>
-          <select id="title-style-select" class="subtype-select">
-            <option value="nopen" selected>⚡ "NO PEN! NO PAPER!!"</option>
-            <option value="puzzle">🏷️ Puzzle Title</option>
+          <label class="control-label" for="theme-select">Royal Color Theme (10 Palettes)</label>
+          <select id="theme-select" class="subtype-select">
+            <option value="random" selected>🎲 Random Theme (10 Themes)</option>
+            <option value="royal-emerald">🌿 পান্না সবুজ (Royal Emerald)</option>
+            <option value="midnight-navy">🌌 গভীর নীলকান্ত (Midnight Navy)</option>
+            <option value="imperial-black">🖤 কাবার গিলাফ ও সোনা (Imperial Onyx)</option>
+            <option value="warm-parchment">📜 মদিনা পাণ্ডুলিপি (Illuminated Parchment)</option>
+            <option value="royal-maroon">🍷 দামেস্ক মেরুন (Damascus Crimson)</option>
+            <option value="ottoman-turquoise">💎 অটোমান ফিরোজা (Ottoman Turquoise)</option>
+            <option value="desert-amber">🏜️ মরু জাফরান ও অ্যাম্বার (Hijaz Amber)</option>
+            <option value="amethyst-violet">💜 রাজকীয় বেগুনি (Royal Amethyst)</option>
+            <option value="andalusian-olive">🫒 আন্দালুসীয় অলিভ (Moorish Olive)</option>
+            <option value="classic-ivory">🤍 শুভ্র মুক্তা আইভরি (Classic Pearl Ivory)</option>
           </select>
         </div>
+      </div>
+
+      <!-- Row 3: Header Title Style -->
+      <div class="control-group" style="margin-bottom: 12px;">
+        <label class="control-label" for="title-style-select">Header Title Style</label>
+        <select id="title-style-select" class="subtype-select">
+          <option value="nopen" selected>⚡ "NO PEN! NO PAPER!!"</option>
+          <option value="puzzle">🏷️ Puzzle Title</option>
+        </select>
       </div>
 
       <!-- Buttons -->
@@ -158,6 +197,7 @@
       <div class="canvas-meta-bar">
         <span class="meta-tag">📐 1080 × 1080 PNG Full Resolution</span>
         <span class="meta-tag">🎨 Bright Path</span>
+        <span class="meta-tag" id="meta-style-tag">✨ Royal Noor 200 Styles</span>
         <span class="meta-tag">⚡ Facebook Ready</span>
       </div>
     </section>

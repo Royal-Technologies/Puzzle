@@ -22,6 +22,14 @@ global.CanvasRenderingContext2D = ctx.constructor;
 // Load ModernCleanTemplate
 eval(fs.readFileSync(path.join(rootDir, 'templates/modern-clean.js'), 'utf8'));
 
+// CLI Argument helper
+const cliArgs = process.argv.slice(2);
+function getArg(name, defaultValue = null) {
+  const prefix = `--${name}=`;
+  const match = cliArgs.find(a => a.startsWith(prefix));
+  return match ? match.slice(prefix.length) : defaultValue;
+}
+
 // Load all 10 generators
 const generatorFiles = [
   'geometry.js',
@@ -207,10 +215,33 @@ function generateDailyPuzzle(options = {}) {
     ...raw
   };
 
-  // 5. Render to 1080×1080 Canvas
-  const bgTheme = 'cream-paper';
-  const titleMode = 'nopen';
-  window.ModernCleanTemplate.render(canvas, puzzleData, { bgTheme, titleMode });
+  // 5. Select Layout & Theme (20 Royal Noor Layouts × 10 Themes = 200 Variations)
+  const template = window.ModernCleanTemplate;
+  const layoutList = template.LAYOUT_KEYS || Object.keys(template.LAYOUTS);
+  const themeList = template.THEME_KEYS || Object.keys(template.THEMES);
+
+  const forcedLayout = options.layout || getArg('layout', process.env.PUZZLE_LAYOUT || null);
+  const forcedTheme = options.theme || getArg('theme', process.env.PUZZLE_THEME || null);
+
+  const selectedLayout = (forcedLayout && template.LAYOUTS && template.LAYOUTS[forcedLayout])
+    ? forcedLayout
+    : layoutList[Math.floor(Math.random() * layoutList.length)];
+
+  const selectedTheme = (forcedTheme && template.THEMES && template.THEMES[forcedTheme])
+    ? forcedTheme
+    : themeList[Math.floor(Math.random() * themeList.length)];
+
+  console.log(`🎨 [Design] Royal Noor Style (from ${layoutList.length} Layouts × ${themeList.length} Themes = 200 Variations):`);
+  console.log(`   ► Layout: "${selectedLayout}" (${template.LAYOUTS[selectedLayout]?.name || selectedLayout})`);
+  console.log(`   ► Theme:  "${selectedTheme}" (${template.THEMES[selectedTheme]?.name || selectedTheme})`);
+
+  // Render to 1080×1080 Canvas
+  const titleMode = options.titleMode || 'nopen';
+  template.render(canvas, puzzleData, {
+    layout: selectedLayout,
+    theme: selectedTheme,
+    titleMode: titleMode
+  });
   const imageBuffer = canvas.toBuffer('image/png');
 
   // 6. Public URLs (Hosted on GitHub Pages)
@@ -233,6 +264,8 @@ function generateDailyPuzzle(options = {}) {
     category: selectedCategory,
     subtype: chosenSubtype,
     difficulty: chosenDiff,
+    layout: selectedLayout,
+    theme: selectedTheme,
     answerVerified: true,
     answer: puzzleData.answer,
     hint: puzzleData.hint || '',
@@ -265,6 +298,8 @@ if (require.main === module) {
     console.log('✓ Successfully generated puzzle:');
     console.log(`  ID:       ${result.puzzleId}`);
     console.log(`  Category: ${result.category} (${result.subtype})`);
+    console.log(`  Layout:   ${result.layout}`);
+    console.log(`  Theme:    ${result.theme}`);
     console.log(`  Verified: ${result.answerVerified}`);
     console.log(`  Answer:   ${result.answer}`);
     console.log(`  Image:    ${result.imageUrl}`);
