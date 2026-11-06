@@ -1,15 +1,15 @@
 {
-  "puzzleId": "BP-20261106-7007",
-  "category": "visual-pattern",
-  "subtype": "shape-transform",
+  "puzzleId": "BP-20261106-VGN3",
+  "category": "visual-iq",
+  "subtype": "spatial-rotation",
   "difficulty": "hard",
-  "layout": "alhambra-palace",
-  "theme": "imperial-black",
+  "layout": "iznik-tiles",
+  "theme": "amethyst-violet",
   "answerVerified": true,
-  "answer": "Square inside Square (▣)",
-  "hint": "Analyze the rule applied from left to right.",
+  "answer": "Option B (Exact 180° rotation — notice that the red dot and arm preserve their true relative positions without being mirrored)",
+  "hint": "Follow the orientation of the red dot: when rotating 180°, track where the dot moves.",
   "caption": "⚡ Master Level IQ & Math Challenge from Bright Path! Drop your solution below. 🏆\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
   "imageUrl": "https://royal-technologies.github.io/Puzzle/puzzles/today.png",
-  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261106-7007.png",
-  "generatedAt": "2026-11-06T20:19:54.155+06:00"
+  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261106-VGN3.png",
+  "generatedAt": "2026-11-07T01:08:29.395+06:00"
 }
