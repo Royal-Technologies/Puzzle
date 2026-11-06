@@ -1,15 +1,15 @@
 {
-  "puzzleId": "BP-20261106-NKZE",
-  "category": "visual-iq",
-  "subtype": "matrix-2x2",
+  "puzzleId": "BP-20261106-7007",
+  "category": "visual-pattern",
+  "subtype": "shape-transform",
   "difficulty": "hard",
-  "layout": "scenic-mosque-dusk",
-  "theme": "classic-ivory",
+  "layout": "alhambra-palace",
+  "theme": "imperial-black",
   "answerVerified": true,
-  "answer": "Option C (Solid Square — from row 1, the shape remains the same while hollow changes to solid)",
-  "hint": "Look horizontally from left to right: observe what changes and what stays the same.",
+  "answer": "Square inside Square (▣)",
+  "hint": "Analyze the rule applied from left to right.",
   "caption": "⚡ Master Level IQ & Math Challenge from Bright Path! Drop your solution below. 🏆\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
   "imageUrl": "https://royal-technologies.github.io/Puzzle/puzzles/today.png",
-  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261106-NKZE.png",
-  "generatedAt": "2026-11-06T11:29:19.767+06:00"
+  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261106-7007.png",
+  "generatedAt": "2026-11-06T20:19:54.155+06:00"
 }
