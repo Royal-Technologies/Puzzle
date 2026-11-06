@@ -1,15 +1,15 @@
 {
-  "puzzleId": "BP-20261105-D8QW",
-  "category": "word-puzzle",
-  "subtype": "rebus",
+  "puzzleId": "BP-20261106-NKZE",
+  "category": "visual-iq",
+  "subtype": "matrix-2x2",
   "difficulty": "hard",
-  "layout": "scenic-medina-sanctuary",
-  "theme": "midnight-navy",
+  "layout": "scenic-mosque-dusk",
+  "theme": "classic-ivory",
   "answerVerified": true,
-  "answer": "\"I UNDERSTAND\" (The word STAND is placed physically over I)",
-  "hint": "Look closely at which word is over or under the other.",
-  "caption": "🧠 Expert Brain Workout: Here is today’s challenging puzzle. What is your solution? 👇\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
+  "answer": "Option C (Solid Square — from row 1, the shape remains the same while hollow changes to solid)",
+  "hint": "Look horizontally from left to right: observe what changes and what stays the same.",
+  "caption": "⚡ Master Level IQ & Math Challenge from Bright Path! Drop your solution below. 🏆\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
   "imageUrl": "https://royal-technologies.github.io/Puzzle/puzzles/today.png",
-  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261105-D8QW.png",
-  "generatedAt": "2026-11-06T01:44:46.393+06:00"
+  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261106-NKZE.png",
+  "generatedAt": "2026-11-06T11:29:19.767+06:00"
 }
