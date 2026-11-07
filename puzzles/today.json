@@ -1,15 +1,15 @@
 {
-  "puzzleId": "BP-20261107-5NDI",
-  "category": "geometry",
-  "subtype": "shaded-region",
+  "puzzleId": "BP-20261107-14JX",
+  "category": "clock-calendar",
+  "subtype": "day-calculation",
   "difficulty": "hard",
-  "layout": "scenic-kaaba-parchment",
-  "theme": "royal-emerald",
+  "layout": "iznik-tiles",
+  "theme": "ottoman-turquoise",
   "answerVerified": true,
-  "answer": "140 cm²",
-  "hint": "Shaded = Rectangle area − Triangle area",
-  "caption": "💡 Can you solve today’s expert puzzle? Only 10% get this right on the first try! 🧩\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
+  "answer": "Friday (40 ÷ 7 = 5 weeks with remainder 5 days)",
+  "hint": "Divide 40 by 7 and count forward by the remainder (5 days from Sunday).",
+  "caption": "⚡ Master Level IQ & Math Challenge from Bright Path! Drop your solution below. 🏆\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
   "imageUrl": "https://royal-technologies.github.io/Puzzle/puzzles/today.png",
-  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261107-5NDI.png",
-  "generatedAt": "2026-11-07T10:58:01.844+06:00"
+  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261107-14JX.png",
+  "generatedAt": "2026-11-07T19:06:37.464+06:00"
 }
