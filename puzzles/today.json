@@ -1,15 +1,15 @@
 {
-  "puzzleId": "BP-20261107-14JX",
-  "category": "clock-calendar",
-  "subtype": "day-calculation",
+  "puzzleId": "BP-20261107-DI7H",
+  "category": "number-sequence",
+  "subtype": "next-in-series",
   "difficulty": "hard",
-  "layout": "iznik-tiles",
-  "theme": "ottoman-turquoise",
+  "layout": "scenic-kiswah-night",
+  "theme": "classic-ivory",
   "answerVerified": true,
-  "answer": "Friday (40 ÷ 7 = 5 weeks with remainder 5 days)",
-  "hint": "Divide 40 by 7 and count forward by the remainder (5 days from Sunday).",
-  "caption": "⚡ Master Level IQ & Math Challenge from Bright Path! Drop your solution below. 🏆\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
+  "answer": "16, 22",
+  "hint": "The difference increases by 1 each time.",
+  "caption": "🧠 Expert Brain Workout: Here is today’s challenging puzzle. What is your solution? 👇\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
   "imageUrl": "https://royal-technologies.github.io/Puzzle/puzzles/today.png",
-  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261107-14JX.png",
-  "generatedAt": "2026-11-07T19:06:37.464+06:00"
+  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261107-DI7H.png",
+  "generatedAt": "2026-11-07T23:38:55.720+06:00"
 }
