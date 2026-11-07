@@ -1,5 +1,5 @@
 {
-  "lastCategory": "visual-iq",
+  "lastCategory": "geometry",
   "publishedIds": [
     "BP-20261026-M8X6",
     "BP-20261026-HJDD",
@@ -51,10 +51,11 @@
     "BP-20261105-D8QW",
     "BP-20261106-NKZE",
     "BP-20261106-7007",
-    "BP-20261106-VGN3"
+    "BP-20261106-VGN3",
+    "BP-20261107-5NDI"
   ],
   "categoryCounts": {
-    "geometry": 5,
+    "geometry": 6,
     "sudoku": 7,
     "matchstick": 5,
     "logic": 5,

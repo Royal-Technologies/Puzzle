@@ -1,15 +1,15 @@
 {
-  "puzzleId": "BP-20261106-VGN3",
-  "category": "visual-iq",
-  "subtype": "spatial-rotation",
+  "puzzleId": "BP-20261107-5NDI",
+  "category": "geometry",
+  "subtype": "shaded-region",
   "difficulty": "hard",
-  "layout": "iznik-tiles",
-  "theme": "amethyst-violet",
+  "layout": "scenic-kaaba-parchment",
+  "theme": "royal-emerald",
   "answerVerified": true,
-  "answer": "Option B (Exact 180° rotation — notice that the red dot and arm preserve their true relative positions without being mirrored)",
-  "hint": "Follow the orientation of the red dot: when rotating 180°, track where the dot moves.",
-  "caption": "⚡ Master Level IQ & Math Challenge from Bright Path! Drop your solution below. 🏆\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
+  "answer": "140 cm²",
+  "hint": "Shaded = Rectangle area − Triangle area",
+  "caption": "💡 Can you solve today’s expert puzzle? Only 10% get this right on the first try! 🧩\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
   "imageUrl": "https://royal-technologies.github.io/Puzzle/puzzles/today.png",
-  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261106-VGN3.png",
-  "generatedAt": "2026-11-07T01:08:29.395+06:00"
+  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261107-5NDI.png",
+  "generatedAt": "2026-11-07T10:58:01.844+06:00"
 }
