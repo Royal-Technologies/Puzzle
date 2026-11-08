@@ -1,5 +1,5 @@
 {
-  "lastCategory": "logic",
+  "lastCategory": "clock-calendar",
   "publishedIds": [
     "BP-20261026-M8X6",
     "BP-20261026-HJDD",
@@ -55,14 +55,15 @@
     "BP-20261107-5NDI",
     "BP-20261107-14JX",
     "BP-20261107-DI7H",
-    "BP-20261108-YCJ4"
+    "BP-20261108-YCJ4",
+    "BP-20261108-W7ET"
   ],
   "categoryCounts": {
     "geometry": 6,
     "sudoku": 7,
     "matchstick": 5,
     "logic": 6,
-    "clock-calendar": 5,
+    "clock-calendar": 6,
     "visual-iq": 5,
     "missing-number": 5,
     "number-sequence": 6,
