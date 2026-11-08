@@ -1,15 +1,15 @@
 {
-  "puzzleId": "BP-20261108-W7ET",
-  "category": "clock-calendar",
-  "subtype": "day-calculation",
+  "puzzleId": "BP-20261108-2XBB",
+  "category": "visual-iq",
+  "subtype": "spatial-rotation",
   "difficulty": "hard",
-  "layout": "illuminated-manuscript",
+  "layout": "iznik-tiles",
   "theme": "royal-emerald",
   "answerVerified": true,
-  "answer": "Friday (75 ÷ 7 = 10 weeks with remainder 5 days)",
-  "hint": "Divide 75 by 7 and count forward by the remainder (5 days from Sunday).",
-  "caption": "🧠 Expert Brain Workout: Here is today’s challenging puzzle. What is your solution? 👇\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
+  "answer": "Option C (Exact 90° clockwise rotation — notice that the red dot and arm preserve their true relative positions without being mirrored)",
+  "hint": "Follow the orientation of the red dot: when rotating 90° clockwise, track where the dot moves.",
+  "caption": "💡 Can you solve today’s expert puzzle? Only 10% get this right on the first try! 🧩\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
   "imageUrl": "https://royal-technologies.github.io/Puzzle/puzzles/today.png",
-  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261108-W7ET.png",
-  "generatedAt": "2026-11-08T19:28:52.476+06:00"
+  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261108-2XBB.png",
+  "generatedAt": "2026-11-08T23:49:01.326+06:00"
 }
