@@ -1,15 +1,15 @@
 {
-  "puzzleId": "BP-20261108-2XBB",
-  "category": "visual-iq",
-  "subtype": "spatial-rotation",
+  "puzzleId": "BP-20261109-A7R0",
+  "category": "matchstick",
+  "subtype": "fix-equation",
   "difficulty": "hard",
-  "layout": "iznik-tiles",
+  "layout": "mihrab-arch",
   "theme": "royal-emerald",
   "answerVerified": true,
-  "answer": "Option C (Exact 90° clockwise rotation — notice that the red dot and arm preserve their true relative positions without being mirrored)",
-  "hint": "Follow the orientation of the red dot: when rotating 90° clockwise, track where the dot moves.",
-  "caption": "💡 Can you solve today’s expert puzzle? Only 10% get this right on the first try! 🧩\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
+  "answer": "9-4=5",
+  "hint": "Think about which single matchstick can be removed and relocated to change a digit or operator.",
+  "caption": "⚡ Master Level IQ & Math Challenge from Bright Path! Drop your solution below. 🏆\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
   "imageUrl": "https://royal-technologies.github.io/Puzzle/puzzles/today.png",
-  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261108-2XBB.png",
-  "generatedAt": "2026-11-08T23:49:01.326+06:00"
+  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261109-A7R0.png",
+  "generatedAt": "2026-11-09T10:59:20.507+06:00"
 }
