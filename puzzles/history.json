@@ -1,5 +1,5 @@
 {
-  "lastCategory": "missing-number",
+  "lastCategory": "word-puzzle",
   "publishedIds": [
     "BP-20261026-M8X6",
     "BP-20261026-HJDD",
@@ -59,7 +59,8 @@
     "BP-20261108-W7ET",
     "BP-20261108-2XBB",
     "BP-20261109-A7R0",
-    "BP-20261109-X54U"
+    "BP-20261109-X54U",
+    "BP-20261109-RQJP"
   ],
   "categoryCounts": {
     "geometry": 6,
@@ -71,6 +72,6 @@
     "missing-number": 6,
     "number-sequence": 6,
     "visual-pattern": 5,
-    "word-puzzle": 5
+    "word-puzzle": 6
   }
 }
