@@ -1,15 +1,15 @@
 {
-  "puzzleId": "BP-20261110-G61S",
-  "category": "matchstick",
-  "subtype": "move-matches",
+  "puzzleId": "BP-20261110-FYLT",
+  "category": "number-sequence",
+  "subtype": "next-in-series",
   "difficulty": "hard",
-  "layout": "royal-minimal",
-  "theme": "ottoman-turquoise",
+  "layout": "geometric-mandala",
+  "theme": "classic-ivory",
   "answerVerified": true,
-  "answer": "Remove sticks from the four outer corners to leave 4 unit squares + 1 central square.",
-  "hint": "You are allowed to move exactly 4 matchstick(s).",
-  "caption": "🔥 Hard Level Challenge! Can you crack today’s Bright Path puzzle? Share your answer in the comments below! 🧠⚡\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
+  "answer": "37, 50",
+  "hint": "The difference increases by 2 each time.",
+  "caption": "💡 Can you solve today’s expert puzzle? Only 10% get this right on the first try! 🧩\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
   "imageUrl": "https://royal-technologies.github.io/Puzzle/puzzles/today.png",
-  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261110-G61S.png",
-  "generatedAt": "2026-11-10T20:56:19.047+06:00"
+  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261110-FYLT.png",
+  "generatedAt": "2026-11-11T01:30:16.922+06:00"
 }
