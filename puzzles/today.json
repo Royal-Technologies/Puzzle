@@ -1,15 +1,15 @@
 {
-  "puzzleId": "BP-20261109-RQJP",
-  "category": "word-puzzle",
-  "subtype": "anagram",
+  "puzzleId": "BP-20261110-RFYJ",
+  "category": "visual-pattern",
+  "subtype": "matrix-pattern",
   "difficulty": "hard",
-  "layout": "scenic-desert-stars",
-  "theme": "andalusian-olive",
+  "layout": "architectural-pillars",
+  "theme": "warm-parchment",
   "answerVerified": true,
-  "answer": "GEOMETRY",
-  "hint": "Branch of mathematics dealing with spatial relationships and shapes",
-  "caption": "🔥 Hard Level Challenge! Can you crack today’s Bright Path puzzle? Share your answer in the comments below! 🧠⚡\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
+  "answer": "★",
+  "hint": "Notice each row and column contains each symbol exactly once (Latin square rule).",
+  "caption": "🧠 Expert Brain Workout: Here is today’s challenging puzzle. What is your solution? 👇\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
   "imageUrl": "https://royal-technologies.github.io/Puzzle/puzzles/today.png",
-  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261109-RQJP.png",
-  "generatedAt": "2026-11-10T04:08:43.377+06:00"
+  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261110-RFYJ.png",
+  "generatedAt": "2026-11-10T12:16:48.123+06:00"
 }
