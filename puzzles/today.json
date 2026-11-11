@@ -1,15 +1,15 @@
 {
-  "puzzleId": "BP-20261111-YZ5K",
-  "category": "geometry",
-  "subtype": "missing-angle",
+  "puzzleId": "BP-20261111-ZLOE",
+  "category": "word-puzzle",
+  "subtype": "anagram",
   "difficulty": "hard",
-  "layout": "illuminated-manuscript",
+  "layout": "scenic-crimson-horizon",
   "theme": "midnight-navy",
   "answerVerified": true,
-  "answer": "129°",
-  "hint": "Sum of interior angles of a pentagon = (5−2)×180° = 540°. Subtract the known angles from 540°.",
-  "caption": "🔥 Hard Level Challenge! Can you crack today’s Bright Path puzzle? Share your answer in the comments below! 🧠⚡\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
+  "answer": "EQUATION",
+  "hint": "Mathematical statement asserting the equality of two expressions",
+  "caption": "🧠 Expert Brain Workout: Here is today’s challenging puzzle. What is your solution? 👇\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
   "imageUrl": "https://royal-technologies.github.io/Puzzle/puzzles/today.png",
-  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261111-YZ5K.png",
-  "generatedAt": "2026-11-11T11:01:41.983+06:00"
+  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261111-ZLOE.png",
+  "generatedAt": "2026-11-11T20:27:08.537+06:00"
 }
