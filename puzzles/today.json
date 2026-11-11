@@ -1,15 +1,15 @@
 {
-  "puzzleId": "BP-20261111-ZLOE",
-  "category": "word-puzzle",
-  "subtype": "anagram",
+  "puzzleId": "BP-20261111-P2Q1",
+  "category": "logic",
+  "subtype": "syllogism",
   "difficulty": "hard",
-  "layout": "scenic-crimson-horizon",
-  "theme": "midnight-navy",
+  "layout": "iznik-tiles",
+  "theme": "andalusian-olive",
   "answerVerified": true,
-  "answer": "EQUATION",
-  "hint": "Mathematical statement asserting the equality of two expressions",
+  "answer": "VALID — the conclusion logically follows.",
+  "hint": "Check if the conclusion MUST be true if both premises are true.",
   "caption": "🧠 Expert Brain Workout: Here is today’s challenging puzzle. What is your solution? 👇\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
   "imageUrl": "https://royal-technologies.github.io/Puzzle/puzzles/today.png",
-  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261111-ZLOE.png",
-  "generatedAt": "2026-11-11T20:27:08.537+06:00"
+  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261111-P2Q1.png",
+  "generatedAt": "2026-11-12T01:26:28.904+06:00"
 }
