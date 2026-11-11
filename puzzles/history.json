@@ -1,5 +1,5 @@
 {
-  "lastCategory": "number-sequence",
+  "lastCategory": "geometry",
   "publishedIds": [
     "BP-20261026-M8X6",
     "BP-20261026-HJDD",
@@ -63,10 +63,11 @@
     "BP-20261109-RQJP",
     "BP-20261110-RFYJ",
     "BP-20261110-G61S",
-    "BP-20261110-FYLT"
+    "BP-20261110-FYLT",
+    "BP-20261111-YZ5K"
   ],
   "categoryCounts": {
-    "geometry": 6,
+    "geometry": 7,
     "sudoku": 7,
     "matchstick": 7,
     "logic": 6,
