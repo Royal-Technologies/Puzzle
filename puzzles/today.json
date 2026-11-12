@@ -1,15 +1,15 @@
 {
-  "puzzleId": "BP-20261111-P2Q1",
-  "category": "logic",
-  "subtype": "syllogism",
+  "puzzleId": "BP-20261112-CNA4",
+  "category": "missing-number",
+  "subtype": "math-riddle",
   "difficulty": "hard",
-  "layout": "iznik-tiles",
-  "theme": "andalusian-olive",
+  "layout": "scenic-crimson-horizon",
+  "theme": "warm-parchment",
   "answerVerified": true,
-  "answer": "VALID — the conclusion logically follows.",
-  "hint": "Check if the conclusion MUST be true if both premises are true.",
-  "caption": "🧠 Expert Brain Workout: Here is today’s challenging puzzle. What is your solution? 👇\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
+  "answer": "3 cats (1 cat catches 1 mouse in 3 minutes)",
+  "hint": "Calculate the rate per cat.",
+  "caption": "⚡ Master Level IQ & Math Challenge from Bright Path! Drop your solution below. 🏆\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
   "imageUrl": "https://royal-technologies.github.io/Puzzle/puzzles/today.png",
-  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261111-P2Q1.png",
-  "generatedAt": "2026-11-12T01:26:28.904+06:00"
+  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261112-CNA4.png",
+  "generatedAt": "2026-11-12T12:05:09.845+06:00"
 }
