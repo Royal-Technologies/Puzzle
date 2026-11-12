@@ -1,15 +1,15 @@
 {
-  "puzzleId": "BP-20261112-CNA4",
-  "category": "missing-number",
-  "subtype": "math-riddle",
+  "puzzleId": "BP-20261112-0Y4F",
+  "category": "visual-pattern",
+  "subtype": "shape-transform",
   "difficulty": "hard",
   "layout": "scenic-crimson-horizon",
-  "theme": "warm-parchment",
+  "theme": "andalusian-olive",
   "answerVerified": true,
-  "answer": "3 cats (1 cat catches 1 mouse in 3 minutes)",
-  "hint": "Calculate the rate per cat.",
-  "caption": "⚡ Master Level IQ & Math Challenge from Bright Path! Drop your solution below. 🏆\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
+  "answer": "Pentagon (⬟)",
+  "hint": "Analyze the rule applied from left to right.",
+  "caption": "💡 Can you solve today’s expert puzzle? Only 10% get this right on the first try! 🧩\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
   "imageUrl": "https://royal-technologies.github.io/Puzzle/puzzles/today.png",
-  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261112-CNA4.png",
-  "generatedAt": "2026-11-12T12:05:09.845+06:00"
+  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261112-0Y4F.png",
+  "generatedAt": "2026-11-12T21:19:30.994+06:00"
 }
