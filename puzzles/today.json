@@ -1,15 +1,15 @@
 {
-  "puzzleId": "BP-20261112-0Y4F",
-  "category": "visual-pattern",
-  "subtype": "shape-transform",
+  "puzzleId": "BP-20261112-8WF9",
+  "category": "geometry",
+  "subtype": "shaded-region",
   "difficulty": "hard",
-  "layout": "scenic-crimson-horizon",
-  "theme": "andalusian-olive",
+  "layout": "scenic-golden-clouds",
+  "theme": "amethyst-violet",
   "answerVerified": true,
-  "answer": "Pentagon (⬟)",
-  "hint": "Analyze the rule applied from left to right.",
+  "answer": "66 cm²",
+  "hint": "Shaded = Rectangle area − Triangle area",
   "caption": "💡 Can you solve today’s expert puzzle? Only 10% get this right on the first try! 🧩\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
   "imageUrl": "https://royal-technologies.github.io/Puzzle/puzzles/today.png",
-  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261112-0Y4F.png",
-  "generatedAt": "2026-11-12T21:19:30.994+06:00"
+  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261112-8WF9.png",
+  "generatedAt": "2026-11-13T01:43:39.206+06:00"
 }
