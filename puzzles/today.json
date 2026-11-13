@@ -1,15 +1,15 @@
 {
-  "puzzleId": "BP-20261113-XZED",
-  "category": "clock-calendar",
-  "subtype": "day-calculation",
+  "puzzleId": "BP-20261113-G48B",
+  "category": "matchstick",
+  "subtype": "fix-equation",
   "difficulty": "hard",
-  "layout": "scenic-mosque-dusk",
+  "layout": "scenic-alabaster-gold",
   "theme": "classic-ivory",
   "answerVerified": true,
-  "answer": "Tuesday (26 ÷ 7 = 3 weeks with remainder 5 days)",
-  "hint": "Divide 26 by 7 and count forward by the remainder (5 days from Thursday).",
+  "answer": "6-5=1 or 9-5=4",
+  "hint": "Think about which single matchstick can be removed and relocated to change a digit or operator.",
   "caption": "🧠 Expert Brain Workout: Here is today’s challenging puzzle. What is your solution? 👇\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
   "imageUrl": "https://royal-technologies.github.io/Puzzle/puzzles/today.png",
-  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261113-XZED.png",
-  "generatedAt": "2026-11-13T20:38:02.864+06:00"
+  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261113-G48B.png",
+  "generatedAt": "2026-11-14T01:25:49.487+06:00"
 }
