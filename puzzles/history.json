@@ -1,5 +1,5 @@
 {
-  "lastCategory": "geometry",
+  "lastCategory": "sudoku",
   "publishedIds": [
     "BP-20261026-M8X6",
     "BP-20261026-HJDD",
@@ -69,11 +69,12 @@
     "BP-20261111-P2Q1",
     "BP-20261112-CNA4",
     "BP-20261112-0Y4F",
-    "BP-20261112-8WF9"
+    "BP-20261112-8WF9",
+    "BP-20261113-0Y7U"
   ],
   "categoryCounts": {
     "geometry": 8,
-    "sudoku": 7,
+    "sudoku": 8,
     "matchstick": 7,
     "logic": 7,
     "clock-calendar": 6,
