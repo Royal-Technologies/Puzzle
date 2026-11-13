@@ -1,15 +1,15 @@
 {
-  "puzzleId": "BP-20261113-0Y7U",
-  "category": "sudoku",
-  "subtype": "classic-9x9",
+  "puzzleId": "BP-20261113-XZED",
+  "category": "clock-calendar",
+  "subtype": "day-calculation",
   "difficulty": "hard",
-  "layout": "illuminated-manuscript",
-  "theme": "royal-maroon",
+  "layout": "scenic-mosque-dusk",
+  "theme": "classic-ivory",
   "answerVerified": true,
-  "answer": "See the completed solution grid.",
-  "hint": "Start with rows, columns, or boxes that have the most given numbers.",
+  "answer": "Tuesday (26 ÷ 7 = 3 weeks with remainder 5 days)",
+  "hint": "Divide 26 by 7 and count forward by the remainder (5 days from Thursday).",
   "caption": "🧠 Expert Brain Workout: Here is today’s challenging puzzle. What is your solution? 👇\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
   "imageUrl": "https://royal-technologies.github.io/Puzzle/puzzles/today.png",
-  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261113-0Y7U.png",
-  "generatedAt": "2026-11-13T11:28:09.919+06:00"
+  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261113-XZED.png",
+  "generatedAt": "2026-11-13T20:38:02.864+06:00"
 }
