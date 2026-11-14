@@ -1,5 +1,5 @@
 {
-  "lastCategory": "logic",
+  "lastCategory": "number-sequence",
   "publishedIds": [
     "BP-20261026-M8X6",
     "BP-20261026-HJDD",
@@ -73,7 +73,8 @@
     "BP-20261113-0Y7U",
     "BP-20261113-XZED",
     "BP-20261113-G48B",
-    "BP-20261114-UFPI"
+    "BP-20261114-UFPI",
+    "BP-20261114-7ZRU"
   ],
   "categoryCounts": {
     "geometry": 8,
@@ -83,7 +84,7 @@
     "clock-calendar": 7,
     "visual-iq": 6,
     "missing-number": 7,
-    "number-sequence": 7,
+    "number-sequence": 8,
     "visual-pattern": 7,
     "word-puzzle": 7
   }
