@@ -1,15 +1,15 @@
 {
-  "puzzleId": "BP-20261114-7ZRU",
-  "category": "number-sequence",
-  "subtype": "mixed-rule",
+  "puzzleId": "BP-20261114-PKL8",
+  "category": "word-puzzle",
+  "subtype": "anagram",
   "difficulty": "hard",
-  "layout": "royal-minimal",
-  "theme": "midnight-navy",
+  "layout": "mihrab-arch",
+  "theme": "amethyst-violet",
   "answerVerified": true,
-  "answer": "21, 28",
-  "hint": "Add 1, 2, 3, 4… each time.",
-  "caption": "⚡ Master Level IQ & Math Challenge from Bright Path! Drop your solution below. 🏆\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
+  "answer": "FRACTION",
+  "hint": "Numerical representation of a part of a whole (numerator / denominator)",
+  "caption": "🧠 Expert Brain Workout: Here is today’s challenging puzzle. What is your solution? 👇\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
   "imageUrl": "https://royal-technologies.github.io/Puzzle/puzzles/today.png",
-  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261114-7ZRU.png",
-  "generatedAt": "2026-11-14T19:35:29.649+06:00"
+  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261114-PKL8.png",
+  "generatedAt": "2026-11-14T23:49:51.011+06:00"
 }
