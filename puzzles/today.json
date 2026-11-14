@@ -1,15 +1,15 @@
 {
-  "puzzleId": "BP-20261113-G48B",
-  "category": "matchstick",
-  "subtype": "fix-equation",
+  "puzzleId": "BP-20261114-UFPI",
+  "category": "logic",
+  "subtype": "truth-lies",
   "difficulty": "hard",
-  "layout": "scenic-alabaster-gold",
+  "layout": "geometric-mandala",
   "theme": "classic-ivory",
   "answerVerified": true,
-  "answer": "6-5=1 or 9-5=4",
-  "hint": "Think about which single matchstick can be removed and relocated to change a digit or operator.",
-  "caption": "🧠 Expert Brain Workout: Here is today’s challenging puzzle. What is your solution? 👇\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
+  "answer": "Mia and Ned are both liars. Ora tells the truth.",
+  "hint": "If someone lies, their statement about themselves or others must be false.",
+  "caption": "⚡ Master Level IQ & Math Challenge from Bright Path! Drop your solution below. 🏆\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
   "imageUrl": "https://royal-technologies.github.io/Puzzle/puzzles/today.png",
-  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261113-G48B.png",
-  "generatedAt": "2026-11-14T01:25:49.487+06:00"
+  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261114-UFPI.png",
+  "generatedAt": "2026-11-14T11:17:48.566+06:00"
 }
