@@ -1,15 +1,15 @@
 {
-  "puzzleId": "BP-20261114-PKL8",
-  "category": "word-puzzle",
-  "subtype": "anagram",
+  "puzzleId": "BP-20261115-5SQ9",
+  "category": "missing-number",
+  "subtype": "magic-square",
   "difficulty": "hard",
-  "layout": "mihrab-arch",
-  "theme": "amethyst-violet",
+  "layout": "scenic-medina-sanctuary",
+  "theme": "royal-maroon",
   "answerVerified": true,
-  "answer": "FRACTION",
-  "hint": "Numerical representation of a part of a whole (numerator / denominator)",
-  "caption": "🧠 Expert Brain Workout: Here is today’s challenging puzzle. What is your solution? 👇\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
+  "answer": "19 (Target row/col must sum to 51)",
+  "hint": "Add the known numbers in the row or column containing the question mark, then subtract from 51.",
+  "caption": "🔥 Hard Level Challenge! Can you crack today’s Bright Path puzzle? Share your answer in the comments below! 🧠⚡\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
   "imageUrl": "https://royal-technologies.github.io/Puzzle/puzzles/today.png",
-  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261114-PKL8.png",
-  "generatedAt": "2026-11-14T23:49:51.011+06:00"
+  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261115-5SQ9.png",
+  "generatedAt": "2026-11-15T11:13:52.652+06:00"
 }
