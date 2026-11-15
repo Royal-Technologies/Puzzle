@@ -1,5 +1,5 @@
 {
-  "lastCategory": "clock-calendar",
+  "lastCategory": "visual-pattern",
   "publishedIds": [
     "BP-20261026-M8X6",
     "BP-20261026-HJDD",
@@ -77,7 +77,8 @@
     "BP-20261114-7ZRU",
     "BP-20261114-PKL8",
     "BP-20261115-5SQ9",
-    "BP-20261115-RHX7"
+    "BP-20261115-RHX7",
+    "BP-20261115-CNNC"
   ],
   "categoryCounts": {
     "geometry": 8,
@@ -88,7 +89,7 @@
     "visual-iq": 6,
     "missing-number": 8,
     "number-sequence": 8,
-    "visual-pattern": 7,
+    "visual-pattern": 8,
     "word-puzzle": 8
   }
 }

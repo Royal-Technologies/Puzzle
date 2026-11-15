@@ -1,15 +1,15 @@
 {
-  "puzzleId": "BP-20261115-RHX7",
-  "category": "clock-calendar",
-  "subtype": "time-elapsed",
+  "puzzleId": "BP-20261115-CNNC",
+  "category": "visual-pattern",
+  "subtype": "complete-series",
   "difficulty": "hard",
-  "layout": "scenic-rehal-quran",
-  "theme": "warm-parchment",
+  "layout": "iznik-tiles",
+  "theme": "ottoman-turquoise",
   "answerVerified": true,
-  "answer": "6 hours 45 minutes",
-  "hint": "Break into steps: count the hours first, then the remaining minutes.",
-  "caption": "⚡ Master Level IQ & Math Challenge from Bright Path! Drop your solution below. 🏆\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
+  "answer": "10 Dots (Pattern adds 2 dots at each step: +2)",
+  "hint": "Observe the arithmetic progression of the dots.",
+  "caption": "🧠 Expert Brain Workout: Here is today’s challenging puzzle. What is your solution? 👇\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
   "imageUrl": "https://royal-technologies.github.io/Puzzle/puzzles/today.png",
-  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261115-RHX7.png",
-  "generatedAt": "2026-11-15T19:58:14.351+06:00"
+  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261115-CNNC.png",
+  "generatedAt": "2026-11-16T00:40:11.041+06:00"
 }
