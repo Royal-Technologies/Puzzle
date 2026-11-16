@@ -1,5 +1,5 @@
 {
-  "lastCategory": "sudoku",
+  "lastCategory": "number-sequence",
   "publishedIds": [
     "BP-20261026-M8X6",
     "BP-20261026-HJDD",
@@ -80,7 +80,8 @@
     "BP-20261115-RHX7",
     "BP-20261115-CNNC",
     "BP-20261116-MT23",
-    "BP-20261116-YBYK"
+    "BP-20261116-YBYK",
+    "BP-20261116-NOM3"
   ],
   "categoryCounts": {
     "geometry": 8,
@@ -90,7 +91,7 @@
     "clock-calendar": 8,
     "visual-iq": 7,
     "missing-number": 8,
-    "number-sequence": 8,
+    "number-sequence": 9,
     "visual-pattern": 8,
     "word-puzzle": 8
   }
