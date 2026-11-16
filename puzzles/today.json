@@ -1,15 +1,15 @@
 {
-  "puzzleId": "BP-20261115-CNNC",
-  "category": "visual-pattern",
-  "subtype": "complete-series",
+  "puzzleId": "BP-20261116-MT23",
+  "category": "visual-iq",
+  "subtype": "spatial-rotation",
   "difficulty": "hard",
-  "layout": "iznik-tiles",
-  "theme": "ottoman-turquoise",
+  "layout": "alhambra-palace",
+  "theme": "warm-parchment",
   "answerVerified": true,
-  "answer": "10 Dots (Pattern adds 2 dots at each step: +2)",
-  "hint": "Observe the arithmetic progression of the dots.",
-  "caption": "🧠 Expert Brain Workout: Here is today’s challenging puzzle. What is your solution? 👇\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
+  "answer": "Option A (Exact 90° counter-clockwise rotation — notice that the red dot and arm preserve their true relative positions without being mirrored)",
+  "hint": "Follow the orientation of the red dot: when rotating 90° counter-clockwise, track where the dot moves.",
+  "caption": "🔥 Hard Level Challenge! Can you crack today’s Bright Path puzzle? Share your answer in the comments below! 🧠⚡\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
   "imageUrl": "https://royal-technologies.github.io/Puzzle/puzzles/today.png",
-  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261115-CNNC.png",
-  "generatedAt": "2026-11-16T00:40:11.041+06:00"
+  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261116-MT23.png",
+  "generatedAt": "2026-11-16T11:11:02.069+06:00"
 }
