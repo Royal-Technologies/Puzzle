@@ -1,15 +1,15 @@
 {
-  "puzzleId": "BP-20261117-09YS",
-  "category": "matchstick",
-  "subtype": "move-matches",
+  "puzzleId": "BP-20261117-ARYJ",
+  "category": "geometry",
+  "subtype": "missing-angle",
   "difficulty": "hard",
-  "layout": "geometric-mandala",
-  "theme": "classic-ivory",
+  "layout": "celestial-crescent",
+  "theme": "ottoman-turquoise",
   "answerVerified": true,
-  "answer": "Rearrange carefully — create 3 separate or overlapping unit squares.",
-  "hint": "You are allowed to move exactly 3 matchstick(s).",
-  "caption": "🧠 Expert Brain Workout: Here is today’s challenging puzzle. What is your solution? 👇\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
+  "answer": "86°",
+  "hint": "Sum of interior angles of a pentagon = (5−2)×180° = 540°. Subtract the known angles from 540°.",
+  "caption": "🔥 Hard Level Challenge! Can you crack today’s Bright Path puzzle? Share your answer in the comments below! 🧠⚡\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
   "imageUrl": "https://royal-technologies.github.io/Puzzle/puzzles/today.png",
-  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261117-09YS.png",
-  "generatedAt": "2026-11-17T12:55:26.786+06:00"
+  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261117-ARYJ.png",
+  "generatedAt": "2026-11-17T22:04:11.252+06:00"
 }
