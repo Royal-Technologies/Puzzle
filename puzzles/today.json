@@ -1,15 +1,15 @@
 {
-  "puzzleId": "BP-20261117-ARYJ",
-  "category": "geometry",
-  "subtype": "missing-angle",
+  "puzzleId": "BP-20261117-9PYH",
+  "category": "visual-iq",
+  "subtype": "shape-analogy",
   "difficulty": "hard",
-  "layout": "celestial-crescent",
-  "theme": "ottoman-turquoise",
+  "layout": "geometric-mandala",
+  "theme": "amethyst-violet",
   "answerVerified": true,
-  "answer": "86°",
-  "hint": "Sum of interior angles of a pentagon = (5−2)×180° = 540°. Subtract the known angles from 540°.",
-  "caption": "🔥 Hard Level Challenge! Can you crack today’s Bright Path puzzle? Share your answer in the comments below! 🧠⚡\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
+  "answer": "Option C (TRIANGLE with inner SQUARE — the inner and outer shapes swap positions: the inside shape becomes the outer container, and the outer container moves inside)",
+  "hint": "Examine the relationship between Figure 1 and Figure 2: how do the outer and inner shapes transform?",
+  "caption": "⚡ Master Level IQ & Math Challenge from Bright Path! Drop your solution below. 🏆\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
   "imageUrl": "https://royal-technologies.github.io/Puzzle/puzzles/today.png",
-  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261117-ARYJ.png",
-  "generatedAt": "2026-11-17T22:04:11.252+06:00"
+  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261117-9PYH.png",
+  "generatedAt": "2026-11-18T02:40:29.055+06:00"
 }

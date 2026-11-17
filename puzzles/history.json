@@ -1,5 +1,5 @@
 {
-  "lastCategory": "geometry",
+  "lastCategory": "visual-iq",
   "publishedIds": [
     "BP-20261026-M8X6",
     "BP-20261026-HJDD",
@@ -83,7 +83,8 @@
     "BP-20261116-YBYK",
     "BP-20261116-NOM3",
     "BP-20261117-09YS",
-    "BP-20261117-ARYJ"
+    "BP-20261117-ARYJ",
+    "BP-20261117-9PYH"
   ],
   "categoryCounts": {
     "geometry": 9,
@@ -91,7 +92,7 @@
     "matchstick": 9,
     "logic": 8,
     "clock-calendar": 8,
-    "visual-iq": 7,
+    "visual-iq": 8,
     "missing-number": 8,
     "number-sequence": 9,
     "visual-pattern": 8,
