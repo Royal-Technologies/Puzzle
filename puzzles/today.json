@@ -1,15 +1,15 @@
 {
-  "puzzleId": "BP-20261116-NOM3",
-  "category": "number-sequence",
-  "subtype": "mixed-rule",
+  "puzzleId": "BP-20261117-09YS",
+  "category": "matchstick",
+  "subtype": "move-matches",
   "difficulty": "hard",
-  "layout": "scenic-kiswah-night",
-  "theme": "royal-emerald",
+  "layout": "geometric-mandala",
+  "theme": "classic-ivory",
   "answerVerified": true,
-  "answer": "216",
-  "hint": "Think about cube numbers.",
-  "caption": "⚡ Master Level IQ & Math Challenge from Bright Path! Drop your solution below. 🏆\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
+  "answer": "Rearrange carefully — create 3 separate or overlapping unit squares.",
+  "hint": "You are allowed to move exactly 3 matchstick(s).",
+  "caption": "🧠 Expert Brain Workout: Here is today’s challenging puzzle. What is your solution? 👇\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
   "imageUrl": "https://royal-technologies.github.io/Puzzle/puzzles/today.png",
-  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261116-NOM3.png",
-  "generatedAt": "2026-11-17T03:49:56.968+06:00"
+  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261117-09YS.png",
+  "generatedAt": "2026-11-17T12:55:26.786+06:00"
 }
