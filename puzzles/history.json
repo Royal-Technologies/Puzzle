@@ -1,5 +1,5 @@
 {
-  "lastCategory": "word-puzzle",
+  "lastCategory": "visual-iq",
   "publishedIds": [
     "BP-20261026-M8X6",
     "BP-20261026-HJDD",
@@ -86,7 +86,8 @@
     "BP-20261117-ARYJ",
     "BP-20261117-9PYH",
     "BP-20261118-F8IO",
-    "BP-20261118-GN93"
+    "BP-20261118-GN93",
+    "BP-20261118-ZB10"
   ],
   "categoryCounts": {
     "geometry": 9,
@@ -94,7 +95,7 @@
     "matchstick": 9,
     "logic": 8,
     "clock-calendar": 9,
-    "visual-iq": 8,
+    "visual-iq": 9,
     "missing-number": 8,
     "number-sequence": 9,
     "visual-pattern": 8,
