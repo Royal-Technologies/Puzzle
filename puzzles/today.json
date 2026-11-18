@@ -1,15 +1,15 @@
 {
-  "puzzleId": "BP-20261118-F8IO",
-  "category": "clock-calendar",
-  "subtype": "time-zones",
+  "puzzleId": "BP-20261118-GN93",
+  "category": "word-puzzle",
+  "subtype": "word-chain",
   "difficulty": "hard",
   "layout": "scenic-rehal-quran",
   "theme": "ottoman-turquoise",
   "answerVerified": true,
-  "answer": "06:00 PM (Prev Day)",
-  "hint": "Apply the timezone difference: - 17 Hours.",
-  "caption": "⚡ Master Level IQ & Math Challenge from Bright Path! Drop your solution below. 🏆\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
+  "answer": "COLD ➔ CORD ➔ CARD ➔ WARD ➔ WARM",
+  "hint": "Each step must be a valid English dictionary word.",
+  "caption": "🧠 Expert Brain Workout: Here is today’s challenging puzzle. What is your solution? 👇\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
   "imageUrl": "https://royal-technologies.github.io/Puzzle/puzzles/today.png",
-  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261118-F8IO.png",
-  "generatedAt": "2026-11-18T12:16:53.152+06:00"
+  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261118-GN93.png",
+  "generatedAt": "2026-11-18T21:42:46.427+06:00"
 }
