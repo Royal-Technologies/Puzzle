@@ -1,15 +1,15 @@
 {
-  "puzzleId": "BP-20261119-9WDY",
-  "category": "geometry",
-  "subtype": "missing-angle",
+  "puzzleId": "BP-20261119-KAW6",
+  "category": "visual-pattern",
+  "subtype": "matrix-pattern",
   "difficulty": "hard",
-  "layout": "alhambra-palace",
-  "theme": "desert-amber",
+  "layout": "scenic-kaaba-parchment",
+  "theme": "ottoman-turquoise",
   "answerVerified": true,
-  "answer": "100°",
-  "hint": "Sum of interior angles of a hexagon = (6−2)×180° = 720°. Subtract the known angles from 720°.",
-  "caption": "⚡ Master Level IQ & Math Challenge from Bright Path! Drop your solution below. 🏆\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
+  "answer": "✖",
+  "hint": "Notice each row and column contains each symbol exactly once (Latin square rule).",
+  "caption": "💡 Can you solve today’s expert puzzle? Only 10% get this right on the first try! 🧩\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
   "imageUrl": "https://royal-technologies.github.io/Puzzle/puzzles/today.png",
-  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261119-9WDY.png",
-  "generatedAt": "2026-11-19T21:47:20.417+06:00"
+  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261119-KAW6.png",
+  "generatedAt": "2026-11-20T02:18:36.153+06:00"
 }
