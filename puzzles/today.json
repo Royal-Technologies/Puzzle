@@ -1,15 +1,15 @@
 {
-  "puzzleId": "BP-20261119-PQ7M",
-  "category": "logic",
-  "subtype": "truth-lies",
+  "puzzleId": "BP-20261119-9WDY",
+  "category": "geometry",
+  "subtype": "missing-angle",
   "difficulty": "hard",
-  "layout": "mihrab-arch",
-  "theme": "warm-parchment",
+  "layout": "alhambra-palace",
+  "theme": "desert-amber",
   "answerVerified": true,
-  "answer": "Mia and Ned are both liars. Ora tells the truth.",
-  "hint": "If someone lies, their statement about themselves or others must be false.",
+  "answer": "100°",
+  "hint": "Sum of interior angles of a hexagon = (6−2)×180° = 720°. Subtract the known angles from 720°.",
   "caption": "⚡ Master Level IQ & Math Challenge from Bright Path! Drop your solution below. 🏆\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
   "imageUrl": "https://royal-technologies.github.io/Puzzle/puzzles/today.png",
-  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261119-PQ7M.png",
-  "generatedAt": "2026-11-19T12:19:07.189+06:00"
+  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261119-9WDY.png",
+  "generatedAt": "2026-11-19T21:47:20.417+06:00"
 }

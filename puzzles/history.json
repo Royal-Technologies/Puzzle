@@ -1,5 +1,5 @@
 {
-  "lastCategory": "logic",
+  "lastCategory": "geometry",
   "publishedIds": [
     "BP-20261026-M8X6",
     "BP-20261026-HJDD",
@@ -88,10 +88,11 @@
     "BP-20261118-F8IO",
     "BP-20261118-GN93",
     "BP-20261118-ZB10",
-    "BP-20261119-PQ7M"
+    "BP-20261119-PQ7M",
+    "BP-20261119-9WDY"
   ],
   "categoryCounts": {
-    "geometry": 9,
+    "geometry": 10,
     "sudoku": 9,
     "matchstick": 9,
     "logic": 9,
