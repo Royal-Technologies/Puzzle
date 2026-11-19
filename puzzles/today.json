@@ -1,15 +1,15 @@
 {
-  "puzzleId": "BP-20261118-ZB10",
-  "category": "visual-iq",
-  "subtype": "spatial-rotation",
+  "puzzleId": "BP-20261119-PQ7M",
+  "category": "logic",
+  "subtype": "truth-lies",
   "difficulty": "hard",
-  "layout": "scenic-crimson-horizon",
+  "layout": "mihrab-arch",
   "theme": "warm-parchment",
   "answerVerified": true,
-  "answer": "Option B (Exact 180° rotation — notice that the red dot and arm preserve their true relative positions without being mirrored)",
-  "hint": "Follow the orientation of the red dot: when rotating 180°, track where the dot moves.",
-  "caption": "💡 Can you solve today’s expert puzzle? Only 10% get this right on the first try! 🧩\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
+  "answer": "Mia and Ned are both liars. Ora tells the truth.",
+  "hint": "If someone lies, their statement about themselves or others must be false.",
+  "caption": "⚡ Master Level IQ & Math Challenge from Bright Path! Drop your solution below. 🏆\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
   "imageUrl": "https://royal-technologies.github.io/Puzzle/puzzles/today.png",
-  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261118-ZB10.png",
-  "generatedAt": "2026-11-19T02:14:44.348+06:00"
+  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261119-PQ7M.png",
+  "generatedAt": "2026-11-19T12:19:07.189+06:00"
 }
