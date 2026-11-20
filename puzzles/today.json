@@ -1,15 +1,15 @@
 {
-  "puzzleId": "BP-20261119-KAW6",
-  "category": "visual-pattern",
-  "subtype": "matrix-pattern",
+  "puzzleId": "BP-20261120-XIEY",
+  "category": "sudoku",
+  "subtype": "classic-9x9",
   "difficulty": "hard",
-  "layout": "scenic-kaaba-parchment",
-  "theme": "ottoman-turquoise",
+  "layout": "octagram-medallion",
+  "theme": "classic-ivory",
   "answerVerified": true,
-  "answer": "✖",
-  "hint": "Notice each row and column contains each symbol exactly once (Latin square rule).",
-  "caption": "💡 Can you solve today’s expert puzzle? Only 10% get this right on the first try! 🧩\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
+  "answer": "See the completed solution grid.",
+  "hint": "Start with rows, columns, or boxes that have the most given numbers.",
+  "caption": "🧠 Expert Brain Workout: Here is today’s challenging puzzle. What is your solution? 👇\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
   "imageUrl": "https://royal-technologies.github.io/Puzzle/puzzles/today.png",
-  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261119-KAW6.png",
-  "generatedAt": "2026-11-20T02:18:36.153+06:00"
+  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261120-XIEY.png",
+  "generatedAt": "2026-11-20T12:02:24.420+06:00"
 }
