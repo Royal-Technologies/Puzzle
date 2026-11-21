@@ -1,15 +1,15 @@
 {
-  "puzzleId": "BP-20261121-R4GX",
-  "category": "clock-calendar",
-  "subtype": "day-calculation",
+  "puzzleId": "BP-20261121-MYSB",
+  "category": "logic",
+  "subtype": "grid-logic",
   "difficulty": "hard",
-  "layout": "scenic-rehal-quran",
-  "theme": "classic-ivory",
+  "layout": "iznik-tiles",
+  "theme": "imperial-black",
   "answerVerified": true,
-  "answer": "Thursday (63 ÷ 7 = 9 weeks with remainder 0 days)",
-  "hint": "Divide 63 by 7 and count forward by the remainder (0 days from Thursday).",
+  "answer": "Ryan → Track, Sara → Archery, Tom → Judo, Yuki → Swimming",
+  "hint": "Use process of elimination. Mark what's impossible to find what's certain.",
   "caption": "💡 Can you solve today’s expert puzzle? Only 10% get this right on the first try! 🧩\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
   "imageUrl": "https://royal-technologies.github.io/Puzzle/puzzles/today.png",
-  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261121-R4GX.png",
-  "generatedAt": "2026-11-21T20:42:10.431+06:00"
+  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261121-MYSB.png",
+  "generatedAt": "2026-11-22T00:55:58.122+06:00"
 }

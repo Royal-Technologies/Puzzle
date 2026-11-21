@@ -1,5 +1,5 @@
 {
-  "lastCategory": "clock-calendar",
+  "lastCategory": "logic",
   "publishedIds": [
     "BP-20261026-M8X6",
     "BP-20261026-HJDD",
@@ -95,13 +95,14 @@
     "BP-20261120-D76C",
     "BP-20261120-4TVM",
     "BP-20261121-P5FM",
-    "BP-20261121-R4GX"
+    "BP-20261121-R4GX",
+    "BP-20261121-MYSB"
   ],
   "categoryCounts": {
     "geometry": 10,
     "sudoku": 10,
     "matchstick": 10,
-    "logic": 9,
+    "logic": 10,
     "clock-calendar": 10,
     "visual-iq": 9,
     "missing-number": 9,
