@@ -1,5 +1,5 @@
 {
-  "lastCategory": "word-puzzle",
+  "lastCategory": "geometry",
   "publishedIds": [
     "BP-20261026-M8X6",
     "BP-20261026-HJDD",
@@ -98,10 +98,11 @@
     "BP-20261121-R4GX",
     "BP-20261121-MYSB",
     "BP-20261122-GKHZ",
-    "BP-20261122-A5IK"
+    "BP-20261122-A5IK",
+    "BP-20261122-XVD0"
   ],
   "categoryCounts": {
-    "geometry": 10,
+    "geometry": 11,
     "sudoku": 10,
     "matchstick": 10,
     "logic": 10,
