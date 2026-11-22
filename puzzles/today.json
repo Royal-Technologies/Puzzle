@@ -1,15 +1,15 @@
 {
-  "puzzleId": "BP-20261121-MYSB",
-  "category": "logic",
-  "subtype": "grid-logic",
+  "puzzleId": "BP-20261122-GKHZ",
+  "category": "missing-number",
+  "subtype": "magic-square",
   "difficulty": "hard",
-  "layout": "iznik-tiles",
-  "theme": "imperial-black",
+  "layout": "scenic-kaaba-parchment",
+  "theme": "royal-emerald",
   "answerVerified": true,
-  "answer": "Ryan → Track, Sara → Archery, Tom → Judo, Yuki → Swimming",
-  "hint": "Use process of elimination. Mark what's impossible to find what's certain.",
-  "caption": "💡 Can you solve today’s expert puzzle? Only 10% get this right on the first try! 🧩\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
+  "answer": "17 (Target row/col must sum to 42)",
+  "hint": "Add the known numbers in the row or column containing the question mark, then subtract from 42.",
+  "caption": "🔥 Hard Level Challenge! Can you crack today’s Bright Path puzzle? Share your answer in the comments below! 🧠⚡\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
   "imageUrl": "https://royal-technologies.github.io/Puzzle/puzzles/today.png",
-  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261121-MYSB.png",
-  "generatedAt": "2026-11-22T00:55:58.122+06:00"
+  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261122-GKHZ.png",
+  "generatedAt": "2026-11-22T11:30:02.718+06:00"
 }
