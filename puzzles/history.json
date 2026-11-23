@@ -1,5 +1,5 @@
 {
-  "lastCategory": "sudoku",
+  "lastCategory": "visual-iq",
   "publishedIds": [
     "BP-20261026-M8X6",
     "BP-20261026-HJDD",
@@ -100,7 +100,8 @@
     "BP-20261122-GKHZ",
     "BP-20261122-A5IK",
     "BP-20261122-XVD0",
-    "BP-20261123-UWN0"
+    "BP-20261123-UWN0",
+    "BP-20261123-W65X"
   ],
   "categoryCounts": {
     "geometry": 11,
@@ -108,7 +109,7 @@
     "matchstick": 10,
     "logic": 10,
     "clock-calendar": 10,
-    "visual-iq": 9,
+    "visual-iq": 10,
     "missing-number": 10,
     "number-sequence": 10,
     "visual-pattern": 9,
