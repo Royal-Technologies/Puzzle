@@ -1,15 +1,15 @@
 {
-  "puzzleId": "BP-20261125-F1BO",
-  "category": "clock-calendar",
-  "subtype": "time-elapsed",
+  "puzzleId": "BP-20261125-57P5",
+  "category": "missing-number",
+  "subtype": "magic-square",
   "difficulty": "hard",
-  "layout": "scenic-mosque-dusk",
-  "theme": "classic-ivory",
+  "layout": "scenic-mountain-twilight",
+  "theme": "royal-maroon",
   "answerVerified": true,
-  "answer": "3 hours 45 minutes",
-  "hint": "Break into steps: count the hours first, then the remaining minutes.",
-  "caption": "🧠 Expert Brain Workout: Here is today’s challenging puzzle. What is your solution? 👇\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
+  "answer": "9 (Target row/col must sum to 15)",
+  "hint": "Add the known numbers in the row or column containing the question mark, then subtract from 15.",
+  "caption": "💡 Can you solve today’s expert puzzle? Only 10% get this right on the first try! 🧩\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
   "imageUrl": "https://royal-technologies.github.io/Puzzle/puzzles/today.png",
-  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261125-F1BO.png",
-  "generatedAt": "2026-11-25T23:16:35.236+06:00"
+  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261125-57P5.png",
+  "generatedAt": "2026-11-26T03:26:09.964+06:00"
 }
