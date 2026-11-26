@@ -1,15 +1,15 @@
 {
-  "puzzleId": "BP-20261125-57P5",
-  "category": "missing-number",
-  "subtype": "magic-square",
+  "puzzleId": "BP-20261126-Z84M",
+  "category": "visual-pattern",
+  "subtype": "matrix-pattern",
   "difficulty": "hard",
-  "layout": "scenic-mountain-twilight",
-  "theme": "royal-maroon",
+  "layout": "scenic-crimson-horizon",
+  "theme": "classic-ivory",
   "answerVerified": true,
-  "answer": "9 (Target row/col must sum to 15)",
-  "hint": "Add the known numbers in the row or column containing the question mark, then subtract from 15.",
-  "caption": "💡 Can you solve today’s expert puzzle? Only 10% get this right on the first try! 🧩\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
+  "answer": "◆",
+  "hint": "Notice each row and column contains each symbol exactly once (Latin square rule).",
+  "caption": "🔥 Hard Level Challenge! Can you crack today’s Bright Path puzzle? Share your answer in the comments below! 🧠⚡\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
   "imageUrl": "https://royal-technologies.github.io/Puzzle/puzzles/today.png",
-  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261125-57P5.png",
-  "generatedAt": "2026-11-26T03:26:09.964+06:00"
+  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261126-Z84M.png",
+  "generatedAt": "2026-11-26T13:11:13.202+06:00"
 }
