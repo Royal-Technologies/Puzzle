@@ -1,15 +1,15 @@
 {
-  "puzzleId": "BP-20261126-Z84M",
-  "category": "visual-pattern",
-  "subtype": "matrix-pattern",
+  "puzzleId": "BP-20261126-THQ0",
+  "category": "geometry",
+  "subtype": "area-perimeter",
   "difficulty": "hard",
-  "layout": "scenic-crimson-horizon",
-  "theme": "classic-ivory",
+  "layout": "scenic-medina-sanctuary",
+  "theme": "andalusian-olive",
   "answerVerified": true,
-  "answer": "◆",
-  "hint": "Notice each row and column contains each symbol exactly once (Latin square rule).",
+  "answer": "161 cm²",
+  "hint": "Area = large rectangle − small rectangle cut out",
   "caption": "🔥 Hard Level Challenge! Can you crack today’s Bright Path puzzle? Share your answer in the comments below! 🧠⚡\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
   "imageUrl": "https://royal-technologies.github.io/Puzzle/puzzles/today.png",
-  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261126-Z84M.png",
-  "generatedAt": "2026-11-26T13:11:13.202+06:00"
+  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261126-THQ0.png",
+  "generatedAt": "2026-11-26T22:57:22.108+06:00"
 }
