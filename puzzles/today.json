@@ -1,15 +1,15 @@
 {
-  "puzzleId": "BP-20261126-THQ0",
-  "category": "geometry",
-  "subtype": "area-perimeter",
+  "puzzleId": "BP-20261126-ZFHH",
+  "category": "number-sequence",
+  "subtype": "mixed-rule",
   "difficulty": "hard",
-  "layout": "scenic-medina-sanctuary",
-  "theme": "andalusian-olive",
+  "layout": "illuminated-manuscript",
+  "theme": "imperial-black",
   "answerVerified": true,
-  "answer": "161 cm²",
-  "hint": "Area = large rectangle − small rectangle cut out",
-  "caption": "🔥 Hard Level Challenge! Can you crack today’s Bright Path puzzle? Share your answer in the comments below! 🧠⚡\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
+  "answer": "11, 13",
+  "hint": "Add 2 each time starting from 1.",
+  "caption": "💡 Can you solve today’s expert puzzle? Only 10% get this right on the first try! 🧩\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
   "imageUrl": "https://royal-technologies.github.io/Puzzle/puzzles/today.png",
-  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261126-THQ0.png",
-  "generatedAt": "2026-11-26T22:57:22.108+06:00"
+  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261126-ZFHH.png",
+  "generatedAt": "2026-11-27T03:13:16.331+06:00"
 }

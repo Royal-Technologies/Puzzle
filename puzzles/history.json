@@ -1,5 +1,5 @@
 {
-  "lastCategory": "geometry",
+  "lastCategory": "number-sequence",
   "publishedIds": [
     "BP-20261026-M8X6",
     "BP-20261026-HJDD",
@@ -110,7 +110,8 @@
     "BP-20261125-F1BO",
     "BP-20261125-57P5",
     "BP-20261126-Z84M",
-    "BP-20261126-THQ0"
+    "BP-20261126-THQ0",
+    "BP-20261126-ZFHH"
   ],
   "categoryCounts": {
     "geometry": 12,
@@ -120,7 +121,7 @@
     "clock-calendar": 11,
     "visual-iq": 11,
     "missing-number": 11,
-    "number-sequence": 11,
+    "number-sequence": 12,
     "visual-pattern": 11,
     "word-puzzle": 11
   }
