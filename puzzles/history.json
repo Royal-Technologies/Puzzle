@@ -1,5 +1,5 @@
 {
-  "lastCategory": "number-sequence",
+  "lastCategory": "logic",
   "publishedIds": [
     "BP-20261026-M8X6",
     "BP-20261026-HJDD",
@@ -111,13 +111,14 @@
     "BP-20261125-57P5",
     "BP-20261126-Z84M",
     "BP-20261126-THQ0",
-    "BP-20261126-ZFHH"
+    "BP-20261126-ZFHH",
+    "BP-20261127-Q9IV"
   ],
   "categoryCounts": {
     "geometry": 12,
     "sudoku": 11,
     "matchstick": 10,
-    "logic": 11,
+    "logic": 12,
     "clock-calendar": 11,
     "visual-iq": 11,
     "missing-number": 11,

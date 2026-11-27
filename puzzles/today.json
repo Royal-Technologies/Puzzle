@@ -1,15 +1,15 @@
 {
-  "puzzleId": "BP-20261126-ZFHH",
-  "category": "number-sequence",
-  "subtype": "mixed-rule",
+  "puzzleId": "BP-20261127-Q9IV",
+  "category": "logic",
+  "subtype": "grid-logic",
   "difficulty": "hard",
-  "layout": "illuminated-manuscript",
-  "theme": "imperial-black",
+  "layout": "iznik-tiles",
+  "theme": "classic-ivory",
   "answerVerified": true,
-  "answer": "11, 13",
-  "hint": "Add 2 each time starting from 1.",
-  "caption": "💡 Can you solve today’s expert puzzle? Only 10% get this right on the first try! 🧩\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
+  "answer": "Alex → Fish, Beth → Bird, Cole → Dog, Dana → Cat",
+  "hint": "Use process of elimination. Mark what's impossible to find what's certain.",
+  "caption": "⚡ Master Level IQ & Math Challenge from Bright Path! Drop your solution below. 🏆\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
   "imageUrl": "https://royal-technologies.github.io/Puzzle/puzzles/today.png",
-  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261126-ZFHH.png",
-  "generatedAt": "2026-11-27T03:13:16.331+06:00"
+  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261127-Q9IV.png",
+  "generatedAt": "2026-11-27T13:06:54.732+06:00"
 }
