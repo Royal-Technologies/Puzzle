@@ -1,15 +1,15 @@
 {
-  "puzzleId": "BP-20261127-MNK5",
-  "category": "clock-calendar",
-  "subtype": "time-zones",
+  "puzzleId": "BP-20261127-IGKH",
+  "category": "sudoku",
+  "subtype": "classic-9x9",
   "difficulty": "hard",
-  "layout": "iznik-tiles",
-  "theme": "royal-maroon",
+  "layout": "mihrab-arch",
+  "theme": "classic-ivory",
   "answerVerified": true,
-  "answer": "12:00 Midnight",
-  "hint": "Apply the timezone difference: + 9 Hours.",
-  "caption": "🧠 Expert Brain Workout: Here is today’s challenging puzzle. What is your solution? 👇\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
+  "answer": "See the completed solution grid.",
+  "hint": "Start with rows, columns, or boxes that have the most given numbers.",
+  "caption": "⚡ Master Level IQ & Math Challenge from Bright Path! Drop your solution below. 🏆\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
   "imageUrl": "https://royal-technologies.github.io/Puzzle/puzzles/today.png",
-  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261127-MNK5.png",
-  "generatedAt": "2026-11-27T22:42:37.455+06:00"
+  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261127-IGKH.png",
+  "generatedAt": "2026-11-28T02:56:07.422+06:00"
 }
