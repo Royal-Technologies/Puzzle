@@ -1,15 +1,15 @@
 {
-  "puzzleId": "BP-20261127-IGKH",
-  "category": "sudoku",
-  "subtype": "classic-9x9",
+  "puzzleId": "BP-20261128-PEU6",
+  "category": "matchstick",
+  "subtype": "fix-equation",
   "difficulty": "hard",
-  "layout": "mihrab-arch",
-  "theme": "classic-ivory",
+  "layout": "alhambra-palace",
+  "theme": "royal-emerald",
   "answerVerified": true,
-  "answer": "See the completed solution grid.",
-  "hint": "Start with rows, columns, or boxes that have the most given numbers.",
-  "caption": "⚡ Master Level IQ & Math Challenge from Bright Path! Drop your solution below. 🏆\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
+  "answer": "9-5=4 or 0+4=4",
+  "hint": "Think about which single matchstick can be removed and relocated to change a digit or operator.",
+  "caption": "🧠 Expert Brain Workout: Here is today’s challenging puzzle. What is your solution? 👇\n\nDrop your answer below! We'll pin the first correct solution in the comments. 🏆\n\n#BrightPath #MathematicsMarvels #HardPuzzle #ExpertChallenge #RoyalTechnologies #PuzzleOfTheDay #DailyBrainTeaser #MathPuzzles #LogicRiddle #SudokuChallenge",
   "imageUrl": "https://royal-technologies.github.io/Puzzle/puzzles/today.png",
-  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261127-IGKH.png",
-  "generatedAt": "2026-11-28T02:56:07.422+06:00"
+  "archiveUrl": "https://royal-technologies.github.io/Puzzle/puzzles/BP-20261128-PEU6.png",
+  "generatedAt": "2026-11-28T12:40:52.900+06:00"
 }

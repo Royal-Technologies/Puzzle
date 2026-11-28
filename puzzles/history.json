@@ -1,5 +1,5 @@
 {
-  "lastCategory": "sudoku",
+  "lastCategory": "matchstick",
   "publishedIds": [
     "BP-20261026-M8X6",
     "BP-20261026-HJDD",
@@ -114,12 +114,13 @@
     "BP-20261126-ZFHH",
     "BP-20261127-Q9IV",
     "BP-20261127-MNK5",
-    "BP-20261127-IGKH"
+    "BP-20261127-IGKH",
+    "BP-20261128-PEU6"
   ],
   "categoryCounts": {
     "geometry": 12,
     "sudoku": 12,
-    "matchstick": 10,
+    "matchstick": 11,
     "logic": 12,
     "clock-calendar": 12,
     "visual-iq": 11,
